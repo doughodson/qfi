@@ -8,7 +8,7 @@ The goal is to update this project in two significant ways: 1) revise code and p
 
 The first/initial commit is identical to what was downloaded in the 7-Zip archive.
 
-This package allows you to create a nice looking instruments (and a panel or cluster of them) as shown below.
+This package allows you to create nice looking instruments (and a panel or cluster of them) as shown below.
 
 ![](qfiexample_01.jpg)
 
