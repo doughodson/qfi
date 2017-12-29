@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_ADI_H__
-#define __QFI_ADI_H__
+#ifndef __qfi_Adi_H__
+#define __qfi_Adi_H__
 
 #include <QGraphicsView>
 
@@ -55,17 +55,19 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_ADI
-// Description: Attitude Director Indicator widget
+// Class: Adi
+// Description: Attitude Director Indicator
 //---------------------------------------------------
-class qfi_ADI : public QGraphicsView
+class Adi : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    qfi_ADI(QWidget* parent = nullptr);
-    virtual ~qfi_ADI();
+    Adi(QWidget* parent = nullptr);
+    virtual ~Adi();
 
     // reinitiates widget
     void reinit();
@@ -114,5 +116,7 @@ private:
     const int m_ringZ{-10};
     const int m_caseZ{10};
 };
+
+}
 
 #endif

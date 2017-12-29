@@ -28,7 +28,7 @@ INCLUDEPATH += ./
 #-------------------------------------------------
 
 HEADERS += \
-    qfi_ADI.hpp \
+    Adi.hpp \
     qfi_HSI.hpp \
     qfi_NAV.hpp \
     qfi_PFD.hpp \
@@ -38,7 +38,7 @@ HEADERS += \
     qfi_TC.hpp
 
 SOURCES += \
-    qfi_ADI.cpp \
+    Adi.cpp \
     qfi_HSI.cpp \
     qfi_NAV.cpp \
     qfi_PFD.cpp \

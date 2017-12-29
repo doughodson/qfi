@@ -46,13 +46,15 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ADI.hpp"
+#include "Adi.hpp"
 
 #include <QGraphicsSvgItem>
 
 #include <cmath>
 
-qfi_ADI::qfi_ADI( QWidget *parent ) : QGraphicsView ( parent )
+namespace qfi {
+
+Adi::Adi(QWidget* parent) : QGraphicsView (parent)
 {
     reset();
     m_scene = new QGraphicsScene( this );
@@ -61,7 +63,7 @@ qfi_ADI::qfi_ADI( QWidget *parent ) : QGraphicsView ( parent )
     init();
 }
 
-qfi_ADI::~qfi_ADI()
+Adi::~Adi()
 {
     if (m_scene) {
         m_scene->clear();
@@ -72,7 +74,7 @@ qfi_ADI::~qfi_ADI()
     reset();
 }
 
-void qfi_ADI::reinit()
+void Adi::reinit()
 {
     if (m_scene) {
         m_scene->clear();
@@ -80,7 +82,7 @@ void qfi_ADI::reinit()
     }
 }
 
-void qfi_ADI::update()
+void Adi::update()
 {
     updateView();
 
@@ -88,7 +90,7 @@ void qfi_ADI::update()
     m_faceDeltaY_old  = m_faceDeltaY_new;
 }
 
-void qfi_ADI::setRoll(const float roll)
+void Adi::setRoll(const float roll)
 {
     m_roll = roll;
 
@@ -96,7 +98,7 @@ void qfi_ADI::setRoll(const float roll)
     if ( m_roll >  180.0f ) m_roll =  180.0f;
 }
 
-void qfi_ADI::setPitch(const float pitch)
+void Adi::setPitch(const float pitch)
 {
     m_pitch = pitch;
 
@@ -104,13 +106,13 @@ void qfi_ADI::setPitch(const float pitch)
     if ( m_pitch >  25.0f ) m_pitch =  25.0f;
 }
 
-void qfi_ADI::resizeEvent(QResizeEvent* event)
+void Adi::resizeEvent(QResizeEvent* event)
 {
     QGraphicsView::resizeEvent( event );
     reinit();
 }
 
-void qfi_ADI::init()
+void Adi::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -149,7 +151,7 @@ void qfi_ADI::init()
     updateView();
 }
 
-void qfi_ADI::reset()
+void Adi::reset()
 {
     m_itemBack = 0;
     m_itemFace = 0;
@@ -165,7 +167,7 @@ void qfi_ADI::reset()
     m_faceDeltaY_old = 0.0f;
 }
 
-void qfi_ADI::updateView()
+void Adi::updateView()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -183,4 +185,6 @@ void qfi_ADI::updateView()
     m_itemFace->moveBy( m_faceDeltaX_new - m_faceDeltaX_old, m_faceDeltaY_new - m_faceDeltaY_old );
 
     m_scene->update();
+}
+
 }

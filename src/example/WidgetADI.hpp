@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <qfi_ADI.hpp>
+#include <Adi.hpp>
 
 class LayoutSquare;
 
@@ -80,7 +80,7 @@ private:
     void setupUi();
 
     Ui::WidgetADI* m_ui{};
-    qfi_ADI* m_adi{};
+    qfi::Adi* m_adi{};
     LayoutSquare* m_layoutSq{};
 };
 

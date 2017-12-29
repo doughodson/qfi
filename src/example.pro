@@ -36,7 +36,7 @@ HEADERS += \
     example/WidgetPFD.hpp \
     example/WidgetTC.hpp \
     example/WidgetVSI.hpp \
-    qfi_ADI.hpp \
+    Adi.hpp \
     qfi_HSI.hpp \
     qfi_NAV.hpp \
     qfi_PFD.hpp \
@@ -58,7 +58,7 @@ SOURCES += \
     example/WidgetPFD.cpp \
     example/WidgetTC.cpp \
     example/WidgetVSI.cpp \
-    qfi_ADI.cpp \
+    Adi.cpp \
     qfi_HSI.cpp \
     qfi_NAV.cpp \
     qfi_PFD.cpp \
