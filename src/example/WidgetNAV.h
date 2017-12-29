@@ -48,77 +48,57 @@
 #ifndef WIDGETNAV_H
 #define WIDGETNAV_H
 
-////////////////////////////////////////////////////////////////////////////////
-
 #include <QWidget>
 
 #include <qfi_NAV.h>
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetNAV;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetNAV; }
 
 class WidgetNAV : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    explicit WidgetNAV( QWidget *parent = 0 );
-
+    explicit WidgetNAV(QWidget* parent = nullptr);
     virtual ~WidgetNAV();
 
-    inline void update()
-    {
+    inline void update() {
         m_nav->update();
     }
 
-    inline void setHeading( float heading )
-    {
+    inline void setHeading(const float heading) {
         m_nav->setHeading( heading );
     }
 
-    inline void setHeadingBug( float headingBug )
-    {
+    inline void setHeadingBug(const float headingBug) {
         m_nav->setHeadingBug( headingBug );
     }
 
-    inline void setCourse( float course )
-    {
+    inline void setCourse(const float course) {
         m_nav->setCourse( course );
     }
 
-    inline void setBearing( float bearing, bool visible = false )
-    {
+    inline void setBearing(const float bearing, const bool visible = false) {
         m_nav->setBearing( bearing, visible );
     }
 
-    inline void setDeviation( float deviation, bool visible = false )
-    {
+    inline void setDeviation(const float deviation, const bool visible = false) {
         m_nav->setDeviation( deviation, visible );
     }
 
-    inline void setDistance( float distance, bool visible = false )
-    {
+    inline void setDistance(const float distance, const bool visible = false) {
         m_nav->setDistance( distance, visible );
     }
 
 private:
-
-    Ui::WidgetNAV *m_ui;
-    qfi_NAV       *m_nav;
-    LayoutSquare  *m_layoutSq;
-
     void setupUi();
+
+    Ui::WidgetNAV* m_ui{};
+    qfi_NAV* m_nav{};
+    LayoutSquare* m_layoutSq{};
+
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETNAV_H
+#endif

@@ -45,10 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETADI_H
-#define WIDGETADI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __WIDGETADI_H__
+#define __WIDGETADI_H__
 
 #include <QWidget>
 
@@ -56,49 +54,34 @@
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetADI;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetADI; }
 
 class WidgetADI : public QWidget
 {
     Q_OBJECT
     
 public:
-
-    explicit WidgetADI( QWidget *parent = 0 );
-
+    explicit WidgetADI(QWidget* parent = nullptr);
     ~WidgetADI();
 
-    inline void update()
-    {
+    inline void update() {
         m_adi->update();
     }
 
-    inline void setRoll( float roll )
-    {
+    inline void setRoll(const float roll) {
         m_adi->setRoll( roll );
     }
 
-    inline void setPitch( float pitch )
-    {
+    inline void setPitch(const float pitch) {
         m_adi->setPitch( pitch );
     }
     
 private:
-
-    Ui::WidgetADI *m_ui;
-    qfi_ADI       *m_adi;
-    LayoutSquare  *m_layoutSq;
-
     void setupUi();
+
+    Ui::WidgetADI* m_ui{};
+    qfi_ADI* m_adi{};
+    LayoutSquare* m_layoutSq{};
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETADI_H
+#endif

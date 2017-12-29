@@ -48,114 +48,86 @@
 #ifndef WIDGETPFD_H
 #define WIDGETPFD_H
 
-////////////////////////////////////////////////////////////////////////////////
-
 #include <QWidget>
 
 #include <qfi_PFD.h>
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetPFD;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetPFD; }
 
 class WidgetPFD : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    explicit WidgetPFD( QWidget *parent = 0 );
-
+    explicit WidgetPFD(QWidget* parent = nullptr);
     virtual ~WidgetPFD();
 
-    inline void update()
-    {
+    inline void update() {
         m_pfd->update();
     }
 
-    inline void setRoll( float roll )
-    {
+    inline void setRoll(const float roll) {
         m_pfd->setRoll( roll );
     }
 
-    inline void setPitch( float pitch )
-    {
+    inline void setPitch(const float pitch) {
         m_pfd->setPitch( pitch );
     }
 
-    inline void setFlightPathMarker( float aoa, float sideslip )
-    {
+    inline void setFlightPathMarker(const float aoa, const float sideslip) {
         m_pfd->setFlightPathMarker( aoa, sideslip );
     }
 
-    inline void setSlipSkid( float slipSkid )
-    {
+    inline void setSlipSkid(const float slipSkid) {
         m_pfd->setSlipSkid( slipSkid );
     }
 
-    inline void setDevH( float devH )
-    {
+    inline void setDevH(const float devH) {
         m_pfd->setBarH( devH );
         m_pfd->setDotH( devH );
     }
 
-    inline void setDevV( float devV )
-    {
+    inline void setDevV(const float devV) {
         m_pfd->setBarV( devV );
         m_pfd->setDotV( devV );
     }
 
-    inline void setAltitude( float altitude )
-    {
+    inline void setAltitude(const float altitude) {
         m_pfd->setAltitude( altitude );
     }
 
-    inline void setPressure( float pressure )
-    {
+    inline void setPressure(const float pressure) {
         m_pfd->setPressure( pressure, qfi_PFD::IN );
     }
 
-    inline void setAirspeed( float airspeed )
-    {
+    inline void setAirspeed(const float airspeed) {
         m_pfd->setAirspeed( airspeed );
     }
 
-    inline void setMachNo( float machNo )
-    {
+    inline void setMachNo(const float machNo) {
         m_pfd->setMachNo( machNo );
     }
 
-    inline void setHeading( float heading )
-    {
+    inline void setHeading(const float heading) {
         m_pfd->setHeading( heading );
     }
 
-    inline void setTurnRate( float turnRate )
-    {
+    inline void setTurnRate(const float turnRate) {
         m_pfd->setTurnRate( turnRate );
     }
 
-    inline void setClimbRate( float climbRate )
-    {
+    inline void setClimbRate(const float climbRate) {
         m_pfd->setClimbRate( climbRate );
     }
 
 private:
-
-    Ui::WidgetPFD *m_ui;
-    qfi_PFD       *m_pfd;
-    LayoutSquare  *m_layoutSq;
-
     void setupUi();
+
+    Ui::WidgetPFD* m_ui{};
+    qfi_PFD* m_pfd{};
+    LayoutSquare* m_layoutSq{};
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETPFD_H
+#endif

@@ -45,22 +45,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __MAINWINDOW_H__
+#define __MAINWINDOW_H__
 
 #include <QMainWindow>
 #include <QTime>
-
-////////////////////////////////////////////////////////////////////////////////
 
 namespace Ui
 {
     class MainWindow;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 class MainWindow : public QMainWindow
 {
@@ -87,6 +81,4 @@ private:
     QTime m_time;
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // MAINWINDOW_H
+#endif
