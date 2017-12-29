@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETADI_CPP
-#define WIDGETADI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetADI.h"
 #include "ui_WidgetADI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetADI::WidgetADI( QWidget *parent ) :
     QWidget( parent ),
@@ -69,16 +62,12 @@ WidgetADI::WidgetADI( QWidget *parent ) :
     m_adi = m_ui->graphicsADI;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetADI::~WidgetADI()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetADI::setupUi()
 {

@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETASI_CPP
-#define WIDGETASI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetASI.h"
 #include "ui_WidgetASI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetASI::WidgetASI( QWidget *parent ) :
     QWidget( parent ),
@@ -69,13 +62,11 @@ WidgetASI::WidgetASI( QWidget *parent ) :
     m_asi = m_ui->graphicsASI;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetASI::~WidgetASI()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

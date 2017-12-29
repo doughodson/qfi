@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETALT_CPP
-#define WIDGETALT_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetALT.h"
 #include "ui_WidgetALT.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetALT::WidgetALT( QWidget *parent ) :
     QWidget( parent ),
@@ -69,16 +62,12 @@ WidgetALT::WidgetALT( QWidget *parent ) :
     m_alt = m_ui->graphicsALT;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetALT::~WidgetALT()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetALT::setupUi()
 {

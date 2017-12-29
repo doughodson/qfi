@@ -45,23 +45,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef LAYOUTSQUARE_CPP
-#define LAYOUTSQUARE_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-LayoutSquare::LayoutSquare( QWidget *parent, int spacing ) :
-    QLayout ( parent )
+LayoutSquare::LayoutSquare(QWidget* parent, int spacing) : QLayout(parent)
 {
-    init( spacing );
+    init(spacing);
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 LayoutSquare::LayoutSquare( int spacing ) :
     QLayout ( 0 )
@@ -69,31 +59,23 @@ LayoutSquare::LayoutSquare( int spacing ) :
     init( spacing );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 LayoutSquare::~LayoutSquare()
 {
-    if ( m_item ) delete m_item; m_item = 0;
+    if ( m_item ) {delete m_item; m_item = nullptr; }
 
-    if ( m_rectLast ) delete m_rectLast; m_rectLast = 0;
-    if ( m_geometry ) delete m_geometry; m_geometry = 0;
+    if ( m_rectLast ) {delete m_rectLast; m_rectLast = nullptr; }
+    if ( m_geometry ) {delete m_geometry; m_geometry = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void LayoutSquare::addItem( QLayoutItem *item )
 {
     if ( !hasItem() ) replaceItem( item );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void LayoutSquare::addWidget( QWidget *widget )
 {
     if ( !hasItem() ) replaceItem( new QWidgetItem( widget ) );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 int LayoutSquare::count() const
 {
@@ -102,35 +84,25 @@ int LayoutSquare::count() const
     return 0;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 Qt::Orientations LayoutSquare::expandingDirections() const
 {
     return ( Qt::Horizontal | Qt::Vertical );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QRect LayoutSquare::geometry()
 {
     return (QRect)(*m_geometry);
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 bool LayoutSquare::hasHeightForWidth() const
 {
     return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 bool LayoutSquare::hasItem() const
 {
     return ( m_item != 0 );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QLayoutItem* LayoutSquare::itemAt( int index ) const
 {
@@ -142,14 +114,10 @@ QLayoutItem* LayoutSquare::itemAt( int index ) const
     return 0;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 QSize LayoutSquare::minimumSize() const
 {
     return m_item->minimumSize();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QLayoutItem* LayoutSquare::replaceItem( QLayoutItem *item )
 {
@@ -163,8 +131,6 @@ QLayoutItem* LayoutSquare::replaceItem( QLayoutItem *item )
 
     return tempItem;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void LayoutSquare::setGeometry( const QRect &rect )
 {
@@ -184,19 +150,13 @@ void LayoutSquare::setGeometry( const QRect &rect )
 
     delete tempRect;
 
-    ///////////////////////////////////
     QLayout::setGeometry( *m_geometry );
-    ///////////////////////////////////
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QSize LayoutSquare::sizeHint() const
 {
     return m_item->minimumSize();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QLayoutItem* LayoutSquare::take()
 {
@@ -211,16 +171,12 @@ QLayoutItem* LayoutSquare::take()
     return tempItem;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 QLayoutItem* LayoutSquare::takeAt( int index )
 {
     if( index == 0 ) return take();
 
     return 0;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 bool LayoutSquare::areRectsEqual( const QRect &rect_1, const QRect &rect_2 ) const
 {
@@ -236,8 +192,6 @@ bool LayoutSquare::areRectsEqual( const QRect &rect_1, const QRect &rect_2 ) con
 
     return result;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QPoint LayoutSquare::calculateCenterPnt( QSize fromSize, QSize itemSize ) const
 {
@@ -255,8 +209,6 @@ QPoint LayoutSquare::calculateCenterPnt( QSize fromSize, QSize itemSize ) const
 
     return centerPoint;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 QSize LayoutSquare::calculateProperSize( QSize fromSize ) const
 {
@@ -276,8 +228,6 @@ QSize LayoutSquare::calculateProperSize( QSize fromSize ) const
     return resultSize;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void LayoutSquare::init( int spacing )
 {
     m_item = 0;
@@ -287,8 +237,6 @@ void LayoutSquare::init( int spacing )
 
     setSpacing( spacing );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void LayoutSquare::setRectLast( const QRect &rect )
 {

@@ -45,14 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETNAV_CPP
-#define WIDGETNAV_CPP
-#endif
 
 #include "WidgetNAV.h"
 #include "ui_WidgetNAV.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetNAV::WidgetNAV( QWidget *parent ) :
     QWidget( parent ),
@@ -67,16 +62,12 @@ WidgetNAV::WidgetNAV( QWidget *parent ) :
     m_nav = m_ui->graphicsNAV;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetNAV::~WidgetNAV()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetNAV::setupUi()
 {

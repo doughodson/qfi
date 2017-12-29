@@ -49,7 +49,8 @@
 #define __QFI_ADI_H__
 
 #include <QGraphicsView>
-#include <QGraphicsSvgItem>
+
+class QGraphicsSvgItem;
 
 //---------------------------------------------------
 // Class: qfi_ADI

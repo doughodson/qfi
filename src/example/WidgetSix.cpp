@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETSIX_CPP
-#define WIDGETSIX_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetSix.h"
 #include "ui_WidgetSix.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetSix::WidgetSix( QWidget *parent ) :
     QWidget ( parent ),
@@ -77,14 +70,10 @@ WidgetSix::WidgetSix( QWidget *parent ) :
     m_widgetVSI = m_ui->widgetVSI;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetSix::~WidgetSix()
 {
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetSix::update()
 {

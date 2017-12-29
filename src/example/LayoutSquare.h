@@ -45,18 +45,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef LAYOUTSQUARE_H
-#define LAYOUTSQUARE_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __LAYOUTSQUARE_H__
+#define __LAYOUTSQUARE_H__
 
 #include <QLayout>
 #include <QLayoutItem>
 #include <QPointer>
 #include <QRect>
 #include <QWidgetItem>
-
-////////////////////////////////////////////////////////////////////////////////
 
 class LayoutSquare : public QLayout
 {
@@ -116,6 +112,4 @@ private:
     void setRectLast( const QRect &rect );
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // LAYOUTSQUARE_H
+#endif

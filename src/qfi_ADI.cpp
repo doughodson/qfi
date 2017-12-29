@@ -52,6 +52,8 @@
 #   include <float.h>
 #endif
 
+#include <QGraphicsSvgItem>
+
 #include <math.h>
 #include <cmath>
 
@@ -78,8 +80,6 @@ qfi_ADI::~qfi_ADI()
 
     reset();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ADI::reinit()
 {
@@ -185,9 +185,8 @@ void qfi_ADI::updateView()
     m_itemFace->setRotation( - m_roll );
     m_itemRing->setRotation( - m_roll );
 
-    float roll_rad = M_PI * m_roll / 180.0;
-
-    float delta  = m_originalPixPerDeg * m_pitch;
+    const float roll_rad = M_PI * m_roll / 180.0;
+    const float delta  = m_originalPixPerDeg * m_pitch;
 
     m_faceDeltaX_new = m_scaleX * delta * std::sin( roll_rad );
     m_faceDeltaY_new = m_scaleY * delta * std::cos( roll_rad );

@@ -45,14 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETPFD_CPP
-#define WIDGETPFD_CPP
-#endif
 
 #include "WidgetPFD.h"
 #include "ui_WidgetPFD.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetPFD::WidgetPFD( QWidget *parent ) :
     QWidget( parent ),
@@ -67,16 +62,12 @@ WidgetPFD::WidgetPFD( QWidget *parent ) :
     m_pfd = m_ui->graphicsPFD;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetPFD::~WidgetPFD()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetPFD::setupUi()
 {

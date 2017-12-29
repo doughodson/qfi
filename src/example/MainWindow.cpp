@@ -87,7 +87,7 @@ MainWindow::~MainWindow()
 
     if ( m_timerId ) killTimer( m_timerId );
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

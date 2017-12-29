@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef MAIN_CPP
-#define MAIN_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "MainWindow.h"
 #include <QApplication>
-
-////////////////////////////////////////////////////////////////////////////////
 
 int main( int argc, char *argv[] )
 {

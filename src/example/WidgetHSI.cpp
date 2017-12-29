@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETHSI_CPP
-#define WIDGETHSI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetHSI.h"
 #include "ui_WidgetHSI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetHSI::WidgetHSI( QWidget *parent ) :
     QWidget( parent ),
@@ -69,16 +62,12 @@ WidgetHSI::WidgetHSI( QWidget *parent ) :
     m_hsi = m_ui->graphicsHSI;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetHSI::~WidgetHSI()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetHSI::setupUi()
 {

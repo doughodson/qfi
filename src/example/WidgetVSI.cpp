@@ -45,16 +45,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETVSI_CPP
-#define WIDGETVSI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include "WidgetVSI.h"
 #include "ui_WidgetVSI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 WidgetVSI::WidgetVSI( QWidget *parent ) :
     QWidget( parent ),
@@ -69,16 +62,12 @@ WidgetVSI::WidgetVSI( QWidget *parent ) :
     m_vsi = m_ui->graphicsVSI;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 WidgetVSI::~WidgetVSI()
 {
-    if ( m_layoutSq ) delete m_layoutSq; m_layoutSq = 0;
+    if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
 
-    if ( m_ui ) delete m_ui; m_ui = 0;
+    if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void WidgetVSI::setupUi()
 {
