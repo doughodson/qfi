@@ -14,5 +14,5 @@ This package allows you to create nice looking instruments (and a panel or clust
 
 # Status
 
-This project compiles and executes cleanly with Visual Studio 2017 and Qt 5.10. Much of the code has been revised to minimize header file includes (meaning, max use of forward references), use of 'nullptr', and uniform brace initialization syntax.
+This project compiles and executes cleanly with Visual Studio 2015, 2017, GCC and Qt 5.10. Much of the code has been revised to minimize header file includes (meaning, max use of forward references), use of 'nullptr', and uniform brace initialization syntax.
 

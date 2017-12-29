@@ -105,7 +105,7 @@ private:
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    const float m_originalPixPerDeg{1.7};
+    const float m_originalPixPerDeg{1.7f};
 
     QPointF m_originalAdiCtr{120.0, 120.0};
 

@@ -91,13 +91,13 @@ private:
 
     float m_airspeed{};
 
-    float m_scaleX{1.0};
-    float m_scaleY{1.0};
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalAsiCtr{120.0, 120.0};
+    QPointF m_originalAsiCtr{120.0f, 120.0f};
 
     const int m_faceZ{-20};
     const int m_handZ{-10};

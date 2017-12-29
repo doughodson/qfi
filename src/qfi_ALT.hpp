@@ -94,15 +94,15 @@ private:
     QGraphicsSvgItem* m_itemCase{};
 
     float m_altitude{};
-    float m_pressure{28.0};
+    float m_pressure{28.0f};
 
-    float m_scaleX{1.0};
-    float m_scaleY{1.0};
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalAltCtr{120.0, 120.0};
+    QPointF m_originalAltCtr{120.0f, 120.0f};
 
     const int m_face1Z{-50};
     const int m_face2Z{-40};

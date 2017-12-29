@@ -99,14 +99,14 @@ private:
     float m_turnRate{};
     float m_slipSkid{};
 
-    float m_scaleX{1.0};
-    float m_scaleY{1.0};
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalMarkCtr{120.0, 120.0};
-    QPointF m_originalBallCtr{120.0, -36.0};
+    QPointF m_originalMarkCtr{120.0f, 120.0f};
+    QPointF m_originalBallCtr{120.0f, -36.0f};
 
     const int m_backZ{-70};
     const int m_ballZ{-60};

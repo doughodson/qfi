@@ -279,16 +279,16 @@ private:
         float m_dotVDeltaY_new{};
         float m_dotVDeltaY_old{};
 
-        float m_scaleX{1.0};
-        float m_scaleY{1.0};
+        float m_scaleX{1.0f};
+        float m_scaleY{1.0f};
 
-        const float m_originalPixPerDeg{3.0};
-        const float m_deltaLaddBack_max{52.5};
-        const float m_deltaLaddBack_min{-52.5};
-        const float m_maxSlipDeflection{20.0};
-        const float m_maxTurnDeflection{55.0};
-        const float m_maxBarsDeflection{40.0};
-        const float m_maxDotsDeflection{50.0};
+        const float m_originalPixPerDeg{3.0f};
+        const float m_deltaLaddBack_max{52.5f};
+        const float m_deltaLaddBack_min{-52.5f};
+        const float m_maxSlipDeflection{20.0f};
+        const float m_maxTurnDeflection{55.0f};
+        const float m_maxBarsDeflection{40.0f};
+        const float m_maxDotsDeflection{50.0f};
 
         QPointF m_originalAdiCtr{150.0f,   125.0f};
         QPointF m_originalBackPos{ 45.0f,  -85.0f};
@@ -376,13 +376,13 @@ private:
         const float m_originalLabel2Y{125.0f};
         const float m_originalLabel3Y{200.0f};
 
-        QPointF m_originalBackPos{231.0, 37.5};
-        QPointF m_originalScale1Pos{231.0, -174.5};
-        QPointF m_originalScale2Pos{231.0, -474.5};
-        QPointF m_originalGroundPos{231.5,  124.5};
-        QPointF m_originalFramePos{225.0, 110.0};
-        QPointF m_originalAltitudeCtr{254.0, 126.0};
-        QPointF m_originalPressureCtr{254.0, 225.0};
+        QPointF m_originalBackPos{231.0f, 37.5f};
+        QPointF m_originalScale1Pos{231.0f, -174.5f};
+        QPointF m_originalScale2Pos{231.0f, -474.5f};
+        QPointF m_originalGroundPos{231.5f,  124.5f};
+        QPointF m_originalFramePos{225.0f, 110.0f};
+        QPointF m_originalAltitudeCtr{254.0f, 126.0f};
+        QPointF m_originalPressureCtr{254.0f, 225.0f};
 
         const int m_backZ{70};
         const int m_scaleZ{77};
@@ -439,26 +439,26 @@ private:
         float m_labelsDeltaY_new{};
         float m_labelsDeltaY_old{};
 
-        float m_scaleX{1.0};
-        float m_scaleY{1.0};
+        float m_scaleX{1.0f};
+        float m_scaleY{1.0f};
 
-        const float m_originalPixPerSpd{1.5};
-        const float m_originalScaleHeight{300.0};
-        const float m_originalLabelsX{43.0};
-        const float m_originalLabel1Y{35.0};
-        const float m_originalLabel2Y{65.0};
-        const float m_originalLabel3Y{95.0};
-        const float m_originalLabel4Y{125.0};
-        const float m_originalLabel5Y{155.0};
-        const float m_originalLabel6Y{185.0};
-        const float m_originalLabel7Y{215.0};
+        const float m_originalPixPerSpd{1.5f};
+        const float m_originalScaleHeight{300.0f};
+        const float m_originalLabelsX{43.0f};
+        const float m_originalLabel1Y{35.0f};
+        const float m_originalLabel2Y{65.0f};
+        const float m_originalLabel3Y{95.0f};
+        const float m_originalLabel4Y{125.0f};
+        const float m_originalLabel5Y{155.0f};
+        const float m_originalLabel6Y{185.0f};
+        const float m_originalLabel7Y{215.0f};
 
-        QPointF m_originalBackPos{25.0, 37.5};
-        QPointF m_originalScale1Pos{56.0, -174.5};
-        QPointF m_originalScale2Pos{56.0, -474.5};
-        QPointF m_originalFramePos{0.0, 110.0};
-        QPointF m_originalAirspeedCtr{40.0, 126.0};
-        QPointF m_originalMachNoCtr{43.0, 225.0};
+        QPointF m_originalBackPos{25.0f, 37.5f};
+        QPointF m_originalScale1Pos{56.0f, -174.5f};
+        QPointF m_originalScale2Pos{56.0f, -474.5f};
+        QPointF m_originalFramePos{0.0f, 110.0f};
+        QPointF m_originalAirspeedCtr{40.0f, 126.0f};
+        QPointF m_originalMachNoCtr{43.0f, 225.0f};
 
         const int m_backZ{70};
         const int m_scaleZ{80};
@@ -492,14 +492,14 @@ private:
 
         float m_heading{};
 
-        float m_scaleX{1.0};
-        float m_scaleY{1.0};
+        float m_scaleX{1.0f};
+        float m_scaleY{1.0f};
 
-        QPointF m_originalHsiCtr{150.0, 345.0};
-        QPointF m_originalBackPos{60.0, 240.0};
-        QPointF m_originalFacePos{45.0, 240.0};
-        QPointF m_originalMarksPos{134.0, 219.0};
-        QPointF m_originalFrameTextCtr{149.5, 227.5};
+        QPointF m_originalHsiCtr{150.0f, 345.0f};
+        QPointF m_originalBackPos{60.0f, 240.0f};
+        QPointF m_originalFacePos{45.0f, 240.0f};
+        QPointF m_originalMarksPos{134.0f, 219.0f};
+        QPointF m_originalFrameTextCtr{149.5f, 227.5f};
 
         const int m_backZ{80};
         const int m_faceZ{90};
@@ -529,16 +529,16 @@ private:
         float m_arrowDeltaY_new{};
         float m_arrowDeltaY_old{};
 
-        float m_scaleX{1.0};
-        float m_scaleY{1.0};
+        float m_scaleX{1.0f};
+        float m_scaleY{1.0f};
 
-        const float m_originalMarkeHeight{75.0};
-        const float m_originalPixPerSpd1{30.0};
-        const float m_originalPixPerSpd2{20.0};
-        const float m_originalPixPerSpd4{5.0};
+        const float m_originalMarkeHeight{75.0f};
+        const float m_originalPixPerSpd1{30.0f};
+        const float m_originalPixPerSpd2{20.0f};
+        const float m_originalPixPerSpd4{5.0f};
 
-        QPointF m_originalScalePos{275.0,  50.0};
-        QPointF m_originalArrowPos{284.0, 124.0};
+        QPointF m_originalScalePos{275.0f,  50.0f};
+        QPointF m_originalArrowPos{284.0f, 124.0f};
 
         const int m_scaleZ{70};
         const int m_arrowZ{80};
@@ -559,8 +559,8 @@ private:
     QGraphicsSvgItem* m_itemBack{};
     QGraphicsSvgItem* m_itemMask{};
 
-    float m_scaleX{1.0};
-    float m_scaleY{1.0};
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
     const int m_originalHeight{300};
     const int m_originalWidth{300};
