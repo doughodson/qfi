@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = qfi_example
 TEMPLATE = app
+CONFIG += c++11
 
 #-------------------------------------------------
 
