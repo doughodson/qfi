@@ -60,7 +60,7 @@ class qfi_TC : public QGraphicsView
     Q_OBJECT
 
 public:
-    qfi_TC(QWidget* parent = 0);
+    qfi_TC(QWidget* parent = nullptr);
     virtual ~qfi_TC();
 
     // reinitiates widget

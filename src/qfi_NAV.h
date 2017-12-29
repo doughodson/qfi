@@ -60,7 +60,7 @@ class qfi_NAV : public QGraphicsView
     Q_OBJECT
 
 public:
-    explicit qfi_NAV(QWidget* parent = 0);
+    explicit qfi_NAV(QWidget* parent = nullptr);
     virtual ~qfi_NAV();
 
     // reinitiates widget
@@ -81,81 +81,78 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
-
-    QGraphicsScene* m_scene;            ///< graphics scene
-
-    QGraphicsSvgItem* m_itemBack;       ///< NAV background
-    QGraphicsSvgItem* m_itemMask;       ///< NAV mask
-    QGraphicsSvgItem* m_itemMark;
-
-    QGraphicsSvgItem* m_itemBrgArrow;
-    QGraphicsSvgItem* m_itemCrsArrow;
-    QGraphicsSvgItem* m_itemDevBar;
-    QGraphicsSvgItem* m_itemDevScale;
-    QGraphicsSvgItem* m_itemHdgBug;
-    QGraphicsSvgItem* m_itemHdgScale;
-
-    QGraphicsTextItem* m_itemCrsText;
-    QGraphicsTextItem* m_itemHdgText;
-    QGraphicsTextItem* m_itemDmeText;
-
-    QColor m_crsTextColor;
-    QColor m_hdgTextColor;
-    QColor m_dmeTextColor;
-
-    QFont  m_crsTextFont;
-    QFont  m_hdgTextFont;
-    QFont  m_dmeTextFont;
-
-    float m_heading;                    ///< [deg]
-    float m_headingBug;                 ///< [deg]
-    float m_course;
-    float m_bearing;
-    float m_deviation;
-    float m_distance;
-
-    bool m_bearingVisible;
-    bool m_deviationVisible;
-    bool m_distanceVisible;
-
-    float m_devBarDeltaX_new;
-    float m_devBarDeltaX_old;
-    float m_devBarDeltaY_new;
-    float m_devBarDeltaY_old;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    float m_originalPixPerDev;
-
-    QPointF m_originalNavCtr;
-
-    QPointF m_originalCrsTextCtr;
-    QPointF m_originalHdgTextCtr;
-    QPointF m_originalDmeTextCtr;
-
-    const int m_originalHeight;         ///< [px]
-    const int m_originalWidth;          ///< [px]
-
-    const int m_backZ;
-    const int m_maskZ;
-    const int m_markZ;
-
-    const int m_brgArrowZ;
-    const int m_crsArrowZ;
-    const int m_crsTextZ;
-    const int m_devBarZ;
-    const int m_devScaleZ;
-    const int m_hdgBugZ;
-    const int m_hdgScaleZ;
-    const int m_hdgTextZ;
-    const int m_dmeTextZ;
-
     void init();
-
     void reset();
-
     void updateView();
+
+    QGraphicsScene* m_scene{};            ///< graphics scene
+
+    QGraphicsSvgItem* m_itemBack{};       ///< NAV background
+    QGraphicsSvgItem* m_itemMask{};       ///< NAV mask
+    QGraphicsSvgItem* m_itemMark{};
+
+    QGraphicsSvgItem* m_itemBrgArrow{};
+    QGraphicsSvgItem* m_itemCrsArrow{};
+    QGraphicsSvgItem* m_itemDevBar{};
+    QGraphicsSvgItem* m_itemDevScale{};
+    QGraphicsSvgItem* m_itemHdgBug{};
+    QGraphicsSvgItem* m_itemHdgScale{};
+
+    QGraphicsTextItem* m_itemCrsText{};
+    QGraphicsTextItem* m_itemHdgText{};
+    QGraphicsTextItem* m_itemDmeText{};
+
+    QColor m_crsTextColor{  0, 255,   0};
+    QColor m_hdgTextColor{255,   0, 255};
+    QColor m_dmeTextColor{255, 255, 255};
+
+    QFont m_crsTextFont;
+    QFont m_hdgTextFont;
+    QFont m_dmeTextFont;
+
+    float m_heading{};                    ///< [deg]
+    float m_headingBug{};                 ///< [deg]
+    float m_course{};
+    float m_bearing{};
+    float m_deviation{};
+    float m_distance{};
+
+    bool m_bearingVisible{true};
+    bool m_deviationVisible{true};
+    bool m_distanceVisible{true};
+
+    float m_devBarDeltaX_new{};
+    float m_devBarDeltaX_old{};
+    float m_devBarDeltaY_new{};
+    float m_devBarDeltaY_old{};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    float m_originalPixPerDev{52.5f};
+
+    QPointF m_originalNavCtr{150.0f, 150.0f};
+
+    QPointF m_originalCrsTextCtr{ 50.0f,  25.0f};
+    QPointF m_originalHdgTextCtr{250.0f,  25.0f};
+    QPointF m_originalDmeTextCtr{250.0f, 275.0f};
+
+    const int m_originalHeight{300};         ///< [px]
+    const int m_originalWidth{300};          ///< [px]
+
+    const int m_backZ{};
+    const int m_maskZ{100};
+    const int m_markZ{200};
+
+    const int m_brgArrowZ{60};
+    const int m_crsArrowZ{70};
+    const int m_crsTextZ{130};
+    const int m_devBarZ{50};
+    const int m_devScaleZ{10};
+    const int m_hdgBugZ{120};
+    const int m_hdgScaleZ{110};
+    const int m_hdgTextZ{130};
+    const int m_dmeTextZ{130};
 };
 
 #endif

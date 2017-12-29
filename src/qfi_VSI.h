@@ -60,7 +60,7 @@ class qfi_VSI : public QGraphicsView
     Q_OBJECT
 
 public:
-    qfi_VSI(QWidget* parent = 0);
+    qfi_VSI(QWidget* parent = nullptr);
     virtual ~qfi_VSI();
 
     // reinitiates widget

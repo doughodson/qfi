@@ -61,7 +61,7 @@ class qfi_ALT : public QGraphicsView
 
 public:
 
-    qfi_ALT(QWidget* parent = 0);
+    qfi_ALT(QWidget* parent = nullptr);
     virtual ~qfi_ALT();
 
     // reinitiates widget
@@ -78,39 +78,36 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
-
-    QGraphicsScene* m_scene;
-
-    QGraphicsSvgItem* m_itemFace_1;
-    QGraphicsSvgItem* m_itemFace_2;
-    QGraphicsSvgItem* m_itemFace_3;
-    QGraphicsSvgItem* m_itemHand_1;
-    QGraphicsSvgItem* m_itemHand_2;
-    QGraphicsSvgItem* m_itemCase;
-
-    float m_altitude;
-    float m_pressure;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    const int m_originalHeight;
-    const int m_originalWidth;
-
-    QPointF m_originalAltCtr;
-
-    const int m_face1Z;
-    const int m_face2Z;
-    const int m_face3Z;
-    const int m_hand1Z;
-    const int m_hand2Z;
-    const int m_caseZ;
-
     void init();
-
     void reset();
-
     void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    QGraphicsSvgItem* m_itemFace_1{};
+    QGraphicsSvgItem* m_itemFace_2{};
+    QGraphicsSvgItem* m_itemFace_3{};
+    QGraphicsSvgItem* m_itemHand_1{};
+    QGraphicsSvgItem* m_itemHand_2{};
+    QGraphicsSvgItem* m_itemCase{};
+
+    float m_altitude{};
+    float m_pressure{28.0f};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
+
+    QPointF m_originalAltCtr{120.0f, 120.0f};
+
+    const int m_face1Z{-50};
+    const int m_face2Z{-40};
+    const int m_face3Z{-30};
+    const int m_hand1Z{-20};
+    const int m_hand2Z{-10};
+    const int m_caseZ{10};
 };
 
 #endif

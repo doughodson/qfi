@@ -46,34 +46,13 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
+#include "qfi_HSI.h"
+
 #ifdef WIN32
 #   include <float.h>
 #endif
 
-#include <math.h>
-
-#include "qfi_HSI.h"
-
-qfi_HSI::qfi_HSI( QWidget *parent ) :
-    QGraphicsView ( parent ),
-
-    m_scene ( 0 ),
-
-    m_itemFace ( 0 ),
-    m_itemCase ( 0 ),
-
-    m_heading ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalHeight ( 240 ),
-    m_originalWidth  ( 240 ),
-
-    m_originalHsiCtr ( 120.0f , 120.0f ),
-
-    m_faceZ ( -20 ),
-    m_caseZ (  10 )
+qfi_HSI::qfi_HSI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
 
@@ -99,10 +78,8 @@ qfi_HSI::~qfi_HSI()
 
 void qfi_HSI::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }

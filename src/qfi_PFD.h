@@ -69,7 +69,7 @@ public:
         IN          ///< inches of mercury
     };
 
-    explicit qfi_PFD(QWidget* parent = 0);
+    explicit qfi_PFD(QWidget* parent = nullptr);
     ~qfi_PFD();
 
     // reinitiates widget

@@ -46,46 +46,16 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
+#include "qfi_ADI.h"
+
 #ifdef WIN32
 #   include <float.h>
 #endif
 
 #include <math.h>
+#include <cmath>
 
-#include "qfi_ADI.h"
-
-qfi_ADI::qfi_ADI( QWidget *parent ) :
-    QGraphicsView ( parent ),
-
-    m_scene ( 0 ),
-
-    m_itemBack ( 0 ),
-    m_itemFace ( 0 ),
-    m_itemRing ( 0 ),
-    m_itemCase ( 0 ),
-
-    m_roll  ( 0.0f ),
-    m_pitch ( 0.0f ),
-
-    m_faceDeltaX_new ( 0.0f ),
-    m_faceDeltaX_old ( 0.0f ),
-    m_faceDeltaY_new ( 0.0f ),
-    m_faceDeltaY_old ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalHeight ( 240 ),
-    m_originalWidth  ( 240 ),
-
-    m_originalPixPerDeg ( 1.7f ),
-
-    m_originalAdiCtr ( 120.0f , 120.0f ),
-
-    m_backZ ( -30 ),
-    m_faceZ ( -20 ),
-    m_ringZ ( -10 ),
-    m_caseZ (  10 )
+qfi_ADI::qfi_ADI( QWidget *parent ) : QGraphicsView ( parent )
 {
     reset();
 
@@ -219,8 +189,8 @@ void qfi_ADI::updateView()
 
     float delta  = m_originalPixPerDeg * m_pitch;
 
-    m_faceDeltaX_new = m_scaleX * delta * sin( roll_rad );
-    m_faceDeltaY_new = m_scaleY * delta * cos( roll_rad );
+    m_faceDeltaX_new = m_scaleX * delta * std::sin( roll_rad );
+    m_faceDeltaY_new = m_scaleY * delta * std::cos( roll_rad );
 
     m_itemFace->moveBy( m_faceDeltaX_new - m_faceDeltaX_old, m_faceDeltaY_new - m_faceDeltaY_old );
 

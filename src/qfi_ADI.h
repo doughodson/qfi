@@ -61,7 +61,7 @@ class qfi_ADI : public QGraphicsView
 
 public:
 
-    qfi_ADI(QWidget* parent = 0);
+    qfi_ADI(QWidget* parent = nullptr);
     virtual ~qfi_ADI();
 
     // reinitiates widget
@@ -78,42 +78,39 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
+    void init();
+    void reset();
+    void updateView();
 
-    QGraphicsScene* m_scene;
+    QGraphicsScene* m_scene{};
 
-    QGraphicsSvgItem* m_itemBack;
-    QGraphicsSvgItem* m_itemFace;
-    QGraphicsSvgItem* m_itemRing;
-    QGraphicsSvgItem* m_itemCase;
+    QGraphicsSvgItem* m_itemBack{};
+    QGraphicsSvgItem* m_itemFace{};
+    QGraphicsSvgItem* m_itemRing{};
+    QGraphicsSvgItem* m_itemCase{};
 
-    float m_roll;
-    float m_pitch;
+    float m_roll{};
+    float m_pitch{};
 
-    float m_faceDeltaX_new;
-    float m_faceDeltaX_old;
-    float m_faceDeltaY_new;
-    float m_faceDeltaY_old;
+    float m_faceDeltaX_new{};
+    float m_faceDeltaX_old{};
+    float m_faceDeltaY_new{};
+    float m_faceDeltaY_old{};
 
-    float m_scaleX;
-    float m_scaleY;
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
-    const int m_originalHeight;
-    const int m_originalWidth;
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
 
-    const float m_originalPixPerDeg;
+    const float m_originalPixPerDeg{1.7f};
 
     QPointF m_originalAdiCtr;
 
-    const int m_backZ;
-    const int m_faceZ;
-    const int m_ringZ;
-    const int m_caseZ;
-
-    void init();
-
-    void reset();
-
-    void updateView();
+    const int m_backZ{-30};
+    const int m_faceZ{-20};
+    const int m_ringZ{-10};
+    const int m_caseZ{10};
 };
 
 #endif

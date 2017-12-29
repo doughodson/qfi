@@ -46,84 +46,16 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
+#include "qfi_NAV.h"
+
 #include <iostream>
+#include <cmath>
 
 #ifdef WIN32
 #   include <float.h>
 #endif
 
-#include <math.h>
-#include <stdio.h>
-
-#include "qfi_NAV.h"
-
-qfi_NAV::qfi_NAV( QWidget *parent ) :
-    QGraphicsView ( parent ),
-
-    m_scene ( 0 ),
-
-    m_itemBack ( 0 ),
-    m_itemMask ( 0 ),
-    m_itemMark ( 0 ),
-
-    m_itemBrgArrow ( 0 ),
-    m_itemCrsArrow ( 0 ),
-    m_itemDevBar   ( 0 ),
-    m_itemDevScale ( 0 ),
-    m_itemHdgBug   ( 0 ),
-    m_itemHdgScale ( 0 ),
-
-    m_itemCrsText ( 0 ),
-    m_itemHdgText ( 0 ),
-    m_itemDmeText ( 0 ),
-
-    m_crsTextColor (   0, 255,   0 ),
-    m_hdgTextColor ( 255,   0, 255 ),
-    m_dmeTextColor ( 255, 255, 255 ),
-
-    m_heading    ( 0.0f ),
-    m_headingBug ( 0.0f ),
-    m_course     ( 0.0f ),
-    m_bearing    ( 0.0f ),
-    m_deviation  ( 0.0f ),
-    m_distance   ( 0.0f ),
-
-    m_bearingVisible   ( true ),
-    m_deviationVisible ( true ),
-    m_distanceVisible  ( true ),
-
-    m_devBarDeltaX_new ( 0.0f ),
-    m_devBarDeltaX_old ( 0.0f ),
-    m_devBarDeltaY_new ( 0.0f ),
-    m_devBarDeltaY_old ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalPixPerDev ( 52.5f ),
-
-    m_originalNavCtr ( 150.0f, 150.0f ),
-
-    m_originalCrsTextCtr (  50.0f,  25.0f ),
-    m_originalHdgTextCtr ( 250.0f,  25.0f ),
-    m_originalDmeTextCtr ( 250.0f, 275.0f ),
-
-    m_originalHeight ( 300 ),
-    m_originalWidth  ( 300 ),
-
-    m_backZ (   0 ),
-    m_maskZ ( 100 ),
-    m_markZ ( 200 ),
-
-    m_brgArrowZ (  60 ),
-    m_crsArrowZ (  70 ),
-    m_crsTextZ  ( 130 ),
-    m_devBarZ   (  50 ),
-    m_devScaleZ (  10 ),
-    m_hdgBugZ   ( 120 ),
-    m_hdgScaleZ ( 110 ),
-    m_hdgTextZ  ( 130 ),
-    m_dmeTextZ  ( 130 )
+qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
 {
 #   ifdef WIN32
     m_crsTextFont.setFamily( "Courier" );
@@ -407,19 +339,19 @@ void qfi_NAV::updateView()
 
         float angle_deg = -m_heading + m_course;
 #       ifndef M_PI
-        float angle_rad = 3.14159265358979323846 * angle_deg / 180.0f;
+        const float angle_rad = 3.14159265358979323846 * angle_deg / 180.0f;
 #       else
-        float angle_rad = M_PI * angle_deg / 180.0f;
+        const float angle_rad = M_PI * angle_deg / 180.0f;
 #       endif
 
 
-        float sinAngle = sin( angle_rad );
-        float cosAngle = cos( angle_rad );
+        const float sinAngle = std::sin( angle_rad );
+        const float cosAngle = std::cos( angle_rad );
 
         m_itemDevBar->setRotation( angle_deg );
         m_itemDevScale->setRotation( angle_deg );
 
-        float delta  = m_originalPixPerDev * m_deviation;
+        const float delta  = m_originalPixPerDev * m_deviation;
 
         m_devBarDeltaX_new = m_scaleX * delta * cosAngle;
         m_devBarDeltaY_new = m_scaleY * delta * sinAngle;

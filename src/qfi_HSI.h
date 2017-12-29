@@ -60,7 +60,7 @@ class qfi_HSI : public QGraphicsView
     Q_OBJECT
 
 public:
-    qfi_HSI(QWidget* parent = 0);
+    qfi_HSI(QWidget* parent = nullptr);
     virtual ~qfi_HSI();
 
     // reinitiates widget
@@ -76,30 +76,27 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
-
-    QGraphicsScene* m_scene;
-
-    QGraphicsSvgItem* m_itemFace;
-    QGraphicsSvgItem* m_itemCase;
-
-    float m_heading;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    const int m_originalHeight;
-    const int m_originalWidth;
-
-    QPointF m_originalHsiCtr;
-
-    const int m_faceZ;
-    const int m_caseZ;
-
     void init();
-
     void reset();
-
     void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    QGraphicsSvgItem* m_itemFace{};
+    QGraphicsSvgItem* m_itemCase{};
+
+    float m_heading{};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
+
+    QPointF m_originalHsiCtr{120.0f , 120.0f};
+
+    const int m_faceZ{-20};
+    const int m_caseZ{10};
 };
 
 #endif

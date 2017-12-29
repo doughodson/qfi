@@ -61,7 +61,7 @@ class qfi_ASI : public QGraphicsView
 
 public:
 
-    qfi_ASI(QWidget* parent = 0);
+    qfi_ASI(QWidget* parent = nullptr);
     virtual ~qfi_ASI();
 
     // reinitiates widget
@@ -77,32 +77,29 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
-
-    QGraphicsScene* m_scene;
-
-    QGraphicsSvgItem* m_itemFace;
-    QGraphicsSvgItem* m_itemHand;
-    QGraphicsSvgItem* m_itemCase;
-
-    float m_airspeed;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    const int m_originalHeight;
-    const int m_originalWidth;
-
-    QPointF m_originalAsiCtr;
-
-    const int m_faceZ;
-    const int m_handZ;
-    const int m_caseZ;
-
     void init();
-
     void reset();
-
     void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    QGraphicsSvgItem* m_itemFace{};
+    QGraphicsSvgItem* m_itemHand{};
+    QGraphicsSvgItem* m_itemCase{};
+
+    float m_airspeed{};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
+
+    QPointF m_originalAsiCtr{120.0f, 120.0f};
+
+    const int m_faceZ{-20};
+    const int m_handZ{-10};
+    const int m_caseZ{10};
 };
 
 #endif
