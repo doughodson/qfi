@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETNAV_H
-#define WIDGETNAV_H
+#ifndef __WIDGETNAV_H__
+#define __WIDGETNAV_H__
 
 #include <QWidget>
 

@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETPFD_H
-#define WIDGETPFD_H
+#ifndef __WIDGETPFD_H__
+#define __WIDGETPFD_H__
 
 #include <QWidget>
 

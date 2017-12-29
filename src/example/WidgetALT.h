@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETALT_H
-#define WIDGETALT_H
+#ifndef __WIDGETALT_H__
+#define __WIDGETALT_H__
 
 #include <QWidget>
 
