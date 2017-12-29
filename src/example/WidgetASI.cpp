@@ -49,7 +49,7 @@
 #include "WidgetASI.hpp"
 #include "ui_WidgetASI.h"
 
-WidgetASI::WidgetASI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetASI), m_asi(0), m_layoutSq(0)
+WidgetASI::WidgetASI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetASI)
 {
     m_ui->setupUi( this );
     setupUi();

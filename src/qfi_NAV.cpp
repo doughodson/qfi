@@ -48,6 +48,8 @@
 
 #include "qfi_NAV.hpp"
 
+#include <QGraphicsSvgItem>
+
 #include <iostream>
 #include <cmath>
 
@@ -86,12 +88,9 @@ qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
 #endif
 
     reset();
-
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 

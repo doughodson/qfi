@@ -48,6 +48,8 @@
 
 #include "qfi_PFD.hpp"
 
+#include <QGraphicsSvgItem>
+
 #include <cmath>
 
 #ifndef M_PI

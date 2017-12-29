@@ -49,7 +49,11 @@
 #define __QFI_NAV_H__
 
 #include <QGraphicsView>
-#include <QGraphicsSvgItem>
+
+class QWidget;
+class QResizeEvent;
+class QGraphicsScene;
+class QGraphicsSvgItem;
 
 //---------------------------------------------------
 // Class: qfi_NAV

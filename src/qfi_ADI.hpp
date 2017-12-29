@@ -50,6 +50,9 @@
 
 #include <QGraphicsView>
 
+class QWidget;
+class QResizeEvent;
+class QGraphicsScene;
 class QGraphicsSvgItem;
 
 //---------------------------------------------------

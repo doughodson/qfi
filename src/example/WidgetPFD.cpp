@@ -49,7 +49,7 @@
 #include "WidgetPFD.hpp"
 #include "ui_WidgetPFD.h"
 
-WidgetPFD::WidgetPFD(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetPFD), m_pfd(0), m_layoutSq(0)
+WidgetPFD::WidgetPFD(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetPFD)
 {
     m_ui->setupUi( this );
     setupUi();

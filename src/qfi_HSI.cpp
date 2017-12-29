@@ -48,25 +48,23 @@
 
 #include "qfi_HSI.hpp"
 
+#include <QGraphicsSvgItem>
+
 qfi_HSI::qfi_HSI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
-
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 
 qfi_HSI::~qfi_HSI()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();

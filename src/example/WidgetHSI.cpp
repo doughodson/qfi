@@ -49,7 +49,7 @@
 #include "WidgetHSI.hpp"
 #include "ui_WidgetHSI.h"
 
-WidgetHSI::WidgetHSI(QWidget *parent) : QWidget(parent), m_ui(new Ui::WidgetHSI), m_hsi(0), m_layoutSq(0)
+WidgetHSI::WidgetHSI(QWidget *parent) : QWidget(parent), m_ui(new Ui::WidgetHSI)
 {
     m_ui->setupUi( this );
     setupUi();

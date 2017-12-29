@@ -49,7 +49,11 @@
 #define __QFI_HSI_H__
 
 #include <QGraphicsView>
-#include <QGraphicsSvgItem>
+
+class QWidget;
+class QResizeEvent;
+class QGraphicsScene;
+class QGraphicsSvgItem;
 
 //---------------------------------------------------
 // Class: qfi_HSI

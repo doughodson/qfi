@@ -48,17 +48,16 @@
 
 #include "qfi_ALT.hpp"
 
+#include <QGraphicsSvgItem>
+
 #include <cmath>
 
 qfi_ALT::qfi_ALT(QWidget* parent) : QGraphicsView (parent)
 {
     reset();
-
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 
@@ -68,7 +67,7 @@ qfi_ALT::~qfi_ALT()
     {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();

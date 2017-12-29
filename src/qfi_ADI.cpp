@@ -55,22 +55,18 @@
 qfi_ADI::qfi_ADI( QWidget *parent ) : QGraphicsView ( parent )
 {
     reset();
-
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 
 qfi_ADI::~qfi_ADI()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();
@@ -78,10 +74,8 @@ qfi_ADI::~qfi_ADI()
 
 void qfi_ADI::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }

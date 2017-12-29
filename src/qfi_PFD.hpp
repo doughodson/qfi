@@ -49,7 +49,11 @@
 #define __QFI_PFD_H__
 
 #include <QGraphicsView>
-#include <QGraphicsSvgItem>
+
+class QWidget;
+class QResizeEvent;
+class QGraphicsScene;
+class QGraphicsSvgItem;
 
 //---------------------------------------------------
 // Class: qfi_PFD
@@ -184,7 +188,6 @@ private:
     class ADI
     {
     public:
-
         ADI(QGraphicsScene*);
         void init(const float scaleX, const float scaleY);
         void update(const float scaleX, const float scaleY);
@@ -316,7 +319,6 @@ private:
     class ALT
     {
     public:
-
         ALT(QGraphicsScene*);
         void init(const float scaleX, const float scaleY);
         void update(const float scaleX, const float scaleY);

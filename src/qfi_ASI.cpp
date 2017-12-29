@@ -48,6 +48,8 @@
 
 #include "qfi_ASI.hpp"
 
+#include <QGraphicsSvgItem>
+
 qfi_ASI::qfi_ASI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
@@ -62,22 +64,18 @@ qfi_ASI::qfi_ASI(QWidget* parent) : QGraphicsView(parent)
 
 qfi_ASI::~qfi_ASI()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
-
     reset();
 }
 
 void qfi_ASI::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }

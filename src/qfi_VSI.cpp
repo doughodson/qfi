@@ -48,10 +48,11 @@
 
 #include "qfi_VSI.hpp"
 
+#include <QGraphicsSvgItem>
+
 qfi_VSI::qfi_VSI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
-
     m_scene = new QGraphicsScene(this);
     setScene(m_scene);
     m_scene->clear();
