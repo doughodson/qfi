@@ -171,7 +171,7 @@ QLayoutItem* LayoutSquare::takeAt(int index)
     return 0;
 }
 
-bool LayoutSquare::areRectsEqual( const QRect &rect_1, const QRect &rect_2 ) const
+bool LayoutSquare::areRectsEqual(const QRect &rect_1, const QRect &rect_2) const
 {
     bool result{};
 

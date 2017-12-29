@@ -64,11 +64,13 @@ public:
     explicit LayoutSquare(const int spacing = -1);
     ~LayoutSquare();
 
-    void addItem(QLayoutItem*);
+    // QLayout interface
+    void addItem(QLayoutItem*) override;
+    int count() const override;
+    QLayoutItem* itemAt(int index) const override;
+    QLayoutItem* takeAt(int index) override;
 
     void addWidget(QWidget*);
-
-    int count() const;
 
     Qt::Orientations expandingDirections() const;
 
@@ -77,8 +79,6 @@ public:
     bool hasHeightForWidth() const;
 
     bool hasItem() const;
-
-    QLayoutItem* itemAt(int index) const;
 
     QSize minimumSize() const;
 
@@ -89,8 +89,6 @@ public:
     QSize sizeHint() const;
 
     QLayoutItem* take();
-
-    QLayoutItem* takeAt(int index);
 
 private:
     void init(const int spacing);
