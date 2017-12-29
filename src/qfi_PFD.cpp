@@ -948,62 +948,7 @@ void qfi_PFD::ALT::updateScaleLabels()
     }
 }
 
-qfi_PFD::ASI::ASI(QGraphicsScene* scene) :
-    m_scene ( scene ),
-
-    m_itemBack     ( 0 ),
-    m_itemScale1   ( 0 ),
-    m_itemScale2   ( 0 ),
-    m_itemLabel1   ( 0 ),
-    m_itemLabel2   ( 0 ),
-    m_itemLabel3   ( 0 ),
-    m_itemLabel4   ( 0 ),
-    m_itemLabel5   ( 0 ),
-    m_itemLabel6   ( 0 ),
-    m_itemLabel7   ( 0 ),
-    m_itemFrame    ( 0 ),
-    m_itemAirspeed ( 0 ),
-    m_itemMachNo   ( 0 ),
-
-    m_frameTextColor ( 255, 255, 255 ),
-    m_labelsColor    ( 255, 255, 255 ),
-
-    m_airspeed ( 0.0f ),
-    m_machNo   ( 0.0f ),
-
-    m_scale1DeltaY_new ( 0.0f ),
-    m_scale1DeltaY_old ( 0.0f ),
-    m_scale2DeltaY_new ( 0.0f ),
-    m_scale2DeltaY_old ( 0.0f ),
-    m_labelsDeltaY_new ( 0.0f ),
-    m_labelsDeltaY_old ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalPixPerSpd   (   1.5f ),
-    m_originalScaleHeight ( 300.0f ),
-    m_originalLabelsX     (  43.0f ),
-    m_originalLabel1Y     (  35.0f ),
-    m_originalLabel2Y     (  65.0f ),
-    m_originalLabel3Y     (  95.0f ),
-    m_originalLabel4Y     ( 125.0f ),
-    m_originalLabel5Y     ( 155.0f ),
-    m_originalLabel6Y     ( 185.0f ),
-    m_originalLabel7Y     ( 215.0f ),
-
-    m_originalBackPos     ( 25.0f ,   37.5f ),
-    m_originalScale1Pos   ( 56.0f , -174.5f ),
-    m_originalScale2Pos   ( 56.0f , -474.5f ),
-    m_originalFramePos    (  0.0f ,  110.0f ),
-    m_originalAirspeedCtr ( 40.0f ,  126.0f ),
-    m_originalMachNoCtr   ( 43.0f ,  225.0f ),
-
-    m_backZ      (  70 ),
-    m_scaleZ     (  80 ),
-    m_labelsZ    (  90 ),
-    m_frameZ     ( 110 ),
-    m_frameTextZ ( 120 )
+qfi_PFD::ASI::ASI(QGraphicsScene* scene) : m_scene(scene)
 {
 #   ifdef WIN32
     m_frameTextFont.setFamily( "Courier" );
@@ -1372,31 +1317,7 @@ void qfi_PFD::ASI::updateScaleLabels()
     }
 }
 
-qfi_PFD::HSI::HSI(QGraphicsScene* scene) :
-    m_scene ( scene ),
-
-    m_itemBack      ( 0 ),
-    m_itemFace      ( 0 ),
-    m_itemMarks     ( 0 ),
-    m_itemFrameText ( 0 ),
-
-    m_frameTextColor ( 255, 255, 255 ),
-
-    m_heading  ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalHsiCtr       ( 150.0f , 345.0f ),
-    m_originalBackPos      (  60.0f,  240.0f ),
-    m_originalFacePos      (  45.0f , 240.0f ),
-    m_originalMarksPos     ( 134.0f , 219.0f ),
-    m_originalFrameTextCtr ( 149.5f , 227.5f ),
-
-    m_backZ      (  80 ),
-    m_faceZ      (  90 ),
-    m_marksZ     ( 110 ),
-    m_frameTextZ ( 120 )
+qfi_PFD::HSI::HSI(QGraphicsScene* scene) : m_scene(scene)
 {
     m_frameTextFont.setFamily( "Courier" );
     m_frameTextFont.setPointSizeF( 10.0 );
@@ -1491,35 +1412,12 @@ void qfi_PFD::HSI::updateHeading()
     m_itemFrameText->setPlainText( QString("%1").arg(fHeading, 3, 'f', 0, QChar('0')) );
 }
 
-qfi_PFD::VSI::VSI( QGraphicsScene * scene ) :
-    m_scene ( scene ),
-
-    m_itemScale ( 0 ),
-    m_itemArrow ( 0 ),
-
-    m_climbRate ( 0.0f ),
-
-    m_arrowDeltaY_new ( 0.0f ),
-    m_arrowDeltaY_old ( 0.0f ),
-
-    m_scaleX ( 1.0f ),
-    m_scaleY ( 1.0f ),
-
-    m_originalMarkeHeight ( 75.0f ),
-    m_originalPixPerSpd1  ( 30.0f ),
-    m_originalPixPerSpd2  ( 20.0f ),
-    m_originalPixPerSpd4  (  5.0f ),
-
-    m_originalScalePos ( 275.0f ,  50.0f ),
-    m_originalArrowPos ( 284.0f , 124.0f ),
-
-    m_scaleZ  ( 70 ),
-    m_arrowZ  ( 80 )
+qfi_PFD::VSI::VSI(QGraphicsScene* scene) : m_scene(scene)
 {
     reset();
 }
 
-void qfi_PFD::VSI::init( float scaleX, float scaleY )
+void qfi_PFD::VSI::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1543,7 +1441,7 @@ void qfi_PFD::VSI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::VSI::update( float scaleX, float scaleY )
+void qfi_PFD::VSI::update(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1553,7 +1451,7 @@ void qfi_PFD::VSI::update( float scaleX, float scaleY )
     m_arrowDeltaY_old = m_arrowDeltaY_new;
 }
 
-void qfi_PFD::VSI::setClimbRate( float climbRate )
+void qfi_PFD::VSI::setClimbRate(const float climbRate)
 {
     m_climbRate = climbRate;
 
@@ -1577,16 +1475,11 @@ void qfi_PFD::VSI::updateVSI()
     float climbRateAbs = fabs( m_climbRate );
     float arrowDeltaY = 0.0;
 
-    if ( climbRateAbs <= 1.0f )
-    {
+    if ( climbRateAbs <= 1.0f ) {
         arrowDeltaY = m_originalPixPerSpd1 * climbRateAbs;
-    }
-    else if ( climbRateAbs <= 2.0f )
-    {
+    } else if ( climbRateAbs <= 2.0f ) {
         arrowDeltaY = m_originalPixPerSpd1 + m_originalPixPerSpd2 * ( climbRateAbs - 1.0f );
-    }
-    else
-    {
+    } else {
         arrowDeltaY = m_originalPixPerSpd1 + m_originalPixPerSpd2 + m_originalPixPerSpd4 * ( climbRateAbs - 2.0f );
     }
 

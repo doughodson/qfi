@@ -396,7 +396,6 @@ private:
     class ASI
     {
     public:
-
         ASI(QGraphicsScene*);
         void init(const float scaleX, const float scaleY);
         void update(const float scaleX, const float scaleY);
@@ -404,151 +403,146 @@ private:
         void setMachNo(const float);
 
     private:
-
-        QGraphicsScene *m_scene;
-
-        QGraphicsSvgItem  *m_itemBack;
-        QGraphicsSvgItem  *m_itemScale1;
-        QGraphicsSvgItem  *m_itemScale2;
-        QGraphicsTextItem *m_itemLabel1;
-        QGraphicsTextItem *m_itemLabel2;
-        QGraphicsTextItem *m_itemLabel3;
-        QGraphicsTextItem *m_itemLabel4;
-        QGraphicsTextItem *m_itemLabel5;
-        QGraphicsTextItem *m_itemLabel6;
-        QGraphicsTextItem *m_itemLabel7;
-        QGraphicsSvgItem  *m_itemFrame;
-        QGraphicsTextItem *m_itemAirspeed;
-        QGraphicsTextItem *m_itemMachNo;
-
-        QColor m_frameTextColor;
-        QColor m_labelsColor;
-
-        QFont  m_frameTextFont;
-        QFont  m_labelsFont;
-
-        float m_airspeed;
-        float m_machNo;
-
-        float m_scale1DeltaY_new;
-        float m_scale1DeltaY_old;
-        float m_scale2DeltaY_new;
-        float m_scale2DeltaY_old;
-        float m_labelsDeltaY_new;
-        float m_labelsDeltaY_old;
-
-        float m_scaleX;
-        float m_scaleY;
-
-        const float m_originalPixPerSpd;
-        const float m_originalScaleHeight;
-        const float m_originalLabelsX;
-        const float m_originalLabel1Y;
-        const float m_originalLabel2Y;
-        const float m_originalLabel3Y;
-        const float m_originalLabel4Y;
-        const float m_originalLabel5Y;
-        const float m_originalLabel6Y;
-        const float m_originalLabel7Y;
-
-        QPointF m_originalBackPos;
-        QPointF m_originalScale1Pos;
-        QPointF m_originalScale2Pos;
-        QPointF m_originalFramePos;
-        QPointF m_originalAirspeedCtr;
-        QPointF m_originalMachNoCtr;
-
-        const int m_backZ;
-        const int m_scaleZ;
-        const int m_labelsZ;
-        const int m_frameZ;
-        const int m_frameTextZ;
-
         void reset();
         void updateAirspeed();
         void updateScale();
         void updateScaleLabels();
+
+        QGraphicsScene* m_scene{};
+
+        QGraphicsSvgItem* m_itemBack{};
+        QGraphicsSvgItem* m_itemScale1{};
+        QGraphicsSvgItem* m_itemScale2{};
+        QGraphicsTextItem* m_itemLabel1{};
+        QGraphicsTextItem* m_itemLabel2{};
+        QGraphicsTextItem* m_itemLabel3{};
+        QGraphicsTextItem* m_itemLabel4{};
+        QGraphicsTextItem* m_itemLabel5{};
+        QGraphicsTextItem* m_itemLabel6{};
+        QGraphicsTextItem* m_itemLabel7{};
+        QGraphicsSvgItem* m_itemFrame{};
+        QGraphicsTextItem* m_itemAirspeed{};
+        QGraphicsTextItem* m_itemMachNo{};
+
+        QColor m_frameTextColor{255, 255, 255};
+        QColor m_labelsColor{255, 255, 255};
+
+        QFont m_frameTextFont{};
+        QFont m_labelsFont{};
+
+        float m_airspeed{};
+        float m_machNo{};
+
+        float m_scale1DeltaY_new{};
+        float m_scale1DeltaY_old{};
+        float m_scale2DeltaY_new{};
+        float m_scale2DeltaY_old{};
+        float m_labelsDeltaY_new{};
+        float m_labelsDeltaY_old{};
+
+        float m_scaleX{1.0};
+        float m_scaleY{1.0};
+
+        const float m_originalPixPerSpd{1.5};
+        const float m_originalScaleHeight{300.0};
+        const float m_originalLabelsX{43.0};
+        const float m_originalLabel1Y{35.0};
+        const float m_originalLabel2Y{65.0};
+        const float m_originalLabel3Y{95.0};
+        const float m_originalLabel4Y{125.0};
+        const float m_originalLabel5Y{155.0};
+        const float m_originalLabel6Y{185.0};
+        const float m_originalLabel7Y{215.0};
+
+        QPointF m_originalBackPos{25.0, 37.5};
+        QPointF m_originalScale1Pos{56.0, -174.5};
+        QPointF m_originalScale2Pos{56.0, -474.5};
+        QPointF m_originalFramePos{0.0, 110.0};
+        QPointF m_originalAirspeedCtr{40.0, 126.0};
+        QPointF m_originalMachNoCtr{43.0, 225.0};
+
+        const int m_backZ{70};
+        const int m_scaleZ{80};
+        const int m_labelsZ{90};
+        const int m_frameZ{110};
+        const int m_frameTextZ{120};
     };
 
     class HSI
     {
     public:
-
         HSI(QGraphicsScene*);
         void init(const float scaleX, const float scaleY);
         void update(const float scaleX, const float scaleY);
         void setHeading(const float);
 
     private:
-
-        QGraphicsScene *m_scene;
-
-        QGraphicsSvgItem  *m_itemBack;
-        QGraphicsSvgItem  *m_itemFace;
-        QGraphicsSvgItem  *m_itemMarks;
-        QGraphicsTextItem *m_itemFrameText;
-
-        QColor m_frameTextColor;
-
-        QFont  m_frameTextFont;
-
-        float m_heading;
-
-        float m_scaleX;
-        float m_scaleY;
-
-        QPointF m_originalHsiCtr;
-        QPointF m_originalBackPos;
-        QPointF m_originalFacePos;
-        QPointF m_originalMarksPos;
-        QPointF m_originalFrameTextCtr;
-
-        const int m_backZ;
-        const int m_faceZ;
-        const int m_marksZ;
-        const int m_frameTextZ;
-
         void reset();
         void updateHeading();
+
+        QGraphicsScene* m_scene{};
+
+        QGraphicsSvgItem* m_itemBack{};
+        QGraphicsSvgItem* m_itemFace{};
+        QGraphicsSvgItem* m_itemMarks{};
+        QGraphicsTextItem* m_itemFrameText{};
+
+        QColor m_frameTextColor{255, 255, 255};
+
+        QFont m_frameTextFont{};
+
+        float m_heading{};
+
+        float m_scaleX{1.0};
+        float m_scaleY{1.0};
+
+        QPointF m_originalHsiCtr{150.0, 345.0};
+        QPointF m_originalBackPos{60.0, 240.0};
+        QPointF m_originalFacePos{45.0, 240.0};
+        QPointF m_originalMarksPos{134.0, 219.0};
+        QPointF m_originalFrameTextCtr{149.5, 227.5};
+
+        const int m_backZ{80};
+        const int m_faceZ{90};
+        const int m_marksZ{110};
+        const int m_frameTextZ{120};
     };
 
     class VSI
     {
     public:
-
-        VSI( QGraphicsScene *scene );
-        void init( float scaleX, float scaleY );
-        void update( float scaleX, float scaleY );
-        void setClimbRate( float climbRate );
+        VSI(QGraphicsScene*);
+        void init(const float scaleX, const float scaleY);
+        void update(const float scaleX, const float scaleY);
+        void setClimbRate(const float);
 
     private:
-
-        QGraphicsScene *m_scene;
-
-        QGraphicsSvgItem  *m_itemScale;
-        QGraphicsSvgItem  *m_itemArrow;
-
-        float m_climbRate;
-
-        float m_arrowDeltaY_new;
-        float m_arrowDeltaY_old;
-
-        float m_scaleX;
-        float m_scaleY;
-
-        const float m_originalMarkeHeight;
-        const float m_originalPixPerSpd1;
-        const float m_originalPixPerSpd2;
-        const float m_originalPixPerSpd4;
-
-        QPointF m_originalScalePos;
-        QPointF m_originalArrowPos;
-
-        const int m_scaleZ;
-        const int m_arrowZ;
-
         void reset();
         void updateVSI();
+
+        QGraphicsScene* m_scene{};
+
+        QGraphicsSvgItem* m_itemScale{};
+        QGraphicsSvgItem* m_itemArrow{};
+
+        float m_climbRate{};
+
+        float m_arrowDeltaY_new{};
+        float m_arrowDeltaY_old{};
+
+        float m_scaleX{1.0};
+        float m_scaleY{1.0};
+
+        const float m_originalMarkeHeight{75.0};
+        const float m_originalPixPerSpd1{30.0};
+        const float m_originalPixPerSpd2{20.0};
+        const float m_originalPixPerSpd4{5.0};
+
+        QPointF m_originalScalePos{275.0,  50.0};
+        QPointF m_originalArrowPos{284.0, 124.0};
+
+        const int m_scaleZ{70};
+        const int m_arrowZ{80};
     };
 
     void init();
