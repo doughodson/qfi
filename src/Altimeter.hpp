@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_ALT_H__
-#define __QFI_ALT_H__
+#ifndef __qfi_Altimeter_H__
+#define __qfi_Altimeter_H__
 
 #include <QGraphicsView>
 
@@ -55,17 +55,19 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_ALT
-// Description: Barometric Altimeter widget
+// Class: Altimeter
+// Description: Barometric Altimeter
 //---------------------------------------------------
-class qfi_ALT : public QGraphicsView
+class Altimeter : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    qfi_ALT(QWidget* parent = nullptr);
-    virtual ~qfi_ALT();
+    Altimeter(QWidget* parent = nullptr);
+    virtual ~Altimeter();
 
     // reinitiates widget
     void reinit();
@@ -111,5 +113,7 @@ private:
     const int m_hand2Z{-10};
     const int m_caseZ{10};
 };
+
+}
 
 #endif

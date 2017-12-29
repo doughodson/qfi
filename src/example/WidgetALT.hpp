@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <qfi_ALT.hpp>
+#include <Altimeter.hpp>
 
 class LayoutSquare;
 
@@ -80,7 +80,7 @@ private:
     void setupUi();
 
     Ui::WidgetALT* m_ui{};
-    qfi_ALT* m_alt{};
+    qfi::Altimeter* m_alt{};
     LayoutSquare* m_layoutSq{};
 };
 

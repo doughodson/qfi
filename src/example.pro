@@ -37,12 +37,12 @@ HEADERS += \
     example/WidgetTC.hpp \
     example/WidgetVSI.hpp \
     Adi.hpp \
+    Altimeter.hpp \
     qfi_HSI.hpp \
     qfi_NAV.hpp \
     qfi_PFD.hpp \
     qfi_VSI.hpp \
     qfi_ASI.hpp \
-    qfi_ALT.hpp \
     qfi_TC.hpp \
     example/WidgetSix.hpp
 
@@ -59,12 +59,12 @@ SOURCES += \
     example/WidgetTC.cpp \
     example/WidgetVSI.cpp \
     Adi.cpp \
+    Altimeter.cpp \
     qfi_HSI.cpp \
     qfi_NAV.cpp \
     qfi_PFD.cpp \
     qfi_VSI.cpp \
     qfi_ASI.cpp \
-    qfi_ALT.cpp \
     qfi_TC.cpp \
     example/WidgetSix.cpp
 

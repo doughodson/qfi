@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="Adi" name="graphicsADI">
+  <widget class="qfi::Adi" name="graphicsADI">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -44,7 +44,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ADI</class>
+   <class>qfi::ADI</class>
    <extends>QGraphicsView</extends>
    <header>Adi.hpp</header>
   </customwidget>

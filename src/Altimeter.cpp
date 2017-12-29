@@ -46,13 +46,15 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ALT.hpp"
+#include "Altimeter.hpp"
 
 #include <QGraphicsSvgItem>
 
 #include <cmath>
 
-qfi_ALT::qfi_ALT(QWidget* parent) : QGraphicsView (parent)
+namespace qfi {
+
+Altimeter::Altimeter(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
     m_scene = new QGraphicsScene( this );
@@ -61,10 +63,9 @@ qfi_ALT::qfi_ALT(QWidget* parent) : QGraphicsView (parent)
     init();
 }
 
-qfi_ALT::~qfi_ALT()
+Altimeter::~Altimeter()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
         m_scene = nullptr;
@@ -73,27 +74,26 @@ qfi_ALT::~qfi_ALT()
     reset();
 }
 
-void qfi_ALT::reinit()
+void Altimeter::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
 
         init();
     }
 }
 
-void qfi_ALT::update()
+void Altimeter::update()
 {
     updateView();
 }
 
-void qfi_ALT::setAltitude(const float altitude)
+void Altimeter::setAltitude(const float altitude)
 {
     m_altitude = altitude;
 }
 
-void qfi_ALT::setPressure(const float pressure)
+void Altimeter::setPressure(const float pressure)
 {
     m_pressure = pressure;
 
@@ -101,13 +101,13 @@ void qfi_ALT::setPressure(const float pressure)
     if ( m_pressure > 31.5f ) m_pressure = 31.5f;
 }
 
-void qfi_ALT::resizeEvent( QResizeEvent *event )
+void Altimeter::resizeEvent( QResizeEvent *event )
 {
     QGraphicsView::resizeEvent( event );
     reinit();
 }
 
-void qfi_ALT::init()
+void Altimeter::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -159,7 +159,7 @@ void qfi_ALT::init()
     updateView();
 }
 
-void qfi_ALT::reset()
+void Altimeter::reset()
 {
     m_itemFace_1 = 0;
     m_itemFace_2 = 0;
@@ -172,7 +172,7 @@ void qfi_ALT::reset()
     m_pressure = 28.0f;
 }
 
-void qfi_ALT::updateView()
+void Altimeter::updateView()
 {
     int altitude = std::ceil( m_altitude + 0.5 );
 
@@ -187,4 +187,6 @@ void qfi_ALT::updateView()
     m_itemFace_3->setRotation(   angleF3 );
 
     m_scene->update();
+}
+
 }
