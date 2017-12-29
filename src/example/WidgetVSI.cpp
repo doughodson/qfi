@@ -49,6 +49,9 @@
 #include "WidgetVSI.hpp"
 #include "ui_WidgetVSI.h"
 
+#include <qfi_VSI.hpp>
+#include "LayoutSquare.hpp"
+
 WidgetVSI::WidgetVSI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetVSI)
 {
     m_ui->setupUi( this );

@@ -52,7 +52,7 @@
 
 #include <qfi_ASI.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetASI; }
 

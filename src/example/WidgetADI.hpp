@@ -52,7 +52,7 @@
 
 #include <qfi_ADI.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetADI; }
 

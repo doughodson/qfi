@@ -49,6 +49,8 @@
 #include "WidgetNAV.hpp"
 #include "ui_WidgetNAV.h"
 
+#include "LayoutSquare.hpp"
+
 WidgetNAV::WidgetNAV(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetNAV)
 {
     m_ui->setupUi( this );

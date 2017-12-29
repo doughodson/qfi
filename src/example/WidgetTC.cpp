@@ -49,6 +49,8 @@
 #include "WidgetTC.hpp"
 #include "ui_WidgetTC.h"
 
+#include "LayoutSquare.hpp"
+
 WidgetTC::WidgetTC(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetTC)
 {
     m_ui->setupUi( this );

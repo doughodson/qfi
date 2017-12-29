@@ -52,7 +52,7 @@
 
 #include <qfi_ALT.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetALT; }
 

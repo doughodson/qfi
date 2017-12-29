@@ -64,7 +64,6 @@ class WidgetSix : public QWidget
     Q_OBJECT
 
 public:
-
     explicit WidgetSix(QWidget* parent = nullptr);
     ~WidgetSix();
 
@@ -107,7 +106,6 @@ public:
     }
 
 private:
-
     Ui::WidgetSix* m_ui{};
 
     WidgetADI* m_widgetADI{};

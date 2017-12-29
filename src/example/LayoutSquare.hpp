@@ -49,17 +49,17 @@
 #define __LAYOUTSQUARE_H__
 
 #include <QLayout>
-#include <QLayoutItem>
-#include <QPointer>
+
+class QWidget;
+class QLayoutItem;
+
 #include <QRect>
-#include <QWidgetItem>
 
 class LayoutSquare : public QLayout
 {
     Q_OBJECT
 
 public:
-
     explicit LayoutSquare(QWidget* parent, const int spacing = -1);
     explicit LayoutSquare(const int spacing = -1);
     ~LayoutSquare();
@@ -93,21 +93,16 @@ public:
     QLayoutItem* takeAt(const int index);
 
 private:
+    void init(const int spacing);
+    void setRectLast(const QRect& rect);
+    bool areRectsEqual(const QRect&, const QRect&) const;
+    QPoint calculateCenterPnt(QSize fromSize, QSize itemSize) const;
+    QSize calculateProperSize(QSize fromSize) const;
 
     QLayoutItem* m_item{};
 
     QRect* m_rectLast{};
     QRect* m_geometry{};
-
-    bool areRectsEqual(const QRect& rect_1, const QRect& rect_2) const;
-
-    QPoint calculateCenterPnt(QSize fromSize, QSize itemSize) const;
-
-    QSize calculateProperSize(QSize fromSize) const;
-
-    void init(const int spacing);
-
-    void setRectLast(const QRect& rect);
 };
 
 #endif

@@ -50,9 +50,12 @@
 
 #include <QWidget>
 
+class qfi_VSI;
+class LayoutSquare;
+
 #include <qfi_VSI.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetVSI; }
 
@@ -79,7 +82,6 @@ private:
     Ui::WidgetVSI* m_ui{};
     qfi_VSI* m_vsi{};
     LayoutSquare* m_layoutSq{};
-
 };
 
 #endif

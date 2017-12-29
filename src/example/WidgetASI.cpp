@@ -49,6 +49,8 @@
 #include "WidgetASI.hpp"
 #include "ui_WidgetASI.h"
 
+#include "LayoutSquare.hpp"
+
 WidgetASI::WidgetASI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetASI)
 {
     m_ui->setupUi( this );

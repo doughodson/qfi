@@ -52,7 +52,7 @@
 
 #include <qfi_PFD.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetPFD; }
 

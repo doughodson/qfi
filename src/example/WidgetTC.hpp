@@ -52,7 +52,7 @@
 
 #include <qfi_TC.hpp>
 
-#include "LayoutSquare.hpp"
+class LayoutSquare;
 
 namespace Ui { class WidgetTC; }
 

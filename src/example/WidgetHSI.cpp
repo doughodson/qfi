@@ -49,6 +49,8 @@
 #include "WidgetHSI.hpp"
 #include "ui_WidgetHSI.h"
 
+#include "LayoutSquare.hpp"
+
 WidgetHSI::WidgetHSI(QWidget *parent) : QWidget(parent), m_ui(new Ui::WidgetHSI)
 {
     m_ui->setupUi( this );

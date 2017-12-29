@@ -49,6 +49,8 @@
 #include "WidgetPFD.hpp"
 #include "ui_WidgetPFD.h"
 
+#include "LayoutSquare.hpp"
+
 WidgetPFD::WidgetPFD(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetPFD)
 {
     m_ui->setupUi( this );

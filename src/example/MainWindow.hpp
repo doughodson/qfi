@@ -51,26 +51,20 @@
 #include <QMainWindow>
 #include <QTime>
 
-namespace Ui
-{
-    class MainWindow;
-}
+namespace Ui { class MainWindow; }
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
     
 public:
-
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
 protected:
-
     void timerEvent( QTimerEvent *event );
     
 private:
-
     Ui::MainWindow *m_ui{};
 
     int m_timerId{};
