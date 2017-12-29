@@ -80,40 +80,37 @@ protected:
     void resizeEvent(QResizeEvent*);
 
 private:
-
-    QGraphicsScene* m_scene;
-
-    QGraphicsSvgItem* m_itemBack;
-    QGraphicsSvgItem* m_itemBall;
-    QGraphicsSvgItem* m_itemFace_1;
-    QGraphicsSvgItem* m_itemFace_2;
-    QGraphicsSvgItem* m_itemMark;
-    QGraphicsSvgItem* m_itemCase;
-
-    float m_turnRate;
-    float m_slipSkid;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    const int m_originalHeight;
-    const int m_originalWidth;
-
-    QPointF m_originalMarkCtr;
-    QPointF m_originalBallCtr;
-
-    const int m_backZ;
-    const int m_ballZ;
-    const int m_face1Z;
-    const int m_face2Z;
-    const int m_markZ;
-    const int m_caseZ;
-
     void init();
-
     void reset();
-
     void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    QGraphicsSvgItem* m_itemBack{};
+    QGraphicsSvgItem* m_itemBall{};
+    QGraphicsSvgItem* m_itemFace_1{};
+    QGraphicsSvgItem* m_itemFace_2{};
+    QGraphicsSvgItem* m_itemMark{};
+    QGraphicsSvgItem* m_itemCase{};
+
+    float m_turnRate{};
+    float m_slipSkid{};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
+
+    QPointF m_originalMarkCtr{120.0f, 120.0f};
+    QPointF m_originalBallCtr{120.0f, -36.0f};
+
+    const int m_backZ{-70};
+    const int m_ballZ{-60};
+    const int m_face1Z{-50};
+    const int m_face2Z{-40};
+    const int m_markZ{-30};
+    const int m_caseZ{10};
 };
 
 #endif

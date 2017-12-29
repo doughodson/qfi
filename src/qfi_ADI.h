@@ -105,7 +105,7 @@ private:
 
     const float m_originalPixPerDeg{1.7f};
 
-    QPointF m_originalAdiCtr;
+    QPointF m_originalAdiCtr{120.0f, 120.0f};
 
     const int m_backZ{-30};
     const int m_faceZ{-20};

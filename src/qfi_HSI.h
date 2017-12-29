@@ -93,7 +93,7 @@ private:
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalHsiCtr{120.0f , 120.0f};
+    QPointF m_originalHsiCtr{120.0f, 120.0f};
 
     const int m_faceZ{-20};
     const int m_caseZ{10};
