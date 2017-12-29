@@ -188,222 +188,220 @@ private:
     {
     public:
 
-        ADI( QGraphicsScene *scene );
-        void init( float scaleX, float scaleY );
-        void update( float scaleX, float scaleY );
-        void setRoll( float roll );
-        void setPitch( float pitch );
-        void setFlightPathMarker( float aoa, float sideslip, bool visible = true );
-        void setSlipSkid( float slipSkid );
-        void setTurnRate( float turnRate );
-        void setBarH( float barH, bool visible = true );
-        void setBarV( float barV, bool visible = true );
-        void setDotH( float dotH, bool visible = true );
-        void setDotV( float dotV, bool visible = true );
+        ADI(QGraphicsScene*);
+        void init(const float scaleX, const float scaleY);
+        void update(const float scaleX, const float scaleY);
+        void setRoll(const float);
+        void setPitch(const float);
+        void setFlightPathMarker(const float aoa, const float sideslip, const bool visible = true);
+        void setSlipSkid(const float);
+        void setTurnRate(const float);
+        void setBarH(const float barH, const bool visible = true);
+        void setBarV(const float barV, const bool visible = true);
+        void setDotH(const float dotH, const bool visible = true);
+        void setDotV(const float dotV, const bool visible = true);
 
     private:
-
-        QGraphicsScene *m_scene;
-
-        QGraphicsSvgItem  *m_itemBack;
-        QGraphicsSvgItem  *m_itemLadd;
-        QGraphicsSvgItem  *m_itemRoll;
-        QGraphicsSvgItem  *m_itemSlip;
-        QGraphicsSvgItem  *m_itemTurn;
-        QGraphicsSvgItem  *m_itemPath;
-        QGraphicsSvgItem  *m_itemMark;
-        QGraphicsSvgItem  *m_itemBarH;
-        QGraphicsSvgItem  *m_itemBarV;
-        QGraphicsSvgItem  *m_itemDotH;
-        QGraphicsSvgItem  *m_itemDotV;
-        QGraphicsSvgItem  *m_itemMask;
-        QGraphicsSvgItem  *m_itemScaleH;
-        QGraphicsSvgItem  *m_itemScaleV;
-
-        float m_roll;
-        float m_pitch;
-        float m_angleOfAttack;
-        float m_sideslipAngle;
-        float m_slipSkid;
-        float m_turnRate;
-        float m_barH;
-        float m_barV;
-        float m_dotH;
-        float m_dotV;
-
-        bool m_pathValid;
-
-        bool m_pathVisible;
-        bool m_barHVisible;
-        bool m_barVVisible;
-        bool m_dotHVisible;
-        bool m_dotVVisible;
-
-        float m_laddDeltaX_new;
-        float m_laddDeltaX_old;
-        float m_laddBackDeltaX_new;
-        float m_laddBackDeltaX_old;
-        float m_laddBackDeltaY_new;
-        float m_laddBackDeltaY_old;
-        float m_laddDeltaY_new;
-        float m_laddDeltaY_old;
-        float m_slipDeltaX_new;
-        float m_slipDeltaX_old;
-        float m_slipDeltaY_new;
-        float m_slipDeltaY_old;
-        float m_turnDeltaX_new;
-        float m_turnDeltaX_old;
-        float m_pathDeltaX_new;
-        float m_pathDeltaX_old;
-        float m_pathDeltaY_new;
-        float m_pathDeltaY_old;
-        float m_markDeltaX_new;
-        float m_markDeltaX_old;
-        float m_markDeltaY_new;
-        float m_markDeltaY_old;
-        float m_barHDeltaX_new;
-        float m_barHDeltaX_old;
-        float m_barVDeltaY_new;
-        float m_barVDeltaY_old;
-        float m_dotHDeltaX_new;
-        float m_dotHDeltaX_old;
-        float m_dotVDeltaY_new;
-        float m_dotVDeltaY_old;
-
-        float m_scaleX;
-        float m_scaleY;
-
-        const float m_originalPixPerDeg;
-        const float m_deltaLaddBack_max;
-        const float m_deltaLaddBack_min;
-        const float m_maxSlipDeflection;
-        const float m_maxTurnDeflection;
-        const float m_maxBarsDeflection;
-        const float m_maxDotsDeflection;
-
-        QPointF m_originalAdiCtr;
-        QPointF m_originalBackPos;
-        QPointF m_originalLaddPos;
-        QPointF m_originalRollPos;
-        QPointF m_originalSlipPos;
-        QPointF m_originalTurnPos;
-        QPointF m_originalPathPos;
-        QPointF m_originalBarHPos;
-        QPointF m_originalBarVPos;
-        QPointF m_originalDotHPos;
-        QPointF m_originalDotVPos;
-        QPointF m_originalScaleHPos;
-        QPointF m_originalScaleVPos;
-
-        const int m_backZ;
-        const int m_laddZ;
-        const int m_rollZ;
-        const int m_slipZ;
-        const int m_pathZ;
-        const int m_barsZ;
-        const int m_dotsZ;
-        const int m_scalesZ;
-        const int m_maskZ;
-        const int m_turnZ;
-
         void reset();
-        void updateLadd( float delta, float sinRoll, float cosRoll );
-        void updateLaddBack( float delta, float sinRoll, float cosRoll );
+        void updateLadd(const float delta, const float sinRoll, const float cosRoll);
+        void updateLaddBack(const float delta, const float sinRoll, const float cosRoll);
         void updateRoll();
-        void updateSlipSkid( float sinRoll, float cosRoll );
+        void updateSlipSkid(const float sinRoll, const float cosRoll);
         void updateTurnRate();
         void updateFlightPath();
         void updateBars();
         void updateDots();
+
+        QGraphicsScene* m_scene{};
+
+        QGraphicsSvgItem* m_itemBack{};
+        QGraphicsSvgItem* m_itemLadd{};
+        QGraphicsSvgItem* m_itemRoll{};
+        QGraphicsSvgItem* m_itemSlip{};
+        QGraphicsSvgItem* m_itemTurn{};
+        QGraphicsSvgItem* m_itemPath{};
+        QGraphicsSvgItem* m_itemMark{};
+        QGraphicsSvgItem* m_itemBarH{};
+        QGraphicsSvgItem* m_itemBarV{};
+        QGraphicsSvgItem* m_itemDotH{};
+        QGraphicsSvgItem* m_itemDotV{};
+        QGraphicsSvgItem* m_itemMask{};
+        QGraphicsSvgItem* m_itemScaleH{};
+        QGraphicsSvgItem* m_itemScaleV{};
+
+        float m_roll{};
+        float m_pitch{};
+        float m_angleOfAttack{};
+        float m_sideslipAngle{};
+        float m_slipSkid{};
+        float m_turnRate{};
+        float m_barH{};
+        float m_barV{};
+        float m_dotH{};
+        float m_dotV{};
+
+        bool m_pathValid{true};
+
+        bool m_pathVisible{true};
+        bool m_barHVisible{true};
+        bool m_barVVisible{true};
+        bool m_dotHVisible{true};
+        bool m_dotVVisible{true};
+
+        float m_laddDeltaX_new{};
+        float m_laddDeltaX_old{};
+        float m_laddBackDeltaX_new{};
+        float m_laddBackDeltaX_old{};
+        float m_laddBackDeltaY_new{};
+        float m_laddBackDeltaY_old{};
+        float m_laddDeltaY_new{};
+        float m_laddDeltaY_old{};
+        float m_slipDeltaX_new{};
+        float m_slipDeltaX_old{};
+        float m_slipDeltaY_new{};
+        float m_slipDeltaY_old{};
+        float m_turnDeltaX_new{};
+        float m_turnDeltaX_old{};
+        float m_pathDeltaX_new{};
+        float m_pathDeltaX_old{};
+        float m_pathDeltaY_new{};
+        float m_pathDeltaY_old{};
+        float m_markDeltaX_new{};
+        float m_markDeltaX_old{};
+        float m_markDeltaY_new{};
+        float m_markDeltaY_old{};
+        float m_barHDeltaX_new{};
+        float m_barHDeltaX_old{};
+        float m_barVDeltaY_new{};
+        float m_barVDeltaY_old{};
+        float m_dotHDeltaX_new{};
+        float m_dotHDeltaX_old{};
+        float m_dotVDeltaY_new{};
+        float m_dotVDeltaY_old{};
+
+        float m_scaleX{1.0};
+        float m_scaleY{1.0};
+
+        const float m_originalPixPerDeg{3.0};
+        const float m_deltaLaddBack_max{52.5};
+        const float m_deltaLaddBack_min{-52.5};
+        const float m_maxSlipDeflection{20.0};
+        const float m_maxTurnDeflection{55.0};
+        const float m_maxBarsDeflection{40.0};
+        const float m_maxDotsDeflection{50.0};
+
+        QPointF m_originalAdiCtr{150.0f,   125.0f};
+        QPointF m_originalBackPos{ 45.0f,  -85.0f};
+        QPointF m_originalLaddPos{110.0f, -175.0f};
+        QPointF m_originalRollPos{ 45.0f,   20.0f};
+        QPointF m_originalSlipPos{145.5f,   68.5f};
+        QPointF m_originalTurnPos{142.5f,  206.0f};
+        QPointF m_originalPathPos{135.0f,  113.0f};
+        QPointF m_originalBarHPos{149.0f,   85.0f};
+        QPointF m_originalBarVPos{110.0f,  124.0f};
+        QPointF m_originalDotHPos{145.0f,  188.0f};
+        QPointF m_originalDotVPos{213.0f,  120.0f};
+        QPointF m_originalScaleHPos{0.0f,    0.0f};
+        QPointF m_originalScaleVPos{0.0f,    0.0f};
+
+        const int m_backZ{10};
+        const int m_laddZ{20};
+        const int m_rollZ{30};
+        const int m_slipZ{40};
+        const int m_pathZ{40};
+        const int m_barsZ{50};
+        const int m_dotsZ{50};
+        const int m_scalesZ{51};
+        const int m_maskZ{60};
+        const int m_turnZ{70};
     };
 
     class ALT
     {
     public:
 
-        ALT( QGraphicsScene *scene );
-        void init( float scaleX, float scaleY );
-        void update( float scaleX, float scaleY );
-        void setAltitude( float altitude );
-        void setPressure( float pressure, int pressureUnit );
+        ALT(QGraphicsScene*);
+        void init(const float scaleX, const float scaleY);
+        void update(const float scaleX, const float scaleY);
+        void setAltitude(const float);
+        void setPressure(const float pressure, const int pressureUnit);
 
     private:
-
-        QGraphicsScene *m_scene;
-
-        QGraphicsSvgItem  *m_itemBack;
-        QGraphicsSvgItem  *m_itemScale1;
-        QGraphicsSvgItem  *m_itemScale2;
-        QGraphicsTextItem *m_itemLabel1;
-        QGraphicsTextItem *m_itemLabel2;
-        QGraphicsTextItem *m_itemLabel3;
-        QGraphicsSvgItem  *m_itemGround;
-        QGraphicsSvgItem  *m_itemFrame;
-        QGraphicsTextItem *m_itemAltitude;
-        QGraphicsTextItem *m_itemPressure;
-
-        QColor m_frameTextColor;
-        QColor m_pressTextColor;
-        QColor m_labelsColor;
-
-        QFont  m_frameTextFont;
-        QFont  m_labelsFont;
-
-        float m_altitude;
-        float m_pressure;
-
-        int m_pressureUnit;
-
-        float m_scale1DeltaY_new;
-        float m_scale1DeltaY_old;
-        float m_scale2DeltaY_new;
-        float m_scale2DeltaY_old;
-        float m_groundDeltaY_new;
-        float m_groundDeltaY_old;
-        float m_labelsDeltaY_new;
-        float m_labelsDeltaY_old;
-
-        float m_scaleX;
-        float m_scaleY;
-
-        const float m_originalPixPerAlt;
-        const float m_originalScaleHeight;
-        const float m_originalLabelsX;
-        const float m_originalLabel1Y;
-        const float m_originalLabel2Y;
-        const float m_originalLabel3Y;
-
-        QPointF m_originalBackPos;
-        QPointF m_originalScale1Pos;
-        QPointF m_originalScale2Pos;
-        QPointF m_originalGroundPos;
-        QPointF m_originalFramePos;
-        QPointF m_originalAltitudeCtr;
-        QPointF m_originalPressureCtr;
-
-        const int m_backZ;
-        const int m_scaleZ;
-        const int m_labelsZ;
-        const int m_groundZ;
-        const int m_frameZ;
-        const int m_frameTextZ;
-
         void reset();
         void updateAltitude();
         void updatePressure();
         void updateScale();
         void updateScaleLabels();
+
+        QGraphicsScene* m_scene{};
+
+        QGraphicsSvgItem* m_itemBack{};
+        QGraphicsSvgItem* m_itemScale1{};
+        QGraphicsSvgItem* m_itemScale2{};
+        QGraphicsTextItem* m_itemLabel1{};
+        QGraphicsTextItem* m_itemLabel2{};
+        QGraphicsTextItem* m_itemLabel3{};
+        QGraphicsSvgItem* m_itemGround{};
+        QGraphicsSvgItem* m_itemFrame{};
+        QGraphicsTextItem* m_itemAltitude{};
+        QGraphicsTextItem* m_itemPressure{};
+
+        QColor m_frameTextColor{255, 255, 255};
+        QColor m_pressTextColor{  0, 255,   0};
+        QColor m_labelsColor{255, 255, 255};
+
+        QFont m_frameTextFont;
+        QFont m_labelsFont;
+
+        float m_altitude{};
+        float m_pressure{};
+
+        int m_pressureUnit{};
+
+        float m_scale1DeltaY_new{};
+        float m_scale1DeltaY_old{};
+        float m_scale2DeltaY_new{};
+        float m_scale2DeltaY_old{};
+        float m_groundDeltaY_new{};
+        float m_groundDeltaY_old{};
+        float m_labelsDeltaY_new{};
+        float m_labelsDeltaY_old{};
+
+        float m_scaleX{1.0};
+        float m_scaleY{1.0};
+
+        const float m_originalPixPerAlt{0.150};
+        const float m_originalScaleHeight{300.0};
+        const float m_originalLabelsX{250.0};
+        const float m_originalLabel1Y{50.0};
+        const float m_originalLabel2Y{125.0};
+        const float m_originalLabel3Y{200.0};
+
+        QPointF m_originalBackPos{231.0, 37.5};
+        QPointF m_originalScale1Pos{231.0, -174.5};
+        QPointF m_originalScale2Pos{231.0, -474.5};
+        QPointF m_originalGroundPos{231.5,  124.5};
+        QPointF m_originalFramePos{225.0, 110.0};
+        QPointF m_originalAltitudeCtr{254.0, 126.0};
+        QPointF m_originalPressureCtr{254.0, 225.0};
+
+        const int m_backZ{70};
+        const int m_scaleZ{77};
+        const int m_labelsZ{78};
+        const int m_groundZ{79};
+        const int m_frameZ{110};
+        const int m_frameTextZ{120};
     };
 
     class ASI
     {
     public:
 
-        ASI( QGraphicsScene *scene );
-        void init( float scaleX, float scaleY );
-        void update( float scaleX, float scaleY );
-        void setAirspeed( float airspeed );
-        void setMachNo( float machNo );
+        ASI(QGraphicsScene*);
+        void init(const float scaleX, const float scaleY);
+        void update(const float scaleX, const float scaleY);
+        void setAirspeed(const float);
+        void setMachNo(const float);
 
     private:
 
@@ -476,10 +474,10 @@ private:
     {
     public:
 
-        HSI( QGraphicsScene *scene );
-        void init( float scaleX, float scaleY );
-        void update( float scaleX, float scaleY );
-        void setHeading( float heading );
+        HSI(QGraphicsScene*);
+        void init(const float scaleX, const float scaleY);
+        void update(const float scaleX, const float scaleY);
+        void setHeading(const float);
 
     private:
 
@@ -553,29 +551,29 @@ private:
         void updateVSI();
     };
 
-    QGraphicsScene *m_scene;
-
-    ADI *m_adi;
-    ALT *m_alt;
-    ASI *m_asi;
-    HSI *m_hsi;
-    VSI *m_vsi;
-
-    QGraphicsSvgItem *m_itemBack;
-    QGraphicsSvgItem *m_itemMask;
-
-    float m_scaleX;
-    float m_scaleY;
-
-    const int m_originalHeight;
-    const int m_originalWidth;
-
-    const int m_backZ;
-    const int m_maskZ;
-
     void init();
     void reset();
     void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    ADI* m_adi{};
+    ALT* m_alt{};
+    ASI* m_asi{};
+    HSI* m_hsi{};
+    VSI* m_vsi{};
+
+    QGraphicsSvgItem* m_itemBack{};
+    QGraphicsSvgItem* m_itemMask{};
+
+    float m_scaleX{1.0};
+    float m_scaleY{1.0};
+
+    const int m_originalHeight{300};
+    const int m_originalWidth{300};
+
+    const int m_backZ{};
+    const int m_maskZ{100};
 };
 
 #endif
