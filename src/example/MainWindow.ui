@@ -539,19 +539,19 @@
   <customwidget>
    <class>WidgetPFD</class>
    <extends>QWidget</extends>
-   <header>WidgetPFD.h</header>
+   <header>WidgetPFD.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetSix</class>
    <extends>QWidget</extends>
-   <header>WidgetSix.h</header>
+   <header>WidgetSix.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetNAV</class>
    <extends>QWidget</extends>
-   <header>WidgetNAV.h</header>
+   <header>WidgetNAV.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

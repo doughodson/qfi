@@ -83,7 +83,7 @@
   <customwidget>
    <class>qfi_NAV</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_NAV.h</header>
+   <header>qfi_NAV.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

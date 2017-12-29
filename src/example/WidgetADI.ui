@@ -46,7 +46,7 @@
   <customwidget>
    <class>qfi_ADI</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_ADI.h</header>
+   <header>qfi_ADI.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ADI.h"
+#include "qfi_ADI.hpp"
 
 #include <QGraphicsSvgItem>
 

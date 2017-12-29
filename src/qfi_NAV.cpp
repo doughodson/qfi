@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_NAV.h"
+#include "qfi_NAV.hpp"
 
 #include <iostream>
 #include <cmath>

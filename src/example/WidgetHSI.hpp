@@ -1,10 +1,10 @@
 /***************************************************************************//**
- * @file example/WidgetNAV.h
+ * @file example/WidgetHSI.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
  *
- * Copyright (C) 2015 Marek M. Cel
+ * Copyright (C) 2013 Marek M. Cel
  *
  * This file is part of QFlightInstruments. You can redistribute and modify it
  * under the terms of GNU General Public License as published by the Free
@@ -25,7 +25,7 @@
  *
  * ---
  *
- * Copyright (C) 2015 Marek M. Cel
+ * Copyright (C) 2013 Marek M. Cel
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -45,60 +45,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETNAV_H__
-#define __WIDGETNAV_H__
+#ifndef __WIDGETHSI_H__
+#define __WIDGETHSI_H__
 
 #include <QWidget>
 
-#include <qfi_NAV.h>
+#include <qfi_HSI.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetNAV; }
+namespace Ui { class WidgetHSI; }
 
-class WidgetNAV : public QWidget
+class WidgetHSI : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WidgetNAV(QWidget* parent = nullptr);
-    virtual ~WidgetNAV();
+    explicit WidgetHSI(QWidget* parent = nullptr);
+    ~WidgetHSI();
 
     inline void update() {
-        m_nav->update();
+        m_hsi->update();
     }
 
     inline void setHeading(const float heading) {
-        m_nav->setHeading( heading );
-    }
-
-    inline void setHeadingBug(const float headingBug) {
-        m_nav->setHeadingBug( headingBug );
-    }
-
-    inline void setCourse(const float course) {
-        m_nav->setCourse( course );
-    }
-
-    inline void setBearing(const float bearing, const bool visible = false) {
-        m_nav->setBearing( bearing, visible );
-    }
-
-    inline void setDeviation(const float deviation, const bool visible = false) {
-        m_nav->setDeviation( deviation, visible );
-    }
-
-    inline void setDistance(const float distance, const bool visible = false) {
-        m_nav->setDistance( distance, visible );
+        m_hsi->setHeading( heading );
     }
 
 private:
     void setupUi();
 
-    Ui::WidgetNAV* m_ui{};
-    qfi_NAV* m_nav{};
+    Ui::WidgetHSI* m_ui{};
+    qfi_HSI* m_hsi{};
     LayoutSquare* m_layoutSq{};
-
 };
 
 #endif

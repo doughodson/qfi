@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetSix.h
+ * @file example/WidgetPFD.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,77 +45,89 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETSIX_H__
-#define __WIDGETSIX_H__
+#ifndef __WIDGETPFD_H__
+#define __WIDGETPFD_H__
 
 #include <QWidget>
 
-#include "WidgetADI.h"
-#include "WidgetALT.h"
-#include "WidgetASI.h"
-#include "WidgetHSI.h"
-#include "WidgetTC.h"
-#include "WidgetVSI.h"
+#include <qfi_PFD.hpp>
 
-namespace Ui { class WidgetSix; }
+#include "LayoutSquare.hpp"
 
-class WidgetSix : public QWidget
+namespace Ui { class WidgetPFD; }
+
+class WidgetPFD : public QWidget
 {
     Q_OBJECT
 
 public:
+    explicit WidgetPFD(QWidget* parent = nullptr);
+    virtual ~WidgetPFD();
 
-    explicit WidgetSix(QWidget* parent = nullptr);
-    ~WidgetSix();
-
-    void update();
+    inline void update() {
+        m_pfd->update();
+    }
 
     inline void setRoll(const float roll) {
-        m_widgetADI->setRoll( roll );
+        m_pfd->setRoll( roll );
     }
 
     inline void setPitch(const float pitch) {
-        m_widgetADI->setPitch( pitch );
+        m_pfd->setPitch( pitch );
     }
 
-    inline void setAltitude(const float altitude) {
-        m_widgetALT->setAltitude( altitude );
-    }
-
-    inline void setPressure(const float pressure) {
-        m_widgetALT->setPressure( pressure );
-    }
-
-    inline void setAirspeed(const float airspeed) {
-        m_widgetASI->setAirspeed( airspeed );
-    }
-
-    inline void setHeading(const float heading) {
-        m_widgetHSI->setHeading( heading );
-    }
-
-    inline void setTurnRate(const float turnRate) {
-        m_widgetTC->setTurnRate( turnRate );
+    inline void setFlightPathMarker(const float aoa, const float sideslip) {
+        m_pfd->setFlightPathMarker( aoa, sideslip );
     }
 
     inline void setSlipSkid(const float slipSkid) {
-        m_widgetTC->setSlipSkid( slipSkid );
+        m_pfd->setSlipSkid( slipSkid );
+    }
+
+    inline void setDevH(const float devH) {
+        m_pfd->setBarH( devH );
+        m_pfd->setDotH( devH );
+    }
+
+    inline void setDevV(const float devV) {
+        m_pfd->setBarV( devV );
+        m_pfd->setDotV( devV );
+    }
+
+    inline void setAltitude(const float altitude) {
+        m_pfd->setAltitude( altitude );
+    }
+
+    inline void setPressure(const float pressure) {
+        m_pfd->setPressure( pressure, qfi_PFD::IN );
+    }
+
+    inline void setAirspeed(const float airspeed) {
+        m_pfd->setAirspeed( airspeed );
+    }
+
+    inline void setMachNo(const float machNo) {
+        m_pfd->setMachNo( machNo );
+    }
+
+    inline void setHeading(const float heading) {
+        m_pfd->setHeading( heading );
+    }
+
+    inline void setTurnRate(const float turnRate) {
+        m_pfd->setTurnRate( turnRate );
     }
 
     inline void setClimbRate(const float climbRate) {
-        m_widgetVSI->setClimbRate( climbRate );
+        m_pfd->setClimbRate( climbRate );
     }
 
 private:
+    void setupUi();
 
-    Ui::WidgetSix* m_ui{};
-
-    WidgetADI* m_widgetADI{};
-    WidgetALT* m_widgetALT{};
-    WidgetASI* m_widgetASI{};
-    WidgetHSI* m_widgetHSI{};
-    WidgetTC * m_widgetTC{};
-    WidgetVSI* m_widgetVSI{};
+    Ui::WidgetPFD* m_ui{};
+    qfi_PFD* m_pfd{};
+    LayoutSquare* m_layoutSq{};
 };
 
 #endif

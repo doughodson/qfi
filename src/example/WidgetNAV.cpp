@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "WidgetNAV.h"
+#include "WidgetNAV.hpp"
 #include "ui_WidgetNAV.h"
 
 WidgetNAV::WidgetNAV(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetNAV), m_nav(0), m_layoutSq(0)

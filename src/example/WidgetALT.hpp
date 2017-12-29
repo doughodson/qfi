@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetVSI.h
+ * @file example/WidgetALT.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,41 +45,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETVSI_H__
-#define __WIDGETVSI_H__
+#ifndef __WIDGETALT_H__
+#define __WIDGETALT_H__
 
 #include <QWidget>
 
-#include <qfi_VSI.h>
+#include <qfi_ALT.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetVSI; }
+namespace Ui { class WidgetALT; }
 
-class WidgetVSI : public QWidget
+class WidgetALT : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    explicit WidgetVSI(QWidget* parent = nullptr);
-    ~WidgetVSI();
+    explicit WidgetALT(QWidget* parent = nullptr);
+    ~WidgetALT();
 
     inline void update() {
-        m_vsi->update();
+        m_alt->update();
     }
 
-    inline void setClimbRate(const float climbRate) {
-        m_vsi->setClimbRate(climbRate);
+    inline void setAltitude(const float altitude) {
+        m_alt->setAltitude(altitude);
+    }
+
+    inline void setPressure(const float pressure) {
+        m_alt->setPressure(pressure);
     }
 
 private:
     void setupUi();
 
-    Ui::WidgetVSI* m_ui{};
-    qfi_VSI* m_vsi{};
+    Ui::WidgetALT* m_ui{};
+    qfi_ALT* m_alt{};
     LayoutSquare* m_layoutSq{};
-
 };
+
 
 #endif

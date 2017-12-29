@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetALT.h
+ * @file example/WidgetTC.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,44 +45,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETALT_H__
-#define __WIDGETALT_H__
+#ifndef __WIDGETTC_H__
+#define __WIDGETTC_H__
 
 #include <QWidget>
 
-#include <qfi_ALT.h>
+#include <qfi_TC.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetALT; }
+namespace Ui { class WidgetTC; }
 
-class WidgetALT : public QWidget
+class WidgetTC : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WidgetALT(QWidget* parent = nullptr);
-    ~WidgetALT();
+    explicit WidgetTC(QWidget* parent = nullptr);
+    ~WidgetTC();
 
     inline void update() {
-        m_alt->update();
+        m_tc->update();
     }
 
-    inline void setAltitude(const float altitude) {
-        m_alt->setAltitude(altitude);
+    inline void setTurnRate(const float turnRate) {
+        m_tc->setTurnRate(turnRate);
     }
 
-    inline void setPressure(const float pressure) {
-        m_alt->setPressure(pressure);
+    inline void setSlipSkid(const float slipSkid) {
+        m_tc->setSlipSkid( slipSkid );
     }
 
 private:
     void setupUi();
 
-    Ui::WidgetALT* m_ui{};
-    qfi_ALT* m_alt{};
+    Ui::WidgetTC* m_ui{};
+    qfi_TC* m_tc{};
     LayoutSquare* m_layoutSq{};
 };
-
 
 #endif

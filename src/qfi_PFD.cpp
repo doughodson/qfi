@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_PFD.h"
+#include "qfi_PFD.hpp"
 
 #include <cmath>
 

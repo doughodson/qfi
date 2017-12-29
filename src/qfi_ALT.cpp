@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ALT.h"
+#include "qfi_ALT.hpp"
 
 #include <cmath>
 

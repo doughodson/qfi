@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "WidgetVSI.h"
+#include "WidgetVSI.hpp"
 #include "ui_WidgetVSI.h"
 
 WidgetVSI::WidgetVSI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetVSI)

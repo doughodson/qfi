@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_TC.h"
+#include "qfi_TC.hpp"
 
 qfi_TC::qfi_TC(QWidget* parent) : QGraphicsView(parent)
 {

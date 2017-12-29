@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
 LayoutSquare::LayoutSquare(QWidget* parent, const int spacing) : QLayout(parent)
 {

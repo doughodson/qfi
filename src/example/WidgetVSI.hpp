@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetASI.h
+ * @file example/WidgetVSI.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,39 +45,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETASI_H__
-#define __WIDGETASI_H__
+#ifndef __WIDGETVSI_H__
+#define __WIDGETVSI_H__
 
 #include <QWidget>
 
-#include <qfi_ASI.h>
+#include <qfi_VSI.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetASI; }
+namespace Ui { class WidgetVSI; }
 
-class WidgetASI : public QWidget
+class WidgetVSI : public QWidget
 {
     Q_OBJECT
-    
+
 public:
-    explicit WidgetASI(QWidget* parent = nullptr);
-    ~WidgetASI();
+
+    explicit WidgetVSI(QWidget* parent = nullptr);
+    ~WidgetVSI();
 
     inline void update() {
-        m_asi->update();
+        m_vsi->update();
     }
 
-    inline void setAirspeed(const float airspeed) {
-        m_asi->setAirspeed( airspeed );
+    inline void setClimbRate(const float climbRate) {
+        m_vsi->setClimbRate(climbRate);
     }
-    
+
 private:
     void setupUi();
 
-    Ui::WidgetASI* m_ui{};
-    qfi_ASI* m_asi{};
+    Ui::WidgetVSI* m_ui{};
+    qfi_VSI* m_vsi{};
     LayoutSquare* m_layoutSq{};
+
 };
 
 #endif

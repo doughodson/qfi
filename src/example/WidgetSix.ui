@@ -84,37 +84,37 @@
   <customwidget>
    <class>WidgetADI</class>
    <extends>QWidget</extends>
-   <header>WidgetADI.h</header>
+   <header>WidgetADI.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetASI</class>
    <extends>QWidget</extends>
-   <header>WidgetASI.h</header>
+   <header>WidgetASI.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetHSI</class>
    <extends>QWidget</extends>
-   <header>WidgetHSI.h</header>
+   <header>WidgetHSI.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetALT</class>
    <extends>QWidget</extends>
-   <header>WidgetALT.h</header>
+   <header>WidgetALT.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetTC</class>
    <extends>QWidget</extends>
-   <header>WidgetTC.h</header>
+   <header>WidgetTC.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>WidgetVSI</class>
    <extends>QWidget</extends>
-   <header>WidgetVSI.h</header>
+   <header>WidgetVSI.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

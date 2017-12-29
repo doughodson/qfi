@@ -1,10 +1,10 @@
 /***************************************************************************//**
- * @file example/WidgetPFD.h
+ * @file example/WidgetNAV.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
  *
- * Copyright (C) 2013 Marek M. Cel
+ * Copyright (C) 2015 Marek M. Cel
  *
  * This file is part of QFlightInstruments. You can redistribute and modify it
  * under the terms of GNU General Public License as published by the Free
@@ -25,7 +25,7 @@
  *
  * ---
  *
- * Copyright (C) 2013 Marek M. Cel
+ * Copyright (C) 2015 Marek M. Cel
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -45,89 +45,60 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETPFD_H__
-#define __WIDGETPFD_H__
+#ifndef __WIDGETNAV_H__
+#define __WIDGETNAV_H__
 
 #include <QWidget>
 
-#include <qfi_PFD.h>
+#include <qfi_NAV.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetPFD; }
+namespace Ui { class WidgetNAV; }
 
-class WidgetPFD : public QWidget
+class WidgetNAV : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WidgetPFD(QWidget* parent = nullptr);
-    virtual ~WidgetPFD();
+    explicit WidgetNAV(QWidget* parent = nullptr);
+    virtual ~WidgetNAV();
 
     inline void update() {
-        m_pfd->update();
-    }
-
-    inline void setRoll(const float roll) {
-        m_pfd->setRoll( roll );
-    }
-
-    inline void setPitch(const float pitch) {
-        m_pfd->setPitch( pitch );
-    }
-
-    inline void setFlightPathMarker(const float aoa, const float sideslip) {
-        m_pfd->setFlightPathMarker( aoa, sideslip );
-    }
-
-    inline void setSlipSkid(const float slipSkid) {
-        m_pfd->setSlipSkid( slipSkid );
-    }
-
-    inline void setDevH(const float devH) {
-        m_pfd->setBarH( devH );
-        m_pfd->setDotH( devH );
-    }
-
-    inline void setDevV(const float devV) {
-        m_pfd->setBarV( devV );
-        m_pfd->setDotV( devV );
-    }
-
-    inline void setAltitude(const float altitude) {
-        m_pfd->setAltitude( altitude );
-    }
-
-    inline void setPressure(const float pressure) {
-        m_pfd->setPressure( pressure, qfi_PFD::IN );
-    }
-
-    inline void setAirspeed(const float airspeed) {
-        m_pfd->setAirspeed( airspeed );
-    }
-
-    inline void setMachNo(const float machNo) {
-        m_pfd->setMachNo( machNo );
+        m_nav->update();
     }
 
     inline void setHeading(const float heading) {
-        m_pfd->setHeading( heading );
+        m_nav->setHeading( heading );
     }
 
-    inline void setTurnRate(const float turnRate) {
-        m_pfd->setTurnRate( turnRate );
+    inline void setHeadingBug(const float headingBug) {
+        m_nav->setHeadingBug( headingBug );
     }
 
-    inline void setClimbRate(const float climbRate) {
-        m_pfd->setClimbRate( climbRate );
+    inline void setCourse(const float course) {
+        m_nav->setCourse( course );
+    }
+
+    inline void setBearing(const float bearing, const bool visible = false) {
+        m_nav->setBearing( bearing, visible );
+    }
+
+    inline void setDeviation(const float deviation, const bool visible = false) {
+        m_nav->setDeviation( deviation, visible );
+    }
+
+    inline void setDistance(const float distance, const bool visible = false) {
+        m_nav->setDistance( distance, visible );
     }
 
 private:
     void setupUi();
 
-    Ui::WidgetPFD* m_ui{};
-    qfi_PFD* m_pfd{};
+    Ui::WidgetNAV* m_ui{};
+    qfi_NAV* m_nav{};
     LayoutSquare* m_layoutSq{};
+
 };
 
 #endif

@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "WidgetSix.h"
+#include "WidgetSix.hpp"
 #include "ui_WidgetSix.h"
 
 WidgetSix::WidgetSix(QWidget* parent) : QWidget (parent), m_ui(new Ui::WidgetSix)

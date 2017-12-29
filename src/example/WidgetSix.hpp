@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetHSI.h
+ * @file example/WidgetSix.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,39 +45,77 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETHSI_H__
-#define __WIDGETHSI_H__
+#ifndef __WIDGETSIX_H__
+#define __WIDGETSIX_H__
 
 #include <QWidget>
 
-#include <qfi_HSI.h>
+#include "WidgetADI.hpp"
+#include "WidgetALT.hpp"
+#include "WidgetASI.hpp"
+#include "WidgetHSI.hpp"
+#include "WidgetTC.hpp"
+#include "WidgetVSI.hpp"
 
-#include "LayoutSquare.h"
+namespace Ui { class WidgetSix; }
 
-namespace Ui { class WidgetHSI; }
-
-class WidgetHSI : public QWidget
+class WidgetSix : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WidgetHSI(QWidget* parent = nullptr);
-    ~WidgetHSI();
 
-    inline void update() {
-        m_hsi->update();
+    explicit WidgetSix(QWidget* parent = nullptr);
+    ~WidgetSix();
+
+    void update();
+
+    inline void setRoll(const float roll) {
+        m_widgetADI->setRoll( roll );
+    }
+
+    inline void setPitch(const float pitch) {
+        m_widgetADI->setPitch( pitch );
+    }
+
+    inline void setAltitude(const float altitude) {
+        m_widgetALT->setAltitude( altitude );
+    }
+
+    inline void setPressure(const float pressure) {
+        m_widgetALT->setPressure( pressure );
+    }
+
+    inline void setAirspeed(const float airspeed) {
+        m_widgetASI->setAirspeed( airspeed );
     }
 
     inline void setHeading(const float heading) {
-        m_hsi->setHeading( heading );
+        m_widgetHSI->setHeading( heading );
+    }
+
+    inline void setTurnRate(const float turnRate) {
+        m_widgetTC->setTurnRate( turnRate );
+    }
+
+    inline void setSlipSkid(const float slipSkid) {
+        m_widgetTC->setSlipSkid( slipSkid );
+    }
+
+    inline void setClimbRate(const float climbRate) {
+        m_widgetVSI->setClimbRate( climbRate );
     }
 
 private:
-    void setupUi();
 
-    Ui::WidgetHSI* m_ui{};
-    qfi_HSI* m_hsi{};
-    LayoutSquare* m_layoutSq{};
+    Ui::WidgetSix* m_ui{};
+
+    WidgetADI* m_widgetADI{};
+    WidgetALT* m_widgetALT{};
+    WidgetASI* m_widgetASI{};
+    WidgetHSI* m_widgetHSI{};
+    WidgetTC * m_widgetTC{};
+    WidgetVSI* m_widgetVSI{};
 };
 
 #endif

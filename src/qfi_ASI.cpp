@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ASI.h"
+#include "qfi_ASI.hpp"
 
 qfi_ASI::qfi_ASI(QWidget* parent) : QGraphicsView(parent)
 {

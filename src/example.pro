@@ -26,25 +26,25 @@ INCLUDEPATH += ./ ./example
 #-------------------------------------------------
 
 HEADERS += \
-    example/LayoutSquare.h \
-    example/MainWindow.h \
-    example/WidgetADI.h \
-    example/WidgetALT.h \
-    example/WidgetASI.h \
-    example/WidgetHSI.h \
-    example/WidgetNAV.h \
-    example/WidgetPFD.h \
-    example/WidgetTC.h \
-    example/WidgetVSI.h \
-    qfi_ADI.h \
-    qfi_HSI.h \
-    qfi_NAV.h \
-    qfi_PFD.h \
-    qfi_VSI.h \
-    qfi_ASI.h \
-    qfi_ALT.h \
-    qfi_TC.h \
-    example/WidgetSix.h
+    example/LayoutSquare.hpp \
+    example/MainWindow.hpp \
+    example/WidgetADI.hpp \
+    example/WidgetALT.hpp \
+    example/WidgetASI.hpp \
+    example/WidgetHSI.hpp \
+    example/WidgetNAV.hpp \
+    example/WidgetPFD.hpp \
+    example/WidgetTC.hpp \
+    example/WidgetVSI.hpp \
+    qfi_ADI.hpp \
+    qfi_HSI.hpp \
+    qfi_NAV.hpp \
+    qfi_PFD.hpp \
+    qfi_VSI.hpp \
+    qfi_ASI.hpp \
+    qfi_ALT.hpp \
+    qfi_TC.hpp \
+    example/WidgetSix.hpp
 
 SOURCES += \
     example/LayoutSquare.cpp \

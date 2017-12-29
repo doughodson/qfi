@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_HSI.h"
+#include "qfi_HSI.hpp"
 
 qfi_HSI::qfi_HSI(QWidget* parent) : QGraphicsView(parent)
 {

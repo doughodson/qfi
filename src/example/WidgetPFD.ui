@@ -74,7 +74,7 @@
   <customwidget>
    <class>qfi_PFD</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_PFD.h</header>
+   <header>qfi_PFD.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

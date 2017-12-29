@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetTC.h
+ * @file example/WidgetADI.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,42 +45,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETTC_H__
-#define __WIDGETTC_H__
+#ifndef __WIDGETADI_H__
+#define __WIDGETADI_H__
 
 #include <QWidget>
 
-#include <qfi_TC.h>
+#include <qfi_ADI.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetTC; }
+namespace Ui { class WidgetADI; }
 
-class WidgetTC : public QWidget
+class WidgetADI : public QWidget
 {
     Q_OBJECT
-
+    
 public:
-    explicit WidgetTC(QWidget* parent = nullptr);
-    ~WidgetTC();
+    explicit WidgetADI(QWidget* parent = nullptr);
+    ~WidgetADI();
 
     inline void update() {
-        m_tc->update();
+        m_adi->update();
     }
 
-    inline void setTurnRate(const float turnRate) {
-        m_tc->setTurnRate(turnRate);
+    inline void setRoll(const float roll) {
+        m_adi->setRoll( roll );
     }
 
-    inline void setSlipSkid(const float slipSkid) {
-        m_tc->setSlipSkid( slipSkid );
+    inline void setPitch(const float pitch) {
+        m_adi->setPitch( pitch );
     }
-
+    
 private:
     void setupUi();
 
-    Ui::WidgetTC* m_ui{};
-    qfi_TC* m_tc{};
+    Ui::WidgetADI* m_ui{};
+    qfi_ADI* m_adi{};
     LayoutSquare* m_layoutSq{};
 };
 

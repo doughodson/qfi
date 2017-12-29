@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "MainWindow.h"
+#include "MainWindow.hpp"
 #include <QApplication>
 
 int main(int argc, char *argv[])

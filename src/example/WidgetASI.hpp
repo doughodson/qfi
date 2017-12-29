@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file example/WidgetADI.h
+ * @file example/WidgetASI.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,42 +45,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __WIDGETADI_H__
-#define __WIDGETADI_H__
+#ifndef __WIDGETASI_H__
+#define __WIDGETASI_H__
 
 #include <QWidget>
 
-#include <qfi_ADI.h>
+#include <qfi_ASI.hpp>
 
-#include "LayoutSquare.h"
+#include "LayoutSquare.hpp"
 
-namespace Ui { class WidgetADI; }
+namespace Ui { class WidgetASI; }
 
-class WidgetADI : public QWidget
+class WidgetASI : public QWidget
 {
     Q_OBJECT
     
 public:
-    explicit WidgetADI(QWidget* parent = nullptr);
-    ~WidgetADI();
+    explicit WidgetASI(QWidget* parent = nullptr);
+    ~WidgetASI();
 
     inline void update() {
-        m_adi->update();
+        m_asi->update();
     }
 
-    inline void setRoll(const float roll) {
-        m_adi->setRoll( roll );
-    }
-
-    inline void setPitch(const float pitch) {
-        m_adi->setPitch( pitch );
+    inline void setAirspeed(const float airspeed) {
+        m_asi->setAirspeed( airspeed );
     }
     
 private:
     void setupUi();
 
-    Ui::WidgetADI* m_ui{};
-    qfi_ADI* m_adi{};
+    Ui::WidgetASI* m_ui{};
+    qfi_ASI* m_asi{};
     LayoutSquare* m_layoutSq{};
 };
 

@@ -28,14 +28,14 @@ INCLUDEPATH += ./
 #-------------------------------------------------
 
 HEADERS += \
-    qfi_ADI.h \
-    qfi_HSI.h \
-    qfi_NAV.h \
-    qfi_PFD.h \
-    qfi_VSI.h \
-    qfi_ASI.h \
-    qfi_ALT.h \
-    qfi_TC.h
+    qfi_ADI.hpp \
+    qfi_HSI.hpp \
+    qfi_NAV.hpp \
+    qfi_PFD.hpp \
+    qfi_VSI.hpp \
+    qfi_ASI.hpp \
+    qfi_ALT.hpp \
+    qfi_TC.hpp
 
 SOURCES += \
     qfi_ADI.cpp \
@@ -50,13 +50,4 @@ SOURCES += \
 RESOURCES += \
     qfi.qrc
 
-#-------------------------------------------------
 
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
