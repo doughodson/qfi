@@ -60,7 +60,6 @@ class qfi_ASI : public QGraphicsView
     Q_OBJECT
 
 public:
-
     qfi_ASI(QWidget* parent = nullptr);
     virtual ~qfi_ASI();
 
@@ -73,7 +72,6 @@ public:
     void setAirspeed(const float);
 
 protected:
-
     void resizeEvent(QResizeEvent*);
 
 private:
@@ -89,13 +87,13 @@ private:
 
     float m_airspeed{};
 
-    float m_scaleX{1.0f};
-    float m_scaleY{1.0f};
+    float m_scaleX{1.0};
+    float m_scaleY{1.0};
 
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalAsiCtr{120.0f, 120.0f};
+    QPointF m_originalAsiCtr{120.0, 120.0};
 
     const int m_faceZ{-20};
     const int m_handZ{-10};

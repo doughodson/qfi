@@ -118,14 +118,12 @@ public:
         m_adi->setBarH( barH, visible );
     }
 
-    /**
-     * @param normalized vertical deviation bar position (range from -1.0 to 1.0)
-     * @param vertical deviation bar visibility */
+    // normalized vertical deviation bar position (range from -1.0 to 1.0)
+    // vertical deviation bar visibility
     inline void setBarV(const float barV, const bool visible = true)
     {
         m_adi->setBarV( barV, visible );
     }
-
 
     // normalized horizontal deviation dot position (range from -1.0 to 1.0)
     // horizontal deviation dot visibility
@@ -179,7 +177,6 @@ public:
     }
 
 protected:
-
     void resizeEvent(QResizeEvent*);
 
 private:

@@ -77,7 +77,6 @@ public:
     void setDistance(const float distance, const bool visible = false);
 
 protected:
-
     void resizeEvent(QResizeEvent*);
 
 private:
@@ -126,16 +125,16 @@ private:
     float m_devBarDeltaY_new{};
     float m_devBarDeltaY_old{};
 
-    float m_scaleX{1.0f};
-    float m_scaleY{1.0f};
+    float m_scaleX{1.0};
+    float m_scaleY{1.0};
 
-    float m_originalPixPerDev{52.5f};
+    float m_originalPixPerDev{52.5};
 
-    QPointF m_originalNavCtr{150.0f, 150.0f};
+    QPointF m_originalNavCtr{150.0, 150.0};
 
-    QPointF m_originalCrsTextCtr{ 50.0f,  25.0f};
-    QPointF m_originalHdgTextCtr{250.0f,  25.0f};
-    QPointF m_originalDmeTextCtr{250.0f, 275.0f};
+    QPointF m_originalCrsTextCtr{ 50.0,  25.0};
+    QPointF m_originalHdgTextCtr{250.0,  25.0};
+    QPointF m_originalDmeTextCtr{250.0, 275.0};
 
     const int m_originalHeight{300};         ///< [px]
     const int m_originalWidth{300};          ///< [px]
