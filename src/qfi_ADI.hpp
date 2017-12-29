@@ -99,15 +99,15 @@ private:
     float m_faceDeltaY_new{};
     float m_faceDeltaY_old{};
 
-    float m_scaleX{1.0};
-    float m_scaleY{1.0};
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
 
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
     const float m_originalPixPerDeg{1.7f};
 
-    QPointF m_originalAdiCtr{120.0, 120.0};
+    QPointF m_originalAdiCtr{120.0f, 120.0f};
 
     const int m_backZ{-30};
     const int m_faceZ{-20};
