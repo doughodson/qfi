@@ -1,0 +1,25 @@
+
+.vscode/
+
+# lib directory
+lib/
+
+# qt generated files
+src/.qmake.stash
+ui_*.*
+moc_*.*
+src/Makefile
+*.pro.user
+
+# library files
+libqfi*.*
+
+# example apps
+src/qfi_example
+src/qrc_qfi.cpp
+
+# compiled object files
+*.[oa]
+
+# backup files
+*.bak
