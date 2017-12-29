@@ -1,6 +1,6 @@
 # qfi
 
-This is a repo for the QFlightInstruments (Qt Flight Control Instruments) project posted on SourceForge in 2015.  It was found here:
+This is a repo for the Qt Flight Control Instruments project posted on SourceForge in 2015.  It was named "QFlightInstruments" and can be found here:
 
 https://sourceforge.net/projects/qfi/
 
