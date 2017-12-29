@@ -1,4 +1,4 @@
-# QFlightInstruments
+# qfi
 
 This is a repo for the QFlightInstruments project posted on SourceForge in 2015.  It was found here:
 
