@@ -45,49 +45,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_VSI_H
-#define QFI_VSI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_VSI_H__
+#define __QFI_VSI_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Vertical Speed Indicator widget. */
+//---------------------------------------------------
+// Class: qfi_VSI
+// Description: Vertical Speed Indicator widget
+//---------------------------------------------------
 class qfi_VSI : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-
-    /** Constructor. */
-    qfi_VSI( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_VSI(QWidget* parent = 0);
     virtual ~qfi_VSI();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param climb rate [ft/min] */
-    void setClimbRate( float climbRate );
+    // climb rate [ft/min]
+    void setClimbRate(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemFace;
-    QGraphicsSvgItem *m_itemHand;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemFace;
+    QGraphicsSvgItem* m_itemHand;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_climbRate;
 
@@ -110,6 +105,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_VSI_H
+#endif

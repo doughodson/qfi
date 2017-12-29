@@ -45,76 +45,59 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_NAV_H
-#define QFI_NAV_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_NAV_H__
+#define __QFI_NAV_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** This class provides Navigation Display widget. */
+//---------------------------------------------------
+// Class: qfi_NAV
+// Description: Navigation Display widget
+//---------------------------------------------------
 class qfi_NAV : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-
-    /** Constructor. */
-    explicit qfi_NAV( QWidget *parent = 0 );
-
-    /** Destructor. */
+    explicit qfi_NAV(QWidget* parent = 0);
     virtual ~qfi_NAV();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param heading [deg] */
-    void setHeading( float heading );
-
-    /** @param heading bug [deg] */
-    void setHeadingBug( float headingBug );
-
-    /** @param course [deg] */
-    void setCourse( float course );
-
-    /** @param bearing [deg] */
-    void setBearing( float bearing, bool visible = false );
-
-    /** @param deviation [-] */
-    void setDeviation( float deviation, bool visible = false );
-
-    /** @param distance [nm] */
-    void setDistance( float distance, bool visible = false );
+    void setHeading(const float);
+    void setHeadingBug(const float);
+    void setCourse(const float);
+    void setBearing(const float bearing, const bool visible = false);
+    void setDeviation(const float deviation, const bool visible = false);
+    void setDistance(const float distance, const bool visible = false);
 
 protected:
 
-    /** */
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;            ///< graphics scene
+    QGraphicsScene* m_scene;            ///< graphics scene
 
-    QGraphicsSvgItem *m_itemBack;       ///< NAV background
-    QGraphicsSvgItem *m_itemMask;       ///< NAV mask
-    QGraphicsSvgItem *m_itemMark;
+    QGraphicsSvgItem* m_itemBack;       ///< NAV background
+    QGraphicsSvgItem* m_itemMask;       ///< NAV mask
+    QGraphicsSvgItem* m_itemMark;
 
-    QGraphicsSvgItem *m_itemBrgArrow;
-    QGraphicsSvgItem *m_itemCrsArrow;
-    QGraphicsSvgItem *m_itemDevBar;
-    QGraphicsSvgItem *m_itemDevScale;
-    QGraphicsSvgItem *m_itemHdgBug;
-    QGraphicsSvgItem *m_itemHdgScale;
+    QGraphicsSvgItem* m_itemBrgArrow;
+    QGraphicsSvgItem* m_itemCrsArrow;
+    QGraphicsSvgItem* m_itemDevBar;
+    QGraphicsSvgItem* m_itemDevScale;
+    QGraphicsSvgItem* m_itemHdgBug;
+    QGraphicsSvgItem* m_itemHdgScale;
 
-    QGraphicsTextItem *m_itemCrsText;
-    QGraphicsTextItem *m_itemHdgText;
-    QGraphicsTextItem *m_itemDmeText;
+    QGraphicsTextItem* m_itemCrsText;
+    QGraphicsTextItem* m_itemHdgText;
+    QGraphicsTextItem* m_itemDmeText;
 
     QColor m_crsTextColor;
     QColor m_hdgTextColor;
@@ -140,8 +123,8 @@ private:
     float m_devBarDeltaY_new;
     float m_devBarDeltaY_old;
 
-    float m_scaleX; ///<
-    float m_scaleY; ///<
+    float m_scaleX;
+    float m_scaleY;
 
     float m_originalPixPerDev;
 
@@ -168,16 +151,11 @@ private:
     const int m_hdgTextZ;
     const int m_dmeTextZ;
 
-    /** */
     void init();
 
-    /** */
     void reset();
 
-    /** */
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_NAV_H
+#endif

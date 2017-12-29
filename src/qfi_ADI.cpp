@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ADI_CPP
-#define QFI_ADI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -58,8 +53,6 @@
 #include <math.h>
 
 #include "qfi_ADI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_ADI::qfi_ADI( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -104,8 +97,6 @@ qfi_ADI::qfi_ADI( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_ADI::~qfi_ADI()
 {
     if ( m_scene )
@@ -130,8 +121,6 @@ void qfi_ADI::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ADI::update()
 {
     updateView();
@@ -140,9 +129,7 @@ void qfi_ADI::update()
     m_faceDeltaY_old  = m_faceDeltaY_new;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ADI::setRoll( float roll )
+void qfi_ADI::setRoll(const float roll)
 {
     m_roll = roll;
 
@@ -150,9 +137,7 @@ void qfi_ADI::setRoll( float roll )
     if ( m_roll >  180.0f ) m_roll =  180.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ADI::setPitch( float pitch )
+void qfi_ADI::setPitch(const float pitch)
 {
     m_pitch = pitch;
 
@@ -160,18 +145,11 @@ void qfi_ADI::setPitch( float pitch )
     if ( m_pitch >  25.0f ) m_pitch =  25.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ADI::resizeEvent( QResizeEvent *event )
+void qfi_ADI::resizeEvent(QResizeEvent* event)
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ADI::init()
 {
@@ -212,8 +190,6 @@ void qfi_ADI::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ADI::reset()
 {
     m_itemBack = 0;
@@ -229,8 +205,6 @@ void qfi_ADI::reset()
     m_faceDeltaY_new = 0.0f;
     m_faceDeltaY_old = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ADI::updateView()
 {

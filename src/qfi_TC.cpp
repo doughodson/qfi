@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_TC_CPP
-#define QFI_TC_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -58,8 +53,6 @@
 #include <math.h>
 
 #include "qfi_TC.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_TC::qfi_TC( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -102,8 +95,6 @@ qfi_TC::qfi_TC( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_TC::~qfi_TC()
 {
     if ( m_scene )
@@ -116,8 +107,6 @@ qfi_TC::~qfi_TC()
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_TC::reinit()
 {
     if ( m_scene )
@@ -128,16 +117,12 @@ void qfi_TC::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_TC::update()
 {
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_TC::setTurnRate( float turnRate )
+void qfi_TC::setTurnRate(const float turnRate)
 {
     m_turnRate = turnRate;
 
@@ -145,9 +130,7 @@ void qfi_TC::setTurnRate( float turnRate )
     if ( m_turnRate >  6.0f ) m_turnRate =  6.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_TC::setSlipSkid( float slipSkid )
+void qfi_TC::setSlipSkid(const float slipSkid)
 {
     m_slipSkid = slipSkid;
 
@@ -155,18 +138,11 @@ void qfi_TC::setSlipSkid( float slipSkid )
     if ( m_slipSkid >  15.0f ) m_slipSkid =  15.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_TC::resizeEvent( QResizeEvent *event )
+void qfi_TC::resizeEvent(QResizeEvent *event)
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_TC::init()
 {
@@ -218,8 +194,6 @@ void qfi_TC::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_TC::reset()
 {
     m_itemCase = 0;
@@ -227,8 +201,6 @@ void qfi_TC::reset()
     m_turnRate = 0.0f;
     m_slipSkid = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_TC::updateView()
 {

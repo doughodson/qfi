@@ -45,49 +45,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ASI_H
-#define QFI_ASI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_ASI_H__
+#define __QFI_ASI_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Airspeed Indicator widget. */
+//---------------------------------------------------
+// Class: qfi_ASI
+// Description: Airspeed Indicator widget
+//---------------------------------------------------
 class qfi_ASI : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    /** Constructor. */
-    qfi_ASI( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_ASI(QWidget* parent = 0);
     virtual ~qfi_ASI();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param airspeed [kts] */
-    void setAirspeed( float airspeed );
+    void setAirspeed(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemFace;
-    QGraphicsSvgItem *m_itemHand;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemFace;
+    QGraphicsSvgItem* m_itemHand;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_airspeed;
 
@@ -110,6 +105,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_ASI_H
+#endif

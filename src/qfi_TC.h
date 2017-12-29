@@ -45,55 +45,50 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_TC_H
-#define QFI_TC_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_TC_H__
+#define __QFI_TC_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Turn Coordinator widget. */
+//---------------------------------------------------
+// Class: qfi_TC
+// Description: Turn Coordinator widget
+//---------------------------------------------------
 class qfi_TC : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-
-    /** Constructor. */
-    qfi_TC( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_TC(QWidget* parent = 0);
     virtual ~qfi_TC();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param turn rate [deg/s] */
-    void setTurnRate( float turnRate );
+    // turn rate [deg/s]
+    void setTurnRate(const float);
 
-    /** @param slip/skid ball angle [deg] */
-    void setSlipSkid( float slipSkid );
+    // slip/skid ball angle [deg]
+    void setSlipSkid(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemBack;
-    QGraphicsSvgItem *m_itemBall;
-    QGraphicsSvgItem *m_itemFace_1;
-    QGraphicsSvgItem *m_itemFace_2;
-    QGraphicsSvgItem *m_itemMark;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemBack;
+    QGraphicsSvgItem* m_itemBall;
+    QGraphicsSvgItem* m_itemFace_1;
+    QGraphicsSvgItem* m_itemFace_2;
+    QGraphicsSvgItem* m_itemMark;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_turnRate;
     float m_slipSkid;
@@ -121,6 +116,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_TC_H
+#endif

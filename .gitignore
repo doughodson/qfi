@@ -17,6 +17,7 @@ libqfi*.*
 # example apps
 src/qfi_example
 src/qrc_qfi.cpp
+build-*/
 
 # compiled object files
 *.[oa]

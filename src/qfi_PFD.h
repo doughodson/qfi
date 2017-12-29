@@ -45,24 +45,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_PFD_H
-#define QFI_PFD_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_PFD_H__
+#define __QFI_PFD_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Primary Flight Display widget. */
+//---------------------------------------------------
+// Class: qfi_PFD
+// Description: Primary Flight Display widget
+//---------------------------------------------------
 class qfi_PFD : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    /** Altimeter pressure units. */
+    // altimeter pressure units
     enum PressureUnit
     {
         STD = 0,    ///< standard (displays STD instead of numerical value)
@@ -70,57 +69,51 @@ public:
         IN          ///< inches of mercury
     };
 
-    /** Constructor. */
-    explicit qfi_PFD( QWidget *parent = 0 );
-
-    /** Destructor. */
+    explicit qfi_PFD(QWidget* parent = 0);
     ~qfi_PFD();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param roll angle [deg] */
-    inline void setRoll( float roll )
+    inline void setRoll(const float roll)
     {
         m_adi->setRoll( roll );
     }
 
-    /** @param pitch angle [deg] */
-    inline void setPitch( float pitch )
+    inline void setPitch(const float pitch)
     {
         m_adi->setPitch( pitch );
     }
 
-    /**
-     * @param angle of attack [deg]
-     * @param angle of sideslip [deg]
-     * @param flight path marker visibility */
-    inline void setFlightPathMarker( float aoa, float sideslip, bool visible = true )
+    // angle of attack [deg]
+    // angle of sideslip [deg]
+    // flight path marker visibility
+    inline void setFlightPathMarker(const float aoa, const float sideslip, const bool visible = true )
     {
         m_adi->setFlightPathMarker( aoa, sideslip, visible );
     }
 
-    /** @param normalized slip or skid (range from -1.0 to 1.0) */
-    inline void setSlipSkid( float slipSkid )
+    // normalized slip or skid (range from -1.0 to 1.0)
+    inline void setSlipSkid(const float slipSkid)
     {
         m_adi->setSlipSkid( slipSkid );
     }
 
-    /**
-     * @param normalized turn rate (range from -1.0 to 1.0),
-     * hash marks positions are set to be -0.5 and 0.5 */
-    inline void setTurnRate( float turnRate )
+    //
+    // normalized turn rate (range from -1.0 to 1.0),
+    // hash marks positions are set to be -0.5 and 0.5
+    //
+    inline void setTurnRate(const float turnRate)
     {
         m_adi->setTurnRate( turnRate );
     }
 
-    /**
-     * @param normalized horizontal deviation bar position (range from -1.0 to 1.0)
-     * @param horizontal deviation bar visibility */
-    inline void setBarH( float barH, bool visible = true )
+    // normalized horizontal deviation bar position (range from -1.0 to 1.0)
+    // horizontal deviation bar visibility
+    inline void setBarH(const float barH, const bool visible = true)
     {
         m_adi->setBarH( barH, visible );
     }
@@ -128,68 +121,66 @@ public:
     /**
      * @param normalized vertical deviation bar position (range from -1.0 to 1.0)
      * @param vertical deviation bar visibility */
-    inline void setBarV( float barV, bool visible = true )
+    inline void setBarV(const float barV, const bool visible = true)
     {
         m_adi->setBarV( barV, visible );
     }
 
-    /**
-     * @param normalized horizontal deviation dot position (range from -1.0 to 1.0)
-     * @param horizontal deviation dot visibility */
-    inline void setDotH( float dotH, bool visible = true )
+
+    // normalized horizontal deviation dot position (range from -1.0 to 1.0)
+    // horizontal deviation dot visibility
+    inline void setDotH(const float dotH, const bool visible = true)
     {
         m_adi->setDotH( dotH, visible );
     }
 
-    /**
-     * @param normalized vertical deviation dot position (range from -1.0 to 1.0)
-     * @param vertical deviation dot visibility */
-    inline void setDotV( float dotV, bool visible = true )
+    // normalized vertical deviation dot position (range from -1.0 to 1.0)
+    // vertical deviation dot visibility
+    inline void setDotV(const float dotV, const bool visible = true )
     {
         m_adi->setDotV( dotV, visible );
     }
 
-    /** @param altitude (dimensionless numeric value) */
-    inline void setAltitude( float altitude )
+    // altitude (dimensionless numeric value)
+    inline void setAltitude(const float altitude)
     {
         m_alt->setAltitude( altitude );
     }
 
-    /**
-     * @param pressure (dimensionless numeric value)
-     * @param pressure unit according to GraphicsPFD::PressureUnit */
-    inline void setPressure( float pressure, PressureUnit pressureUnit )
+    // pressure (dimensionless numeric value)
+    // pressure unit according to GraphicsPFD::PressureUnit
+    inline void setPressure(const float pressure, const PressureUnit pressureUnit )
     {
         m_alt->setPressure( pressure, pressureUnit );
     }
 
-    /** @param airspeed (dimensionless numeric value) */
-    inline void setAirspeed( float airspeed )
+    // airspeed (dimensionless numeric value)
+    inline void setAirspeed(const float airspeed)
     {
         m_asi->setAirspeed( airspeed );
     }
 
-    /** @param Mach number */
-    inline void setMachNo( float machNo )
+    // Mach number
+    inline void setMachNo(const float machNo)
     {
         m_asi->setMachNo( machNo );
     }
 
-    /** @param heading [deg] */
-    inline void setHeading( float heading )
+    // heading [deg]
+    inline void setHeading(const float heading)
     {
         m_hsi->setHeading( heading );
     }
 
-    /** @param climb rate (dimensionless numeric value)  */
-    inline void setClimbRate( float climbRate )
+    // climb rate (dimensionless numeric value)
+    inline void setClimbRate(const float climbRate)
     {
         m_vsi->setClimbRate( climbRate );
     }
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
@@ -587,6 +578,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_PFD_H
+#endif

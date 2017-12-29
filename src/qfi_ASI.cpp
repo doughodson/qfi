@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ASI_CPP
-#define QFI_ASI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -58,8 +53,6 @@
 #include <math.h>
 
 #include "qfi_ASI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_ASI::qfi_ASI( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -94,8 +87,6 @@ qfi_ASI::qfi_ASI( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_ASI::~qfi_ASI()
 {
     if ( m_scene )
@@ -108,8 +99,6 @@ qfi_ASI::~qfi_ASI()
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ASI::reinit()
 {
     if ( m_scene )
@@ -120,16 +109,12 @@ void qfi_ASI::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ASI::update()
 {
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ASI::setAirspeed( float airspeed )
+void qfi_ASI::setAirspeed(const float airspeed)
 {
     m_airspeed = airspeed;
 
@@ -137,18 +122,11 @@ void qfi_ASI::setAirspeed( float airspeed )
     if ( m_airspeed > 235.0f ) m_airspeed = 235.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ASI::resizeEvent( QResizeEvent *event )
+void qfi_ASI::resizeEvent(QResizeEvent* event)
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ASI::init()
 {
@@ -181,8 +159,6 @@ void qfi_ASI::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ASI::reset()
 {
     m_itemFace = 0;
@@ -191,8 +167,6 @@ void qfi_ASI::reset()
 
     m_airspeed = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ASI::updateView()
 {

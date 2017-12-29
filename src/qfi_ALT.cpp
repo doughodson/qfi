@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ALT_CPP
-#define QFI_ALT_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -58,8 +53,6 @@
 #include <math.h>
 
 #include "qfi_ALT.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_ALT::qfi_ALT( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -101,8 +94,6 @@ qfi_ALT::qfi_ALT( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_ALT::~qfi_ALT()
 {
     if ( m_scene )
@@ -115,8 +106,6 @@ qfi_ALT::~qfi_ALT()
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ALT::reinit()
 {
     if ( m_scene )
@@ -127,23 +116,17 @@ void qfi_ALT::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ALT::update()
 {
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ALT::setAltitude( float altitude )
+void qfi_ALT::setAltitude(const float altitude)
 {
     m_altitude = altitude;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_ALT::setPressure( float pressure )
+void qfi_ALT::setPressure(const float pressure)
 {
     m_pressure = pressure;
 
@@ -151,18 +134,11 @@ void qfi_ALT::setPressure( float pressure )
     if ( m_pressure > 31.5f ) m_pressure = 31.5f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ALT::resizeEvent( QResizeEvent *event )
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ALT::init()
 {
@@ -216,8 +192,6 @@ void qfi_ALT::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_ALT::reset()
 {
     m_itemFace_1 = 0;
@@ -230,8 +204,6 @@ void qfi_ALT::reset()
     m_altitude =  0.0f;
     m_pressure = 28.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_ALT::updateView()
 {

@@ -45,53 +45,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ADI_H
-#define QFI_ADI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_ADI_H__
+#define __QFI_ADI_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Attitude Director Indicator widget. */
+//---------------------------------------------------
+// Class: qfi_ADI
+// Description: Attitude Director Indicator widget
+//---------------------------------------------------
 class qfi_ADI : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    /** Constructor. */
-    qfi_ADI( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_ADI(QWidget* parent = 0);
     virtual ~qfi_ADI();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param roll angle [deg] */
-    void setRoll( float roll );
-
-    /** @param pitch angle [deg] */
-    void setPitch( float pitch );
+    void setRoll(const float);
+    void setPitch(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemBack;
-    QGraphicsSvgItem *m_itemFace;
-    QGraphicsSvgItem *m_itemRing;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemBack;
+    QGraphicsSvgItem* m_itemFace;
+    QGraphicsSvgItem* m_itemRing;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_roll;
     float m_pitch;
@@ -123,6 +116,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_ADI_H
+#endif

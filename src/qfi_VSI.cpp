@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_VSI_CPP
-#define QFI_VSI_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -58,8 +53,6 @@
 #include <math.h>
 
 #include "qfi_VSI.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_VSI::qfi_VSI( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -94,8 +87,6 @@ qfi_VSI::qfi_VSI( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_VSI::~qfi_VSI()
 {
     if ( m_scene )
@@ -108,8 +99,6 @@ qfi_VSI::~qfi_VSI()
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_VSI::reinit()
 {
     if ( m_scene )
@@ -120,16 +109,12 @@ void qfi_VSI::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_VSI::update()
 {
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_VSI::setClimbRate( float climbRate )
+void qfi_VSI::setClimbRate(const float climbRate)
 {
     m_climbRate = climbRate;
 
@@ -137,18 +122,11 @@ void qfi_VSI::setClimbRate( float climbRate )
     if ( m_climbRate >  2000.0f ) m_climbRate =  2000.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_VSI::resizeEvent( QResizeEvent *event )
+void qfi_VSI::resizeEvent(QResizeEvent* event)
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_VSI::init()
 {
@@ -181,8 +159,6 @@ void qfi_VSI::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_VSI::reset()
 {
     m_itemFace = 0;
@@ -191,8 +167,6 @@ void qfi_VSI::reset()
 
     m_climbRate = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_VSI::updateView()
 {

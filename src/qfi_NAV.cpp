@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_NAV_CPP
-#define QFI_NAV_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 
@@ -61,8 +56,6 @@
 #include <stdio.h>
 
 #include "qfi_NAV.h"
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_NAV::qfi_NAV( QWidget *parent ) :
     QGraphicsView ( parent ),
@@ -174,8 +167,6 @@ qfi_NAV::qfi_NAV( QWidget *parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_NAV::~qfi_NAV()
 {
     if ( m_scene )
@@ -188,8 +179,6 @@ qfi_NAV::~qfi_NAV()
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_NAV::reinit()
 {
     if ( m_scene )
@@ -200,8 +189,6 @@ void qfi_NAV::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_NAV::update()
 {
     updateView();
@@ -210,9 +197,7 @@ void qfi_NAV::update()
     m_devBarDeltaY_old = m_devBarDeltaY_new;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setHeading( float heading )
+void qfi_NAV::setHeading(const float heading)
 {
     m_heading = heading;
 
@@ -220,9 +205,7 @@ void qfi_NAV::setHeading( float heading )
     while ( m_heading > 360.0f ) m_heading -= 360.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setHeadingBug( float headingBug )
+void qfi_NAV::setHeadingBug(const float headingBug)
 {
     m_headingBug = headingBug;
 
@@ -230,9 +213,7 @@ void qfi_NAV::setHeadingBug( float headingBug )
     while ( m_headingBug > 360.0f ) m_headingBug -= 360.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setCourse( float course )
+void qfi_NAV::setCourse(const float course)
 {
     m_course = course;
 
@@ -240,9 +221,7 @@ void qfi_NAV::setCourse( float course )
     while ( m_course > 360.0f ) m_course -= 360.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setBearing( float bearing, bool visible )
+void qfi_NAV::setBearing(const float bearing, const bool visible)
 {
     m_bearing        = bearing;
     m_bearingVisible = visible;
@@ -251,9 +230,7 @@ void qfi_NAV::setBearing( float bearing, bool visible )
     while ( m_bearing > 360.0f ) m_bearing -= 360.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setDeviation( float deviation, bool visible )
+void qfi_NAV::setDeviation(const float deviation, const bool visible)
 {
     m_deviation        = deviation;
     m_deviationVisible = visible;
@@ -262,26 +239,17 @@ void qfi_NAV::setDeviation( float deviation, bool visible )
     if ( m_deviation >  1.0f ) m_deviation =  1.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::setDistance( float distance, bool visible )
+void qfi_NAV::setDistance(const float distance, const bool visible)
 {
     m_distance        = fabs( distance );
     m_distanceVisible = visible;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void qfi_NAV::resizeEvent( QResizeEvent *event )
+void qfi_NAV::resizeEvent( QResizeEvent* event)
 {
-    ////////////////////////////////////
     QGraphicsView::resizeEvent( event );
-    ////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_NAV::init()
 {
@@ -383,8 +351,6 @@ void qfi_NAV::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_NAV::reset()
 {
     m_itemBrgArrow = 0;
@@ -414,8 +380,6 @@ void qfi_NAV::reset()
     m_devBarDeltaY_new = 0.0f;
     m_devBarDeltaY_old = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_NAV::updateView()
 {

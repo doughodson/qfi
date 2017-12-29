@@ -45,48 +45,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_HSI_H
-#define QFI_HSI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_HSI_H__
+#define __QFI_HSI_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Horizontal Situation Indicator widget. */
+//---------------------------------------------------
+// Class: qfi_HSI
+// Description: Horizontal Situation Indicator widget
+//---------------------------------------------------
 class qfi_HSI : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-
-    /** Constructor. */
-    qfi_HSI( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_HSI(QWidget* parent = 0);
     virtual ~qfi_HSI();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param heading [deg] */
-    void setHeading( float heading );
+    void setHeading(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemFace;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemFace;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_heading;
 
@@ -108,6 +102,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_HSI_H
+#endif

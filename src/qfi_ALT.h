@@ -45,55 +45,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_ALT_H
-#define QFI_ALT_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __QFI_ALT_H__
+#define __QFI_ALT_H__
 
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
-////////////////////////////////////////////////////////////////////////////////
-
-/** Barometric Altimeter widget. */
+//---------------------------------------------------
+// Class: qfi_ALT
+// Description: Barometric Altimeter widget
+//---------------------------------------------------
 class qfi_ALT : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    /** Constructor. */
-    qfi_ALT( QWidget *parent = 0 );
-
-    /** Destructor. */
+    qfi_ALT(QWidget* parent = 0);
     virtual ~qfi_ALT();
 
-    /** Reinitiates widget. */
+    // reinitiates widget
     void reinit();
 
-    /** Refreshes (redraws) widget. */
+    // refreshes (redraws) widget
     void update();
 
-    /** @param altitude [ft] */
-    void setAltitude( float altitude );
-
-    /** @param pressure [inHg] */
-    void setPressure( float aressure );
+    void setAltitude(const float);
+    void setPressure(const float);
 
 protected:
 
-    void resizeEvent( QResizeEvent *event );
+    void resizeEvent(QResizeEvent*);
 
 private:
 
-    QGraphicsScene *m_scene;
+    QGraphicsScene* m_scene;
 
-    QGraphicsSvgItem *m_itemFace_1;
-    QGraphicsSvgItem *m_itemFace_2;
-    QGraphicsSvgItem *m_itemFace_3;
-    QGraphicsSvgItem *m_itemHand_1;
-    QGraphicsSvgItem *m_itemHand_2;
-    QGraphicsSvgItem *m_itemCase;
+    QGraphicsSvgItem* m_itemFace_1;
+    QGraphicsSvgItem* m_itemFace_2;
+    QGraphicsSvgItem* m_itemFace_3;
+    QGraphicsSvgItem* m_itemHand_1;
+    QGraphicsSvgItem* m_itemHand_2;
+    QGraphicsSvgItem* m_itemCase;
 
     float m_altitude;
     float m_pressure;
@@ -120,6 +113,4 @@ private:
     void updateView();
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // QFI_ALT_H
+#endif

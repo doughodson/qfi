@@ -45,11 +45,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef QFI_PFD_CPP
-#define QFI_PFD_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #ifdef WIN32
 #   include <float.h>
@@ -60,13 +55,9 @@
 
 #include "qfi_PFD.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
 #ifndef M_PI
 #   define M_PI 3.14159265358979323846
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_PFD::qfi_PFD( QWidget * parent ) :
     QGraphicsView ( parent ),
@@ -107,12 +98,9 @@ qfi_PFD::qfi_PFD( QWidget * parent ) :
     init();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_PFD::~qfi_PFD()
 {
-    if ( m_scene )
-    {
+    if ( m_scene ) {
         m_scene->clear();
         delete m_scene;
         m_scene = 0;
@@ -120,14 +108,12 @@ qfi_PFD::~qfi_PFD()
 
     reset();
 
-    if ( m_adi ) delete m_adi; m_adi = 0;
-    if ( m_alt ) delete m_alt; m_alt = 0;
-    if ( m_asi ) delete m_asi; m_asi = 0;
-    if ( m_hsi ) delete m_hsi; m_hsi = 0;
-    if ( m_vsi ) delete m_vsi; m_vsi = 0;
+    if ( m_adi ) { delete m_adi; m_adi = 0; }
+    if ( m_alt ) { delete m_alt; m_alt = 0; }
+    if ( m_asi ) { delete m_asi; m_asi = 0; }
+    if ( m_hsi ) { delete m_hsi; m_hsi = 0; }
+    if ( m_vsi ) { delete m_vsi; m_vsi = 0; }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::reinit()
 {
@@ -139,25 +125,16 @@ void qfi_PFD::reinit()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::update()
 {
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::resizeEvent( QResizeEvent * pEvent )
 {
-    /////////////////////////////////////
     QGraphicsView::resizeEvent( pEvent );
-    /////////////////////////////////////
-
     reinit();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::init()
 {
@@ -187,15 +164,11 @@ void qfi_PFD::init()
     updateView();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::reset()
 {
     m_itemBack = 0;
     m_itemMask = 0;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::updateView()
 {
@@ -210,10 +183,6 @@ void qfi_PFD::updateView()
 
     m_scene->update();
 }
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_PFD::ADI::ADI( QGraphicsScene * scene ) :
     m_scene ( scene ),
@@ -321,8 +290,6 @@ qfi_PFD::ADI::ADI( QGraphicsScene * scene ) :
 {
     reset();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::init( float scaleX, float scaleY )
 {
@@ -435,8 +402,6 @@ void qfi_PFD::ADI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -475,8 +440,6 @@ void qfi_PFD::ADI::update( float scaleX, float scaleY )
     m_dotVDeltaY_old     = m_dotVDeltaY_new;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::setRoll( float roll )
 {
     m_roll = roll;
@@ -484,8 +447,6 @@ void qfi_PFD::ADI::setRoll( float roll )
     if      ( m_roll < -180.0f ) m_roll = -180.0f;
     else if ( m_roll >  180.0f ) m_roll =  180.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::setPitch( float pitch )
 {
@@ -529,8 +490,6 @@ void qfi_PFD::ADI::setFlightPathMarker( float aoa, float sideslip, bool visible 
     m_pathVisible = visible;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::setSlipSkid( float slipSkid )
 {
     m_slipSkid = slipSkid;
@@ -539,8 +498,6 @@ void qfi_PFD::ADI::setSlipSkid( float slipSkid )
     else if ( m_slipSkid >  1.0f ) m_slipSkid =  1.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::setTurnRate( float turnRate )
 {
     m_turnRate = turnRate;
@@ -548,8 +505,6 @@ void qfi_PFD::ADI::setTurnRate( float turnRate )
     if      ( m_turnRate < -1.0f ) m_turnRate = -1.0f;
     else if ( m_turnRate >  1.0f ) m_turnRate =  1.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::setBarH( float barH, bool visible )
 {
@@ -561,8 +516,6 @@ void qfi_PFD::ADI::setBarH( float barH, bool visible )
     m_barHVisible = visible;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::setBarV( float barV, bool visible )
 {
     m_barV = barV;
@@ -572,8 +525,6 @@ void qfi_PFD::ADI::setBarV( float barV, bool visible )
 
     m_barVVisible = visible;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::setDotH( float dotH, bool visible )
 {
@@ -585,8 +536,6 @@ void qfi_PFD::ADI::setDotH( float dotH, bool visible )
     m_dotHVisible = visible;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::setDotV( float dotV, bool visible )
 {
     m_dotV = dotV;
@@ -596,8 +545,6 @@ void qfi_PFD::ADI::setDotV( float dotV, bool visible )
 
     m_dotVVisible = visible;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::reset()
 {
@@ -667,8 +614,6 @@ void qfi_PFD::ADI::reset()
     m_dotVDeltaY_old     = 0.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::updateLadd( float delta, float sinRoll, float cosRoll )
 {
     m_itemLadd->setRotation( - m_roll );
@@ -678,8 +623,6 @@ void qfi_PFD::ADI::updateLadd( float delta, float sinRoll, float cosRoll )
 
     m_itemLadd->moveBy( m_laddDeltaX_new - m_laddDeltaX_old, m_laddDeltaY_new - m_laddDeltaY_old );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::updateLaddBack( float delta, float sinRoll, float cosRoll )
 {
@@ -706,14 +649,10 @@ void qfi_PFD::ADI::updateLaddBack( float delta, float sinRoll, float cosRoll )
     m_itemBack->moveBy( m_laddBackDeltaX_new - m_laddBackDeltaX_old, m_laddBackDeltaY_new - m_laddBackDeltaY_old );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::updateRoll()
 {
     m_itemRoll->setRotation( - m_roll );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::updateSlipSkid( float sinRoll, float cosRoll )
 {
@@ -727,16 +666,12 @@ void qfi_PFD::ADI::updateSlipSkid( float sinRoll, float cosRoll )
     m_itemSlip->moveBy( m_slipDeltaX_new - m_slipDeltaX_old, m_slipDeltaY_new - m_slipDeltaY_old );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::updateTurnRate()
 {
     m_turnDeltaX_new = m_scaleX * m_maxTurnDeflection * m_turnRate;
 
     m_itemTurn->moveBy( m_turnDeltaX_new - m_turnDeltaX_old, 0.0 );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::updateFlightPath()
 {
@@ -777,8 +712,6 @@ void qfi_PFD::ADI::updateFlightPath()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ADI::updateBars()
 {
     if ( m_barVVisible )
@@ -809,8 +742,6 @@ void qfi_PFD::ADI::updateBars()
         m_barHDeltaX_new = m_barHDeltaX_old;
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ADI::updateDots()
 {
@@ -848,10 +779,6 @@ void qfi_PFD::ADI::updateDots()
         m_dotVDeltaY_new = m_dotVDeltaY_old;
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_PFD::ALT::ALT( QGraphicsScene * scene ) :
     m_scene ( scene ),
@@ -934,8 +861,6 @@ qfi_PFD::ALT::ALT( QGraphicsScene * scene ) :
 
     reset();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::init( float scaleX, float scaleY )
 {
@@ -1032,8 +957,6 @@ void qfi_PFD::ALT::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ALT::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -1049,8 +972,6 @@ void qfi_PFD::ALT::update( float scaleX, float scaleY )
 
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ALT::setAltitude( float altitude )
 {
     m_altitude = altitude;
@@ -1058,8 +979,6 @@ void qfi_PFD::ALT::setAltitude( float altitude )
     if      ( m_altitude <     0.0f ) m_altitude =     0.0f;
     else if ( m_altitude > 99999.0f ) m_altitude = 99999.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::setPressure( float pressure, int pressureUnit )
 {
@@ -1073,8 +992,6 @@ void qfi_PFD::ALT::setPressure( float pressure, int pressureUnit )
     if      ( pressureUnit == 1 ) m_pressureUnit = 1;
     else if ( pressureUnit == 2 ) m_pressureUnit = 2;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::reset()
 {
@@ -1104,8 +1021,6 @@ void qfi_PFD::ALT::reset()
     m_labelsDeltaY_old = 0.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ALT::updateAltitude()
 {
     m_itemAltitude->setPlainText( QString("%1").arg(m_altitude, 5, 'f', 0, QChar(' ')) );
@@ -1113,8 +1028,6 @@ void qfi_PFD::ALT::updateAltitude()
     updateScale();
     updateScaleLabels();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::updatePressure()
 {
@@ -1131,8 +1044,6 @@ void qfi_PFD::ALT::updatePressure()
         m_itemPressure->setPlainText( QString::number( m_pressure, 'f', 2 ) + QString( " IN" ) );
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::updateScale()
 {
@@ -1159,8 +1070,6 @@ void qfi_PFD::ALT::updateScale()
     m_itemScale2->moveBy( 0.0f, m_scale2DeltaY_new - m_scale2DeltaY_old );
     m_itemGround->moveBy( 0.0f, m_groundDeltaY_new - m_groundDeltaY_old );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ALT::updateScaleLabels()
 {
@@ -1219,10 +1128,6 @@ void qfi_PFD::ALT::updateScaleLabels()
         m_itemLabel3->setVisible( false );
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_PFD::ASI::ASI( QGraphicsScene * scene ) :
     m_scene ( scene ),
@@ -1305,8 +1210,6 @@ qfi_PFD::ASI::ASI( QGraphicsScene * scene ) :
 
     reset();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ASI::init( float scaleX, float scaleY )
 {
@@ -1438,8 +1341,6 @@ void qfi_PFD::ASI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ASI::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -1452,8 +1353,6 @@ void qfi_PFD::ASI::update( float scaleX, float scaleY )
     m_labelsDeltaY_old = m_labelsDeltaY_new;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ASI::setAirspeed( float airspeed )
 {
     m_airspeed = airspeed;
@@ -1462,8 +1361,6 @@ void qfi_PFD::ASI::setAirspeed( float airspeed )
     else if ( m_airspeed > 9999.0f ) m_airspeed = 9999.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ASI::setMachNo( float machNo )
 {
     m_machNo = machNo;
@@ -1471,8 +1368,6 @@ void qfi_PFD::ASI::setMachNo( float machNo )
     if      ( m_machNo <  0.0f ) m_machNo =  0.0f;
     else if ( m_machNo > 99.9f ) m_machNo = 99.9f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ASI::reset()
 {
@@ -1501,8 +1396,6 @@ void qfi_PFD::ASI::reset()
     m_labelsDeltaY_old = 0.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ASI::updateAirspeed()
 {
     m_itemAirspeed->setPlainText( QString("%1").arg(m_airspeed, 3, 'f', 0, QChar('0')) );
@@ -1528,8 +1421,6 @@ void qfi_PFD::ASI::updateAirspeed()
     updateScaleLabels();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::ASI::updateScale()
 {
     m_scale1DeltaY_new = m_scaleY * m_originalPixPerSpd * m_airspeed;
@@ -1551,8 +1442,6 @@ void qfi_PFD::ASI::updateScale()
     m_itemScale1->moveBy( 0.0f, m_scale1DeltaY_new - m_scale1DeltaY_old );
     m_itemScale2->moveBy( 0.0f, m_scale2DeltaY_new - m_scale2DeltaY_old );
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::ASI::updateScaleLabels()
 {
@@ -1664,10 +1553,6 @@ void qfi_PFD::ASI::updateScaleLabels()
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
 qfi_PFD::HSI::HSI( QGraphicsScene * scene ) :
     m_scene ( scene ),
 
@@ -1701,8 +1586,6 @@ qfi_PFD::HSI::HSI( QGraphicsScene * scene ) :
 
     reset();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::HSI::init( float scaleX, float scaleY )
 {
@@ -1747,8 +1630,6 @@ void qfi_PFD::HSI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::HSI::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -1756,8 +1637,6 @@ void qfi_PFD::HSI::update( float scaleX, float scaleY )
 
     updateHeading();
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::HSI::setHeading( float heading )
 {
@@ -1774,8 +1653,6 @@ void qfi_PFD::HSI::setHeading( float heading )
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::HSI::reset()
 {
     m_itemBack      = 0;
@@ -1786,8 +1663,6 @@ void qfi_PFD::HSI::reset()
     m_heading  = 0.0f;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::HSI::updateHeading()
 {
     m_itemFace->setRotation( - m_heading );
@@ -1796,10 +1671,6 @@ void qfi_PFD::HSI::updateHeading()
 
     m_itemFrameText->setPlainText( QString("%1").arg(fHeading, 3, 'f', 0, QChar('0')) );
 }
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 qfi_PFD::VSI::VSI( QGraphicsScene * scene ) :
     m_scene ( scene ),
@@ -1829,8 +1700,6 @@ qfi_PFD::VSI::VSI( QGraphicsScene * scene ) :
     reset();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::VSI::init( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -1855,8 +1724,6 @@ void qfi_PFD::VSI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::VSI::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
@@ -1867,8 +1734,6 @@ void qfi_PFD::VSI::update( float scaleX, float scaleY )
     m_arrowDeltaY_old = m_arrowDeltaY_new;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 void qfi_PFD::VSI::setClimbRate( float climbRate )
 {
     m_climbRate = climbRate;
@@ -1876,8 +1741,6 @@ void qfi_PFD::VSI::setClimbRate( float climbRate )
     if      ( m_climbRate >  6.3f ) m_climbRate =  6.3f;
     else if ( m_climbRate < -6.3f ) m_climbRate = -6.3f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::VSI::reset()
 {
@@ -1889,8 +1752,6 @@ void qfi_PFD::VSI::reset()
     m_arrowDeltaY_new = 0.0f;
     m_arrowDeltaY_old = 0.0f;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 void qfi_PFD::VSI::updateVSI()
 {
