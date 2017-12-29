@@ -78,7 +78,7 @@ public:
 
     bool hasItem() const;
 
-    QLayoutItem* itemAt(const int index) const;
+    QLayoutItem* itemAt(int index) const;
 
     QSize minimumSize() const;
 
@@ -90,7 +90,7 @@ public:
 
     QLayoutItem* take();
 
-    QLayoutItem* takeAt(const int index);
+    QLayoutItem* takeAt(int index);
 
 private:
     void init(const int spacing);

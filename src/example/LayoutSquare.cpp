@@ -102,7 +102,7 @@ bool LayoutSquare::hasItem() const
     return ( m_item != 0 );
 }
 
-QLayoutItem* LayoutSquare::itemAt(const int index) const
+QLayoutItem* LayoutSquare::itemAt(int index) const
 {
     if (index == 0) {
         if ( hasItem() ) return m_item;
@@ -164,7 +164,7 @@ QLayoutItem* LayoutSquare::take()
     return tempItem;
 }
 
-QLayoutItem* LayoutSquare::takeAt(const int index)
+QLayoutItem* LayoutSquare::takeAt(int index)
 {
     if (index == 0) return take();
 
