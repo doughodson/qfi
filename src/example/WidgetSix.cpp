@@ -49,16 +49,7 @@
 #include "WidgetSix.h"
 #include "ui_WidgetSix.h"
 
-WidgetSix::WidgetSix( QWidget *parent ) :
-    QWidget ( parent ),
-    m_ui ( new Ui::WidgetSix ),
-
-    m_widgetADI ( 0 ),
-    m_widgetALT ( 0 ),
-    m_widgetASI ( 0 ),
-    m_widgetHSI ( 0 ),
-    m_widgetTC  ( 0 ),
-    m_widgetVSI ( 0 )
+WidgetSix::WidgetSix(QWidget* parent) : QWidget (parent), m_ui(new Ui::WidgetSix)
 {
     m_ui->setupUi( this );
 

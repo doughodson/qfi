@@ -62,7 +62,7 @@ class MainWindow : public QMainWindow
     
 public:
 
-    explicit MainWindow( QWidget *parent = 0 );
+    explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
 protected:
@@ -71,12 +71,12 @@ protected:
     
 private:
 
-    Ui::MainWindow *m_ui;
+    Ui::MainWindow *m_ui{};
 
-    int m_timerId;
-    int m_steps;
+    int m_timerId{};
+    int m_steps{};
 
-    float m_realTime;
+    float m_realTime{};
 
     QTime m_time;
 };

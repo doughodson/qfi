@@ -45,30 +45,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETTC_CPP
-#define WIDGETTC_CPP
-#endif
 
 #include "WidgetTC.h"
 #include "ui_WidgetTC.h"
 
-WidgetTC::WidgetTC( QWidget *parent ) :
-    QWidget( parent ),
-    m_ui( new Ui::WidgetTC ),
-    m_tc ( 0 ),
-    m_layoutSq ( 0 )
+WidgetTC::WidgetTC(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetTC)
 {
     m_ui->setupUi( this );
-
     setupUi();
-
     m_tc = m_ui->graphicsTC;
 }
 
 WidgetTC::~WidgetTC()
 {
     if ( m_layoutSq ) { delete m_layoutSq; m_layoutSq = nullptr; }
-
     if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
 

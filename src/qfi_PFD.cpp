@@ -48,30 +48,24 @@
 
 #include "qfi_PFD.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 #include <cmath>
 
 #ifndef M_PI
 #   define M_PI 3.14159265358979323846
 #endif
 
-qfi_PFD::qfi_PFD(QWidget * parent) :  QGraphicsView(parent)
+qfi_PFD::qfi_PFD(QWidget* parent) :  QGraphicsView(parent)
 {
     reset();
-
-    m_scene = new QGraphicsScene( this );
-    setScene( m_scene );
-
+    m_scene = new QGraphicsScene(this);
+    setScene(m_scene);
     m_scene->clear();
 
-    m_adi = new ADI( m_scene );
-    m_alt = new ALT( m_scene );
-    m_asi = new ASI( m_scene );
-    m_hsi = new HSI( m_scene );
-    m_vsi = new VSI( m_scene );
+    m_adi = new ADI(m_scene);
+    m_alt = new ALT(m_scene);
+    m_asi = new ASI(m_scene);
+    m_hsi = new HSI(m_scene);
+    m_vsi = new VSI(m_scene);
 
     init();
 }
@@ -81,24 +75,22 @@ qfi_PFD::~qfi_PFD()
     if ( m_scene ) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();
 
-    if ( m_adi ) { delete m_adi; m_adi = 0; }
-    if ( m_alt ) { delete m_alt; m_alt = 0; }
-    if ( m_asi ) { delete m_asi; m_asi = 0; }
-    if ( m_hsi ) { delete m_hsi; m_hsi = 0; }
-    if ( m_vsi ) { delete m_vsi; m_vsi = 0; }
+    if ( m_adi ) { delete m_adi; m_adi = nullptr; }
+    if ( m_alt ) { delete m_alt; m_alt = nullptr; }
+    if ( m_asi ) { delete m_asi; m_asi = nullptr; }
+    if ( m_hsi ) { delete m_hsi; m_hsi = nullptr; }
+    if ( m_vsi ) { delete m_vsi; m_vsi = nullptr; }
 }
 
 void qfi_PFD::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }
@@ -108,9 +100,9 @@ void qfi_PFD::update()
     updateView();
 }
 
-void qfi_PFD::resizeEvent( QResizeEvent * pEvent )
+void qfi_PFD::resizeEvent(QResizeEvent* event)
 {
-    QGraphicsView::resizeEvent( pEvent );
+    QGraphicsView::resizeEvent(event);
     reinit();
 }
 
@@ -162,12 +154,12 @@ void qfi_PFD::updateView()
     m_scene->update();
 }
 
-qfi_PFD::ADI::ADI(QGraphicsScene* scene) : m_scene ( scene )
+qfi_PFD::ADI::ADI(QGraphicsScene* scene) : m_scene(scene)
 {
     reset();
 }
 
-void qfi_PFD::ADI::init( float scaleX, float scaleY )
+void qfi_PFD::ADI::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -339,24 +331,18 @@ void qfi_PFD::ADI::setFlightPathMarker(const float aoa, const float sideslip, co
 
     m_pathValid = true;
 
-    if ( m_angleOfAttack < -15.0f )
-    {
+    if ( m_angleOfAttack < -15.0f ) {
         m_angleOfAttack = -15.0f;
         m_pathValid = false;
-    }
-    else if ( m_angleOfAttack > 15.0f )
-    {
+    } else if ( m_angleOfAttack > 15.0f ) {
         m_angleOfAttack = 15.0f;
         m_pathValid = false;
     }
 
-    if ( m_sideslipAngle < -10.0f )
-    {
+    if ( m_sideslipAngle < -10.0f ) {
         m_sideslipAngle = -10.0f;
         m_pathValid = false;
-    }
-    else if ( m_sideslipAngle > 10.0f )
-    {
+    } else if ( m_sideslipAngle > 10.0f ) {
         m_sideslipAngle = 10.0f;
         m_pathValid = false;
     }
@@ -490,7 +476,7 @@ void qfi_PFD::ADI::reset()
 
 void qfi_PFD::ADI::updateLadd(const float delta, const float sinRoll, const float cosRoll)
 {
-    m_itemLadd->setRotation( - m_roll );
+    m_itemLadd->setRotation(-m_roll);
 
     m_laddDeltaX_new = m_scaleX * delta * sinRoll;
     m_laddDeltaY_new = m_scaleY * delta * cosRoll;
@@ -500,20 +486,15 @@ void qfi_PFD::ADI::updateLadd(const float delta, const float sinRoll, const floa
 
 void qfi_PFD::ADI::updateLaddBack(const float delta, const float sinRoll, const float cosRoll)
 {
-    m_itemBack->setRotation( - m_roll );
+    m_itemBack->setRotation(-m_roll);
 
     float deltaLaddBack = 0.0;
 
-    if ( delta > m_deltaLaddBack_max )
-    {
+    if (delta > m_deltaLaddBack_max) {
         deltaLaddBack = m_deltaLaddBack_max;
-    }
-    else if ( delta < m_deltaLaddBack_min )
-    {
+    } else if ( delta < m_deltaLaddBack_min ) {
         deltaLaddBack = m_deltaLaddBack_min;
-    }
-    else
-    {
+    } else {
         deltaLaddBack = delta;
     }
 
@@ -525,14 +506,14 @@ void qfi_PFD::ADI::updateLaddBack(const float delta, const float sinRoll, const 
 
 void qfi_PFD::ADI::updateRoll()
 {
-    m_itemRoll->setRotation( - m_roll );
+    m_itemRoll->setRotation(-m_roll);
 }
 
 void qfi_PFD::ADI::updateSlipSkid(const float sinRoll, const float cosRoll)
 {
-    m_itemSlip->setRotation( - m_roll );
+    m_itemSlip->setRotation(-m_roll);
 
-    float deltaSlip = m_maxSlipDeflection * m_slipSkid;
+    const float deltaSlip = m_maxSlipDeflection * m_slipSkid;
 
     m_slipDeltaX_new =  m_scaleX * deltaSlip * cosRoll;
     m_slipDeltaY_new = -m_scaleY * deltaSlip * sinRoll;
@@ -543,14 +524,12 @@ void qfi_PFD::ADI::updateSlipSkid(const float sinRoll, const float cosRoll)
 void qfi_PFD::ADI::updateTurnRate()
 {
     m_turnDeltaX_new = m_scaleX * m_maxTurnDeflection * m_turnRate;
-
     m_itemTurn->moveBy( m_turnDeltaX_new - m_turnDeltaX_old, 0.0 );
 }
 
 void qfi_PFD::ADI::updateFlightPath()
 {
-    if ( m_pathVisible )
-    {
+    if (m_pathVisible) {
         m_itemPath->setVisible( true );
 
         m_pathDeltaX_new = m_scaleX * m_originalPixPerDeg * m_sideslipAngle;
@@ -558,24 +537,19 @@ void qfi_PFD::ADI::updateFlightPath()
 
         m_itemPath->moveBy( m_pathDeltaX_new - m_pathDeltaX_old, m_pathDeltaY_old - m_pathDeltaY_new );
 
-        if ( !m_pathValid )
-        {
+        if (!m_pathValid) {
             m_itemMark->setVisible( true );
 
             m_markDeltaX_new = m_pathDeltaX_new;
             m_markDeltaY_new = m_pathDeltaY_new;
 
             m_itemMark->moveBy( m_markDeltaX_new - m_markDeltaX_old, m_markDeltaY_old - m_markDeltaY_new );
-        }
-        else
-        {
+        } else {
             m_itemMark->setVisible( false );
             m_markDeltaX_new = m_markDeltaX_old;
             m_markDeltaY_new = m_markDeltaY_old;
         }
-    }
-    else
-    {
+    } else {
         m_itemPath->setVisible( false );
         m_pathDeltaX_new = m_pathDeltaX_old;
         m_pathDeltaY_new = m_pathDeltaY_old;
@@ -588,30 +562,24 @@ void qfi_PFD::ADI::updateFlightPath()
 
 void qfi_PFD::ADI::updateBars()
 {
-    if ( m_barVVisible )
-    {
+    if (m_barVVisible) {
         m_itemBarV->setVisible( true );
 
         m_barVDeltaY_new = m_scaleY * m_maxBarsDeflection * m_barV;
 
         m_itemBarV->moveBy( 0.0f, m_barVDeltaY_old - m_barVDeltaY_new );
-    }
-    else
-    {
+    } else {
         m_itemBarV->setVisible( false );
         m_barVDeltaY_new = m_barVDeltaY_old;
     }
 
-    if ( m_barHVisible )
-    {
+    if (m_barHVisible) {
         m_itemBarH->setVisible( true );
 
         m_barHDeltaX_new = m_scaleX * m_maxBarsDeflection * m_barH;
 
         m_itemBarH->moveBy( m_barHDeltaX_new - m_barHDeltaX_old, 0.0f );
-    }
-    else
-    {
+    } else {
         m_itemBarH->setVisible( false );
         m_barHDeltaX_new = m_barHDeltaX_old;
     }
@@ -619,34 +587,28 @@ void qfi_PFD::ADI::updateBars()
 
 void qfi_PFD::ADI::updateDots()
 {
-    if ( m_dotHVisible )
-    {
+    if (m_dotHVisible) {
         m_itemDotH->setVisible( true );
         m_itemScaleH->setVisible( true );
 
         m_dotHDeltaX_new = m_scaleX * m_maxDotsDeflection * m_dotH;
 
         m_itemDotH->moveBy( m_dotHDeltaX_new - m_dotHDeltaX_old, 0.0f );
-    }
-    else
-    {
+    } else {
         m_itemDotH->setVisible( false );
         m_itemScaleH->setVisible( false );
 
         m_dotHDeltaX_new = m_dotHDeltaX_old;
     }
 
-    if ( m_dotVVisible )
-    {
+    if (m_dotVVisible) {
         m_itemDotV->setVisible( true );
         m_itemScaleV->setVisible( true );
 
         m_dotVDeltaY_new = m_scaleY * m_maxDotsDeflection * m_dotV;
 
         m_itemDotV->moveBy( 0.0f, m_dotVDeltaY_old - m_dotVDeltaY_new );
-    }
-    else
-    {
+    } else {
         m_itemDotV->setVisible( false );
         m_itemScaleV->setVisible( false );
 
@@ -850,16 +812,11 @@ void qfi_PFD::ALT::updateAltitude()
 
 void qfi_PFD::ALT::updatePressure()
 {
-    if ( m_pressureUnit == 0 )
-    {
+    if (m_pressureUnit == 0) {
         m_itemPressure->setPlainText( QString( "  STD  " ) );
-    }
-    else if ( m_pressureUnit == 1 )
-    {
+    } else if ( m_pressureUnit == 1 ) {
         m_itemPressure->setPlainText( QString::number( m_pressure, 'f', 0 ) + QString( " MB" ) );
-    }
-    else if ( m_pressureUnit == 2 )
-    {
+    } else if ( m_pressureUnit == 2 ) {
         m_itemPressure->setPlainText( QString::number( m_pressure, 'f', 2 ) + QString( " IN" ) );
     }
 }
@@ -870,16 +827,14 @@ void qfi_PFD::ALT::updateScale()
     m_scale2DeltaY_new = m_scale1DeltaY_new;
     m_groundDeltaY_new = m_scale1DeltaY_new;
 
-    float scaleSingleHeight = m_scaleY * m_originalScaleHeight;
-    float scaleDoubleHeight = m_scaleY * m_originalScaleHeight * 2.0f;
+    const float scaleSingleHeight = m_scaleY * m_originalScaleHeight;
+    const float scaleDoubleHeight = m_scaleY * m_originalScaleHeight * 2.0f;
 
-    while ( m_scale1DeltaY_new > scaleSingleHeight + m_scaleY * 74.5f )
-    {
+    while ( m_scale1DeltaY_new > scaleSingleHeight + m_scaleY * 74.5f ) {
         m_scale1DeltaY_new = m_scale1DeltaY_new - scaleDoubleHeight;
     }
 
-    while ( m_scale2DeltaY_new > scaleDoubleHeight + m_scaleY * 74.5f )
-    {
+    while ( m_scale2DeltaY_new > scaleDoubleHeight + m_scaleY * 74.5f ) {
         m_scale2DeltaY_new = m_scale2DeltaY_new - scaleDoubleHeight;
     }
 
@@ -892,8 +847,8 @@ void qfi_PFD::ALT::updateScale()
 
 void qfi_PFD::ALT::updateScaleLabels()
 {
-    int tmp = floor( m_altitude + 0.5f );
-    int alt = tmp - ( tmp % 500 );
+    const int tmp = std::floor( m_altitude + 0.5f );
+    const int alt = tmp - ( tmp % 500 );
 
     float alt1 = (float)alt + 500.0f;
     float alt2 = (float)alt;
@@ -901,13 +856,11 @@ void qfi_PFD::ALT::updateScaleLabels()
 
     m_labelsDeltaY_new = m_scaleY * m_originalPixPerAlt * m_altitude;
 
-    while ( m_labelsDeltaY_new > m_scaleY * 37.5f )
-    {
+    while ( m_labelsDeltaY_new > m_scaleY * 37.5f ) {
         m_labelsDeltaY_new = m_labelsDeltaY_new - m_scaleY * 75.0f;
     }
 
-    if ( m_labelsDeltaY_new < 0.0f && m_altitude > alt2 )
-    {
+    if ( m_labelsDeltaY_new < 0.0f && m_altitude > alt2 ) {
         alt1 += 500.0f;
         alt2 += 500.0f;
         alt3 += 500.0f;
@@ -917,33 +870,24 @@ void qfi_PFD::ALT::updateScaleLabels()
     m_itemLabel2->moveBy( 0.0f, m_labelsDeltaY_new - m_labelsDeltaY_old );
     m_itemLabel3->moveBy( 0.0f, m_labelsDeltaY_new - m_labelsDeltaY_old );
 
-    if ( alt1 > 0.0f && alt1 <= 100000.0f )
-    {
+    if ( alt1 > 0.0f && alt1 <= 100000.0f ) {
         m_itemLabel1->setVisible( true );
         m_itemLabel1->setPlainText( QString("%1").arg(alt1, 5, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel1->setVisible( false );
     }
 
-    if ( alt2 > 0.0f && alt2 <= 100000.0f )
-    {
+    if ( alt2 > 0.0f && alt2 <= 100000.0f ) {
         m_itemLabel2->setVisible( true );
         m_itemLabel2->setPlainText( QString("%1").arg(alt2, 5, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel2->setVisible( false );
     }
 
-    if ( alt3 > 0.0f && alt3 <= 100000.0f )
-    {
+    if ( alt3 > 0.0f && alt3 <= 100000.0f ) {
         m_itemLabel3->setVisible( true );
         m_itemLabel3->setPlainText( QString("%1").arg(alt3, 5, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel3->setVisible( false );
     }
 }
@@ -1164,19 +1108,13 @@ void qfi_PFD::ASI::updateAirspeed()
 {
     m_itemAirspeed->setPlainText( QString("%1").arg(m_airspeed, 3, 'f', 0, QChar('0')) );
 
-    if ( m_machNo < 1.0f )
-    {
+    if ( m_machNo < 1.0f ) {
         float machNo = 1000.0f * m_machNo;
         m_itemMachNo->setPlainText( QString(".%1").arg(machNo, 3, 'f', 0, QChar('0')) );
-    }
-    else
-    {
-        if ( m_machNo < 10.0f )
-        {
+    } else {
+        if ( m_machNo < 10.0f ) {
             m_itemMachNo->setPlainText( QString::number( m_machNo, 'f', 2 ) );
-        }
-        else
-        {
+        } else {
             m_itemMachNo->setPlainText( QString::number( m_machNo, 'f', 1 ) );
         }
     }
@@ -1190,16 +1128,14 @@ void qfi_PFD::ASI::updateScale()
     m_scale1DeltaY_new = m_scaleY * m_originalPixPerSpd * m_airspeed;
     m_scale2DeltaY_new = m_scale1DeltaY_new;
 
-    float scaleSingleHeight = m_scaleY * m_originalScaleHeight;
-    float scaleDoubleHeight = m_scaleY * m_originalScaleHeight * 2.0f;
+    const float scaleSingleHeight = m_scaleY * m_originalScaleHeight;
+    const float scaleDoubleHeight = m_scaleY * m_originalScaleHeight * 2.0f;
 
-    while ( m_scale1DeltaY_new > scaleSingleHeight + m_scaleY * 74.5f )
-    {
+    while ( m_scale1DeltaY_new > scaleSingleHeight + m_scaleY * 74.5f ) {
         m_scale1DeltaY_new = m_scale1DeltaY_new - scaleDoubleHeight;
     }
 
-    while ( m_scale2DeltaY_new > scaleDoubleHeight + m_scaleY * 74.5f )
-    {
+    while ( m_scale2DeltaY_new > scaleDoubleHeight + m_scaleY * 74.5f ) {
         m_scale2DeltaY_new = m_scale2DeltaY_new - scaleDoubleHeight;
     }
 
@@ -1211,8 +1147,8 @@ void qfi_PFD::ASI::updateScaleLabels()
 {
     m_labelsDeltaY_new = m_scaleY * m_originalPixPerSpd * m_airspeed;
 
-    int tmp = floor( m_airspeed + 0.5f );
-    int spd = tmp - ( tmp % 20 );
+    const int tmp = std::floor( m_airspeed + 0.5f );
+    const int spd = tmp - ( tmp % 20 );
 
     float spd1 = (float)spd + 60.0f;
     float spd2 = (float)spd + 40.0f;
@@ -1222,13 +1158,11 @@ void qfi_PFD::ASI::updateScaleLabels()
     float spd6 = (float)spd - 40.0f;
     float spd7 = (float)spd - 60.0f;
 
-    while ( m_labelsDeltaY_new > m_scaleY * 15.0f )
-    {
+    while ( m_labelsDeltaY_new > m_scaleY * 15.0f ) {
         m_labelsDeltaY_new = m_labelsDeltaY_new - m_scaleY * 30.0f;
     }
 
-    if ( m_labelsDeltaY_new < 0.0 && m_airspeed > spd4 )
-    {
+    if ( m_labelsDeltaY_new < 0.0 && m_airspeed > spd4 ) {
         spd1 += 20.0f;
         spd2 += 20.0f;
         spd3 += 20.0f;
@@ -1246,73 +1180,52 @@ void qfi_PFD::ASI::updateScaleLabels()
     m_itemLabel6->moveBy( 0.0f, m_labelsDeltaY_new - m_labelsDeltaY_old );
     m_itemLabel7->moveBy( 0.0f, m_labelsDeltaY_new - m_labelsDeltaY_old );
 
-    if ( spd1 >= 0.0f && spd1 <= 10000.0f )
-    {
+    if ( spd1 >= 0.0f && spd1 <= 10000.0f ) {
         m_itemLabel1->setVisible( true );
         m_itemLabel1->setPlainText( QString("%1").arg(spd1, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel1->setVisible( false );
     }
 
-    if ( spd2 >= 0.0f && spd2 <= 10000.0f )
-    {
+    if ( spd2 >= 0.0f && spd2 <= 10000.0f ) {
         m_itemLabel2->setVisible( true );
         m_itemLabel2->setPlainText( QString("%1").arg(spd2, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel2->setVisible( false );
     }
 
-    if ( spd3 >= 0.0f && spd3 <= 10000.0f )
-    {
+    if ( spd3 >= 0.0f && spd3 <= 10000.0f ) {
         m_itemLabel3->setVisible( true );
         m_itemLabel3->setPlainText( QString("%1").arg(spd3, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel3->setVisible( false );
     }
 
-    if ( spd4 >= 0.0f && spd4 <= 10000.0f )
-    {
+    if ( spd4 >= 0.0f && spd4 <= 10000.0f ) {
         m_itemLabel4->setVisible( true );
         m_itemLabel4->setPlainText( QString("%1").arg(spd4, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel4->setVisible( false );
     }
 
-    if ( spd5 >= 0.0f && spd5 <= 10000.0f )
-    {
+    if ( spd5 >= 0.0f && spd5 <= 10000.0f ) {
         m_itemLabel5->setVisible( true );
         m_itemLabel5->setPlainText( QString("%1").arg(spd5, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel5->setVisible( false );
     }
 
-    if ( spd6 >= 0.0f && spd6 <= 10000.0f )
-    {
+    if ( spd6 >= 0.0f && spd6 <= 10000.0f ) {
         m_itemLabel6->setVisible( true );
         m_itemLabel6->setPlainText( QString("%1").arg(spd6, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel6->setVisible( false );
     }
 
-    if ( spd7 >= 0.0f && spd7 <= 10000.0f )
-    {
+    if ( spd7 >= 0.0f && spd7 <= 10000.0f ) {
         m_itemLabel7->setVisible( true );
         m_itemLabel7->setPlainText( QString("%1").arg(spd7, 3, 'f', 0, QChar(' ')) );
-    }
-    else
-    {
+    } else {
         m_itemLabel7->setVisible( false );
     }
 }
@@ -1382,23 +1295,21 @@ void qfi_PFD::HSI::setHeading( float heading )
 {
     m_heading = heading;
 
-    while ( m_heading < 0.0f )
-    {
+    while ( m_heading < 0.0f ) {
         m_heading += 360.0f;
     }
 
-    while ( m_heading > 360.0f )
-    {
+    while ( m_heading > 360.0f ) {
         m_heading -= 360.0f;
     }
 }
 
 void qfi_PFD::HSI::reset()
 {
-    m_itemBack      = 0;
-    m_itemFace      = 0;
-    m_itemMarks     = 0;
-    m_itemFrameText = 0;
+    m_itemBack      = nullptr;
+    m_itemFace      = nullptr;
+    m_itemMarks     = nullptr;
+    m_itemFrameText = nullptr;
 
     m_heading  = 0.0f;
 }
@@ -1406,9 +1317,7 @@ void qfi_PFD::HSI::reset()
 void qfi_PFD::HSI::updateHeading()
 {
     m_itemFace->setRotation( - m_heading );
-
-    float fHeading = floor( m_heading + 0.5f );
-
+    const float fHeading = floor( m_heading + 0.5f );
     m_itemFrameText->setPlainText( QString("%1").arg(fHeading, 3, 'f', 0, QChar('0')) );
 }
 
@@ -1472,7 +1381,7 @@ void qfi_PFD::VSI::reset()
 
 void qfi_PFD::VSI::updateVSI()
 {
-    float climbRateAbs = fabs( m_climbRate );
+    const float climbRateAbs = fabs( m_climbRate );
     float arrowDeltaY = 0.0;
 
     if ( climbRateAbs <= 1.0f ) {
@@ -1484,8 +1393,6 @@ void qfi_PFD::VSI::updateVSI()
     }
 
     if ( m_climbRate < 0.0f ) arrowDeltaY *= -1.0f;
-
     m_arrowDeltaY_new = m_scaleY * arrowDeltaY;
-
     m_itemArrow->moveBy( 0.0f, m_arrowDeltaY_old - m_arrowDeltaY_new );
 }

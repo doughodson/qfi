@@ -48,10 +48,6 @@
 
 #include "qfi_HSI.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 qfi_HSI::qfi_HSI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();

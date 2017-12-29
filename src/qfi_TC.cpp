@@ -48,29 +48,22 @@
 
 #include "qfi_TC.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 qfi_TC::qfi_TC(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
 
-    m_scene = new QGraphicsScene( this );
+    m_scene = new QGraphicsScene(this);
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 
 qfi_TC::~qfi_TC()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();
@@ -78,10 +71,8 @@ qfi_TC::~qfi_TC()
 
 void qfi_TC::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }
@@ -179,8 +170,6 @@ void qfi_TC::updateView()
     m_itemBall->setRotation( -m_slipSkid );
 
     const float angle = ( m_turnRate / 3.0f ) * 20.0f;
-
     m_itemMark->setRotation( angle );
-
     m_scene->update();
 }

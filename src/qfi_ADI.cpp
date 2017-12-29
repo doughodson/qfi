@@ -48,13 +48,8 @@
 
 #include "qfi_ADI.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 #include <QGraphicsSvgItem>
 
-#include <math.h>
 #include <cmath>
 
 qfi_ADI::qfi_ADI( QWidget *parent ) : QGraphicsView ( parent )

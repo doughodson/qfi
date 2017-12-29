@@ -45,10 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETVSI_H
-#define WIDGETVSI_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __WIDGETVSI_H__
+#define __WIDGETVSI_H__
 
 #include <QWidget>
 
@@ -56,14 +54,7 @@
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetVSI;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetVSI; }
 
 class WidgetVSI : public QWidget
 {
@@ -71,29 +62,24 @@ class WidgetVSI : public QWidget
 
 public:
 
-    explicit WidgetVSI( QWidget *parent = 0 );
-
+    explicit WidgetVSI(QWidget* parent = nullptr);
     ~WidgetVSI();
 
-    inline void update()
-    {
+    inline void update() {
         m_vsi->update();
     }
 
-    inline void setClimbRate( float climbRate )
-    {
-        m_vsi->setClimbRate( climbRate );
+    inline void setClimbRate(const float climbRate) {
+        m_vsi->setClimbRate(climbRate);
     }
 
 private:
-
-    Ui::WidgetVSI *m_ui;
-    qfi_VSI       *m_vsi;
-    LayoutSquare  *m_layoutSq;
-
     void setupUi();
+
+    Ui::WidgetVSI* m_ui{};
+    qfi_VSI* m_vsi{};
+    LayoutSquare* m_layoutSq{};
+
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETVSI_H
+#endif

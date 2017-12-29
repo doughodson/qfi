@@ -48,10 +48,6 @@
 
 #include "qfi_ASI.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 qfi_ASI::qfi_ASI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
@@ -147,30 +143,21 @@ void qfi_ASI::reset()
 
 void qfi_ASI::updateView()
 {
-    float angle = 0.0f;
+    float angle{};
 
-    if ( m_airspeed < 40.0f )
-    {
+    if ( m_airspeed < 40.0f ) {
         angle = 0.9f * m_airspeed;
-    }
-    else if ( m_airspeed < 70.0f )
-    {
+    } else if ( m_airspeed < 70.0f ) {
         angle = 36.0f + 1.8f * ( m_airspeed - 40.0f );
-    }
-    else if ( m_airspeed < 130.0f )
-    {
+    } else if ( m_airspeed < 130.0f ) {
         angle = 90.0f + 2.0f * ( m_airspeed - 70.0f );
-    }
-    else if ( m_airspeed < 160.0f )
-    {
+    } else if ( m_airspeed < 160.0f ) {
         angle = 210.0f + 1.8f * ( m_airspeed - 130.0f );
-    }
-    else
-    {
+    } else {
         angle = 264.0f + 1.2f * ( m_airspeed - 160.0f );
     }
 
-    m_itemHand->setRotation( angle );
+    m_itemHand->setRotation(angle);
 
     m_scene->update();
 }

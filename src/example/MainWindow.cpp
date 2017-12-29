@@ -45,60 +45,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef MAINWINDOW_CPP
-#define MAINWINDOW_CPP
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-using namespace std;
-
-////////////////////////////////////////////////////////////////////////////////
-
-MainWindow::MainWindow( QWidget *parent ) :
-    QMainWindow( parent ),
-    m_ui( new Ui::MainWindow ),
-
-    m_timerId ( 0 ),
-    m_steps   ( 0 ),
-
-    m_realTime ( 0.0 )
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow)
 {
-    m_ui->setupUi( this );
-
-    m_timerId  = startTimer( 0 );
-
+    m_ui->setupUi(this);
+    m_timerId = startTimer(0);
     m_time.start();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
 MainWindow::~MainWindow()
 {
-    cout << "Average time step: " << ( (double)m_realTime ) / ( (double)m_steps ) << " s" << endl;
+    std::cout << "Average time step: " << ( (double)m_realTime ) / ( (double)m_steps ) << " s" << std::endl;
 
     if ( m_timerId ) killTimer( m_timerId );
 
     if ( m_ui ) { delete m_ui; m_ui = nullptr; }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void MainWindow::timerEvent( QTimerEvent *event )
+void MainWindow::timerEvent(QTimerEvent* event)
 {
-    /////////////////////////////////
     QMainWindow::timerEvent( event );
-    /////////////////////////////////
 
-    float timeStep = m_time.restart();
+    const float timeStep = m_time.restart();
 
     m_realTime = m_realTime + timeStep / 1000.0f;
 
@@ -119,24 +93,23 @@ void MainWindow::timerEvent( QTimerEvent *event )
     float adf       =  0.0f;
     float dme       =  0.0f;
 
-    if ( m_ui->pushButtonAuto->isChecked() )
-    {
-        alpha     =   20.0f * sin( m_realTime /  10.0f );
-        beta      =   15.0f * sin( m_realTime /  10.0f );
-        roll      =  180.0f * sin( m_realTime /  10.0f );
-        pitch     =   90.0f * sin( m_realTime /  20.0f );
-        heading   =  360.0f * sin( m_realTime /  40.0f );
-        slipSkid  =    1.0f * sin( m_realTime /  10.0f );
-        turnRate  =    7.0f * sin( m_realTime /  10.0f );
-        devH      =    1.0f * sin( m_realTime /  20.0f );
-        devV      =    1.0f * sin( m_realTime /  20.0f );
-        airspeed  =  125.0f * sin( m_realTime /  40.0f ) +  125.0f;
-        altitude  = 9000.0f * sin( m_realTime /  40.0f ) + 9000.0f;
-        pressure  =    2.0f * sin( m_realTime /  20.0f ) +   30.0f;
-        climbRate =  650.0f * sin( m_realTime /  20.0f );
+    if ( m_ui->pushButtonAuto->isChecked() ) {
+        alpha     =   20.0f * std::sin( m_realTime /  10.0f );
+        beta      =   15.0f * std::sin( m_realTime /  10.0f );
+        roll      =  180.0f * std::sin( m_realTime /  10.0f );
+        pitch     =   90.0f * std::sin( m_realTime /  20.0f );
+        heading   =  360.0f * std::sin( m_realTime /  40.0f );
+        slipSkid  =    1.0f * std::sin( m_realTime /  10.0f );
+        turnRate  =    7.0f * std::sin( m_realTime /  10.0f );
+        devH      =    1.0f * std::sin( m_realTime /  20.0f );
+        devV      =    1.0f * std::sin( m_realTime /  20.0f );
+        airspeed  =  125.0f * std::sin( m_realTime /  40.0f ) +  125.0f;
+        altitude  = 9000.0f * std::sin( m_realTime /  40.0f ) + 9000.0f;
+        pressure  =    2.0f * std::sin( m_realTime /  20.0f ) +   30.0f;
+        climbRate =  650.0f * std::sin( m_realTime /  20.0f );
         machNo    = airspeed / 650.0f;
-        adf       = -360.0f * sin( m_realTime /  50.0f );
-        dme       =   99.0f * sin( m_realTime / 100.0f );
+        adf       = -360.0f * std::sin( m_realTime /  50.0f );
+        dme       =   99.0f * std::sin( m_realTime / 100.0f );
 
         m_ui->spinBoxAlpha ->setValue( alpha     );
         m_ui->spinBoxBeta  ->setValue( beta      );
@@ -154,9 +127,7 @@ void MainWindow::timerEvent( QTimerEvent *event )
         m_ui->spinBoxClimb ->setValue( climbRate );
         m_ui->spinBoxADF   ->setValue( adf       );
         m_ui->spinBoxDME   ->setValue( dme       );
-    }
-    else
-    {
+    } else {
         alpha     = (float)m_ui->spinBoxAlpha ->value();
         beta      = (float)m_ui->spinBoxBeta  ->value();
         roll      = (float)m_ui->spinBoxRoll  ->value();

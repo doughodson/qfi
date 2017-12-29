@@ -48,10 +48,6 @@
 
 #include "qfi_ALT.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 #include <cmath>
 
 qfi_ALT::qfi_ALT(QWidget* parent) : QGraphicsView (parent)

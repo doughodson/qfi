@@ -51,13 +51,9 @@
 #include <iostream>
 #include <cmath>
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
 qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
 {
-#   ifdef WIN32
+#ifdef WIN32
     m_crsTextFont.setFamily( "Courier" );
     m_crsTextFont.setPointSizeF( 12.0f );
     m_crsTextFont.setStretch( QFont::Condensed );
@@ -72,7 +68,7 @@ qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
     m_dmeTextFont.setPointSizeF( 10.0f );
     m_dmeTextFont.setStretch( QFont::Condensed );
     m_dmeTextFont.setWeight( QFont::Bold );
-#   else
+#else
     m_crsTextFont.setFamily( "courier" );
     m_crsTextFont.setPointSizeF( 12.0f );
     m_crsTextFont.setStretch( QFont::Condensed );
@@ -87,7 +83,7 @@ qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
     m_dmeTextFont.setPointSizeF( 10.0f );
     m_dmeTextFont.setStretch( QFont::Condensed );
     m_dmeTextFont.setWeight( QFont::Bold );
-#   endif
+#endif
 
     reset();
 
@@ -101,11 +97,10 @@ qfi_NAV::qfi_NAV(QWidget* parent) : QGraphicsView(parent)
 
 qfi_NAV::~qfi_NAV()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();
@@ -113,10 +108,8 @@ qfi_NAV::~qfi_NAV()
 
 void qfi_NAV::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }
@@ -322,29 +315,23 @@ void qfi_NAV::updateView()
     m_itemHdgBug->setRotation( -m_heading + m_headingBug );
     m_itemHdgScale->setRotation( -m_heading );
 
-    if ( m_bearingVisible )
-    {
+    if (m_bearingVisible) {
         m_itemBrgArrow->setVisible( true );
         m_itemBrgArrow->setRotation( -m_heading + m_bearing );
-    }
-    else
-    {
+    } else {
         m_itemBrgArrow->setVisible( false );
     }
 
-    if ( m_deviationVisible )
-    {
+    if ( m_deviationVisible ) {
         m_itemDevBar->setVisible( true );
         m_itemDevScale->setVisible( true );
 
         float angle_deg = -m_heading + m_course;
-#       ifndef M_PI
+#ifndef M_PI
         const float angle_rad = 3.14159265358979323846 * angle_deg / 180.0f;
-#       else
+#else
         const float angle_rad = M_PI * angle_deg / 180.0f;
-#       endif
-
-
+#endif
         const float sinAngle = std::sin( angle_rad );
         const float cosAngle = std::cos( angle_rad );
 
@@ -357,9 +344,7 @@ void qfi_NAV::updateView()
         m_devBarDeltaY_new = m_scaleY * delta * sinAngle;
 
         m_itemDevBar->moveBy( m_devBarDeltaX_new - m_devBarDeltaX_old, m_devBarDeltaY_new - m_devBarDeltaY_old );
-    }
-    else
-    {
+    } else {
         m_itemDevBar->setVisible( false );
         m_itemDevScale->setVisible( false );
 
@@ -370,13 +355,10 @@ void qfi_NAV::updateView()
     m_itemCrsText->setPlainText( QString("CRS %1").arg( m_course     , 3, 'f', 0, QChar('0') ) );
     m_itemHdgText->setPlainText( QString("HDG %1").arg( m_headingBug , 3, 'f', 0, QChar('0') ) );
 
-    if ( m_distanceVisible )
-    {
+    if ( m_distanceVisible ) {
         m_itemDmeText->setVisible( true );
         m_itemDmeText->setPlainText( QString("%1 NM").arg( m_distance, 5, 'f', 1, QChar(' ') ) );
-    }
-    else
-    {
+    } else {
         m_itemDmeText->setVisible( false );
     }
 

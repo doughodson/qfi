@@ -367,12 +367,12 @@ private:
         float m_scaleX{1.0};
         float m_scaleY{1.0};
 
-        const float m_originalPixPerAlt{0.150};
-        const float m_originalScaleHeight{300.0};
-        const float m_originalLabelsX{250.0};
-        const float m_originalLabel1Y{50.0};
-        const float m_originalLabel2Y{125.0};
-        const float m_originalLabel3Y{200.0};
+        const float m_originalPixPerAlt{0.150f};
+        const float m_originalScaleHeight{300.0f};
+        const float m_originalLabelsX{250.0f};
+        const float m_originalLabel1Y{50.0f};
+        const float m_originalLabel2Y{125.0f};
+        const float m_originalLabel3Y{200.0f};
 
         QPointF m_originalBackPos{231.0, 37.5};
         QPointF m_originalScale1Pos{231.0, -174.5};

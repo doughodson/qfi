@@ -48,29 +48,22 @@
 
 #include "qfi_VSI.h"
 
-#ifdef WIN32
-#   include <float.h>
-#endif
-
-qfi_VSI::qfi_VSI(QWidget* parent) : QGraphicsView (parent)
+qfi_VSI::qfi_VSI(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
 
-    m_scene = new QGraphicsScene( this );
-    setScene( m_scene );
-
+    m_scene = new QGraphicsScene(this);
+    setScene(m_scene);
     m_scene->clear();
-
     init();
 }
 
 qfi_VSI::~qfi_VSI()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
         delete m_scene;
-        m_scene = 0;
+        m_scene = nullptr;
     }
 
     reset();
@@ -78,10 +71,8 @@ qfi_VSI::~qfi_VSI()
 
 void qfi_VSI::reinit()
 {
-    if ( m_scene )
-    {
+    if (m_scene) {
         m_scene->clear();
-
         init();
     }
 }
@@ -147,7 +138,6 @@ void qfi_VSI::reset()
 
 void qfi_VSI::updateView()
 {
-    m_itemHand->setRotation( m_climbRate * 0.086f );
-
+    m_itemHand->setRotation(m_climbRate * 0.086f);
     m_scene->update();
 }

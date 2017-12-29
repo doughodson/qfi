@@ -45,10 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETSIX_H
-#define WIDGETSIX_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __WIDGETSIX_H__
+#define __WIDGETSIX_H__
 
 #include <QWidget>
 
@@ -59,14 +57,7 @@
 #include "WidgetTC.h"
 #include "WidgetVSI.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetSix;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetSix; }
 
 class WidgetSix : public QWidget
 {
@@ -74,69 +65,57 @@ class WidgetSix : public QWidget
 
 public:
 
-    explicit WidgetSix( QWidget *parent = 0 );
-
+    explicit WidgetSix(QWidget* parent = nullptr);
     ~WidgetSix();
 
     void update();
 
-    inline void setRoll( float roll )
-    {
+    inline void setRoll(const float roll) {
         m_widgetADI->setRoll( roll );
     }
 
-    inline void setPitch( float pitch )
-    {
+    inline void setPitch(const float pitch) {
         m_widgetADI->setPitch( pitch );
     }
 
-    inline void setAltitude( float altitude )
-    {
+    inline void setAltitude(const float altitude) {
         m_widgetALT->setAltitude( altitude );
     }
 
-    inline void setPressure( float pressure )
-    {
+    inline void setPressure(const float pressure) {
         m_widgetALT->setPressure( pressure );
     }
 
-    inline void setAirspeed( float airspeed )
-    {
+    inline void setAirspeed(const float airspeed) {
         m_widgetASI->setAirspeed( airspeed );
     }
 
-    inline void setHeading( float heading )
-    {
+    inline void setHeading(const float heading) {
         m_widgetHSI->setHeading( heading );
     }
 
-    inline void setTurnRate( float turnRate )
-    {
+    inline void setTurnRate(const float turnRate) {
         m_widgetTC->setTurnRate( turnRate );
     }
 
-    inline void setSlipSkid( float slipSkid )
-    {
+    inline void setSlipSkid(const float slipSkid) {
         m_widgetTC->setSlipSkid( slipSkid );
     }
 
-    inline void setClimbRate( float climbRate )
-    {
+    inline void setClimbRate(const float climbRate) {
         m_widgetVSI->setClimbRate( climbRate );
     }
 
 private:
 
-    Ui::WidgetSix *m_ui;
+    Ui::WidgetSix* m_ui{};
 
-    WidgetADI *m_widgetADI;
-    WidgetALT *m_widgetALT;
-    WidgetASI *m_widgetASI;
-    WidgetHSI *m_widgetHSI;
-    WidgetTC  *m_widgetTC;
-    WidgetVSI *m_widgetVSI;
+    WidgetADI* m_widgetADI{};
+    WidgetALT* m_widgetALT{};
+    WidgetASI* m_widgetASI{};
+    WidgetHSI* m_widgetHSI{};
+    WidgetTC * m_widgetTC{};
+    WidgetVSI* m_widgetVSI{};
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETSIX_H
+#endif

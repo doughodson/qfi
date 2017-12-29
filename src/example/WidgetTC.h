@@ -45,10 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef WIDGETTC_H
-#define WIDGETTC_H
-
-////////////////////////////////////////////////////////////////////////////////
+#ifndef __WIDGETTC_H__
+#define __WIDGETTC_H__
 
 #include <QWidget>
 
@@ -56,49 +54,34 @@
 
 #include "LayoutSquare.h"
 
-////////////////////////////////////////////////////////////////////////////////
-
-namespace Ui
-{
-    class WidgetTC;
-}
-
-////////////////////////////////////////////////////////////////////////////////
+namespace Ui { class WidgetTC; }
 
 class WidgetTC : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    explicit WidgetTC( QWidget *parent = 0 );
-
+    explicit WidgetTC(QWidget* parent = nullptr);
     ~WidgetTC();
 
-    inline void update()
-    {
+    inline void update() {
         m_tc->update();
     }
 
-    inline void setTurnRate( float turnRate )
-    {
-        m_tc->setTurnRate( turnRate );
+    inline void setTurnRate(const float turnRate) {
+        m_tc->setTurnRate(turnRate);
     }
 
-    inline void setSlipSkid( float slipSkid )
-    {
+    inline void setSlipSkid(const float slipSkid) {
         m_tc->setSlipSkid( slipSkid );
     }
 
 private:
-
-    Ui::WidgetTC *m_ui;
-    qfi_TC       *m_tc;
-    LayoutSquare *m_layoutSq;
-
     void setupUi();
+
+    Ui::WidgetTC* m_ui{};
+    qfi_TC* m_tc{};
+    LayoutSquare* m_layoutSq{};
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
-#endif // WIDGETTC_H
+#endif

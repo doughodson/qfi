@@ -60,15 +60,13 @@ class LayoutSquare : public QLayout
 
 public:
 
-    explicit LayoutSquare( QWidget *parent, int spacing = -1 );
-
-    explicit LayoutSquare( int spacing = -1 );
-
+    explicit LayoutSquare(QWidget* parent, const int spacing = -1);
+    explicit LayoutSquare(const int spacing = -1);
     ~LayoutSquare();
 
-    void addItem( QLayoutItem *item );
+    void addItem(QLayoutItem*);
 
-    void addWidget( QWidget *widget );
+    void addWidget(QWidget*);
 
     int count() const;
 
@@ -80,36 +78,36 @@ public:
 
     bool hasItem() const;
 
-    QLayoutItem* itemAt( int index ) const;
+    QLayoutItem* itemAt(const int index) const;
 
     QSize minimumSize() const;
 
-    QLayoutItem* replaceItem( QLayoutItem *item );
+    QLayoutItem* replaceItem(QLayoutItem*);
 
-    void setGeometry( const QRect &rect );
+    void setGeometry(const QRect&);
 
     QSize sizeHint() const;
 
     QLayoutItem* take();
 
-    QLayoutItem* takeAt( int index );
+    QLayoutItem* takeAt(const int index);
 
 private:
 
-    QLayoutItem *m_item;
+    QLayoutItem* m_item{};
 
-    QRect *m_rectLast;
-    QRect *m_geometry;
+    QRect* m_rectLast{};
+    QRect* m_geometry{};
 
-    bool areRectsEqual( const QRect &rect_1, const QRect &rect_2 ) const;
+    bool areRectsEqual(const QRect& rect_1, const QRect& rect_2) const;
 
-    QPoint calculateCenterPnt( QSize fromSize, QSize itemSize ) const;
+    QPoint calculateCenterPnt(QSize fromSize, QSize itemSize) const;
 
-    QSize calculateProperSize( QSize fromSize ) const;
+    QSize calculateProperSize(QSize fromSize) const;
 
-    void init( int spacing );
+    void init(const int spacing);
 
-    void setRectLast( const QRect &rect );
+    void setRectLast(const QRect& rect);
 };
 
 #endif
