@@ -15,7 +15,7 @@ src/Makefile
 libqfi*.*
 
 # example apps
-src/qfi_example
+src/example1
 src/qrc_qfi.cpp
 build-*/
 
