@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_PFD.hpp"
+#include "Pfd.hpp"
 
 #include <QGraphicsSvgItem>
 
@@ -56,7 +56,9 @@
 #   define M_PI 3.14159265358979323846
 #endif
 
-qfi_PFD::qfi_PFD(QWidget* parent) :  QGraphicsView(parent)
+namespace qfi {
+
+Pfd::Pfd(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
     m_scene = new QGraphicsScene(this);
@@ -72,7 +74,7 @@ qfi_PFD::qfi_PFD(QWidget* parent) :  QGraphicsView(parent)
     init();
 }
 
-qfi_PFD::~qfi_PFD()
+Pfd::~Pfd()
 {
     if ( m_scene ) {
         m_scene->clear();
@@ -89,7 +91,7 @@ qfi_PFD::~qfi_PFD()
     if ( m_vsi ) { delete m_vsi; m_vsi = nullptr; }
 }
 
-void qfi_PFD::reinit()
+void Pfd::reinit()
 {
     if (m_scene) {
         m_scene->clear();
@@ -97,18 +99,18 @@ void qfi_PFD::reinit()
     }
 }
 
-void qfi_PFD::update()
+void Pfd::update()
 {
     updateView();
 }
 
-void qfi_PFD::resizeEvent(QResizeEvent* event)
+void Pfd::resizeEvent(QResizeEvent* event)
 {
     QGraphicsView::resizeEvent(event);
     reinit();
 }
 
-void qfi_PFD::init()
+void Pfd::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -136,13 +138,13 @@ void qfi_PFD::init()
     updateView();
 }
 
-void qfi_PFD::reset()
+void Pfd::reset()
 {
     m_itemBack = 0;
     m_itemMask = 0;
 }
 
-void qfi_PFD::updateView()
+void Pfd::updateView()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -156,12 +158,12 @@ void qfi_PFD::updateView()
     m_scene->update();
 }
 
-qfi_PFD::ADI::ADI(QGraphicsScene* scene) : m_scene(scene)
+Pfd::ADI::ADI(QGraphicsScene* scene) : m_scene(scene)
 {
     reset();
 }
 
-void qfi_PFD::ADI::init(const float scaleX, const float scaleY)
+void Pfd::ADI::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -272,7 +274,7 @@ void qfi_PFD::ADI::init(const float scaleX, const float scaleY)
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::ADI::update(const float scaleX, const float scaleY)
+void Pfd::ADI::update(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -310,7 +312,7 @@ void qfi_PFD::ADI::update(const float scaleX, const float scaleY)
     m_dotVDeltaY_old     = m_dotVDeltaY_new;
 }
 
-void qfi_PFD::ADI::setRoll(const float roll)
+void Pfd::ADI::setRoll(const float roll)
 {
     m_roll = roll;
 
@@ -318,7 +320,7 @@ void qfi_PFD::ADI::setRoll(const float roll)
     else if ( m_roll >  180.0f ) m_roll =  180.0f;
 }
 
-void qfi_PFD::ADI::setPitch(const float pitch)
+void Pfd::ADI::setPitch(const float pitch)
 {
     m_pitch = pitch;
 
@@ -326,7 +328,7 @@ void qfi_PFD::ADI::setPitch(const float pitch)
     else if ( m_pitch >  90.0f ) m_pitch =  90.0f;
 }
 
-void qfi_PFD::ADI::setFlightPathMarker(const float aoa, const float sideslip, const bool visible)
+void Pfd::ADI::setFlightPathMarker(const float aoa, const float sideslip, const bool visible)
 {
     m_angleOfAttack = aoa;
     m_sideslipAngle = sideslip;
@@ -352,7 +354,7 @@ void qfi_PFD::ADI::setFlightPathMarker(const float aoa, const float sideslip, co
     m_pathVisible = visible;
 }
 
-void qfi_PFD::ADI::setSlipSkid(const float slipSkid)
+void Pfd::ADI::setSlipSkid(const float slipSkid)
 {
     m_slipSkid = slipSkid;
 
@@ -360,7 +362,7 @@ void qfi_PFD::ADI::setSlipSkid(const float slipSkid)
     else if ( m_slipSkid >  1.0f ) m_slipSkid =  1.0f;
 }
 
-void qfi_PFD::ADI::setTurnRate(const float turnRate)
+void Pfd::ADI::setTurnRate(const float turnRate)
 {
     m_turnRate = turnRate;
 
@@ -368,7 +370,7 @@ void qfi_PFD::ADI::setTurnRate(const float turnRate)
     else if ( m_turnRate >  1.0f ) m_turnRate =  1.0f;
 }
 
-void qfi_PFD::ADI::setBarH(const float barH, const bool visible )
+void Pfd::ADI::setBarH(const float barH, const bool visible )
 {
     m_barH = barH;
 
@@ -378,7 +380,7 @@ void qfi_PFD::ADI::setBarH(const float barH, const bool visible )
     m_barHVisible = visible;
 }
 
-void qfi_PFD::ADI::setBarV(const float barV, const bool visible )
+void Pfd::ADI::setBarV(const float barV, const bool visible )
 {
     m_barV = barV;
 
@@ -388,7 +390,7 @@ void qfi_PFD::ADI::setBarV(const float barV, const bool visible )
     m_barVVisible = visible;
 }
 
-void qfi_PFD::ADI::setDotH(const float dotH, const bool visible )
+void Pfd::ADI::setDotH(const float dotH, const bool visible )
 {
     m_dotH = dotH;
 
@@ -398,7 +400,7 @@ void qfi_PFD::ADI::setDotH(const float dotH, const bool visible )
     m_dotHVisible = visible;
 }
 
-void qfi_PFD::ADI::setDotV(const float dotV, const bool visible )
+void Pfd::ADI::setDotV(const float dotV, const bool visible )
 {
     m_dotV = dotV;
 
@@ -408,7 +410,7 @@ void qfi_PFD::ADI::setDotV(const float dotV, const bool visible )
     m_dotVVisible = visible;
 }
 
-void qfi_PFD::ADI::reset()
+void Pfd::ADI::reset()
 {
     m_itemBack   = 0;
     m_itemLadd   = 0;
@@ -476,7 +478,7 @@ void qfi_PFD::ADI::reset()
     m_dotVDeltaY_old     = 0.0f;
 }
 
-void qfi_PFD::ADI::updateLadd(const float delta, const float sinRoll, const float cosRoll)
+void Pfd::ADI::updateLadd(const float delta, const float sinRoll, const float cosRoll)
 {
     m_itemLadd->setRotation(-m_roll);
 
@@ -486,7 +488,7 @@ void qfi_PFD::ADI::updateLadd(const float delta, const float sinRoll, const floa
     m_itemLadd->moveBy( m_laddDeltaX_new - m_laddDeltaX_old, m_laddDeltaY_new - m_laddDeltaY_old );
 }
 
-void qfi_PFD::ADI::updateLaddBack(const float delta, const float sinRoll, const float cosRoll)
+void Pfd::ADI::updateLaddBack(const float delta, const float sinRoll, const float cosRoll)
 {
     m_itemBack->setRotation(-m_roll);
 
@@ -506,12 +508,12 @@ void qfi_PFD::ADI::updateLaddBack(const float delta, const float sinRoll, const 
     m_itemBack->moveBy( m_laddBackDeltaX_new - m_laddBackDeltaX_old, m_laddBackDeltaY_new - m_laddBackDeltaY_old );
 }
 
-void qfi_PFD::ADI::updateRoll()
+void Pfd::ADI::updateRoll()
 {
     m_itemRoll->setRotation(-m_roll);
 }
 
-void qfi_PFD::ADI::updateSlipSkid(const float sinRoll, const float cosRoll)
+void Pfd::ADI::updateSlipSkid(const float sinRoll, const float cosRoll)
 {
     m_itemSlip->setRotation(-m_roll);
 
@@ -523,13 +525,13 @@ void qfi_PFD::ADI::updateSlipSkid(const float sinRoll, const float cosRoll)
     m_itemSlip->moveBy( m_slipDeltaX_new - m_slipDeltaX_old, m_slipDeltaY_new - m_slipDeltaY_old );
 }
 
-void qfi_PFD::ADI::updateTurnRate()
+void Pfd::ADI::updateTurnRate()
 {
     m_turnDeltaX_new = m_scaleX * m_maxTurnDeflection * m_turnRate;
     m_itemTurn->moveBy( m_turnDeltaX_new - m_turnDeltaX_old, 0.0 );
 }
 
-void qfi_PFD::ADI::updateFlightPath()
+void Pfd::ADI::updateFlightPath()
 {
     if (m_pathVisible) {
         m_itemPath->setVisible( true );
@@ -562,7 +564,7 @@ void qfi_PFD::ADI::updateFlightPath()
     }
 }
 
-void qfi_PFD::ADI::updateBars()
+void Pfd::ADI::updateBars()
 {
     if (m_barVVisible) {
         m_itemBarV->setVisible( true );
@@ -587,7 +589,7 @@ void qfi_PFD::ADI::updateBars()
     }
 }
 
-void qfi_PFD::ADI::updateDots()
+void Pfd::ADI::updateDots()
 {
     if (m_dotHVisible) {
         m_itemDotH->setVisible( true );
@@ -618,7 +620,7 @@ void qfi_PFD::ADI::updateDots()
     }
 }
 
-qfi_PFD::ALT::ALT(QGraphicsScene* scene) : m_scene ( scene )
+Pfd::ALT::ALT(QGraphicsScene* scene) : m_scene(scene)
 {
 #   ifdef WIN32
     m_frameTextFont.setFamily( "Courier" );
@@ -645,7 +647,7 @@ qfi_PFD::ALT::ALT(QGraphicsScene* scene) : m_scene ( scene )
     reset();
 }
 
-void qfi_PFD::ALT::init(const float scaleX, const float scaleY)
+void Pfd::ALT::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -740,7 +742,7 @@ void qfi_PFD::ALT::init(const float scaleX, const float scaleY)
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::ALT::update(const float scaleX, const float scaleY)
+void Pfd::ALT::update(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -755,7 +757,7 @@ void qfi_PFD::ALT::update(const float scaleX, const float scaleY)
 
 }
 
-void qfi_PFD::ALT::setAltitude(const float altitude)
+void Pfd::ALT::setAltitude(const float altitude)
 {
     m_altitude = altitude;
 
@@ -763,7 +765,7 @@ void qfi_PFD::ALT::setAltitude(const float altitude)
     else if ( m_altitude > 99999.0f ) m_altitude = 99999.0f;
 }
 
-void qfi_PFD::ALT::setPressure(const float pressure, const int pressureUnit)
+void Pfd::ALT::setPressure(const float pressure, const int pressureUnit)
 {
     m_pressure = pressure;
 
@@ -776,7 +778,7 @@ void qfi_PFD::ALT::setPressure(const float pressure, const int pressureUnit)
     else if ( pressureUnit == 2 ) m_pressureUnit = 2;
 }
 
-void qfi_PFD::ALT::reset()
+void Pfd::ALT::reset()
 {
     m_itemBack     = 0;
     m_itemScale1   = 0;
@@ -804,7 +806,7 @@ void qfi_PFD::ALT::reset()
     m_labelsDeltaY_old = 0.0f;
 }
 
-void qfi_PFD::ALT::updateAltitude()
+void Pfd::ALT::updateAltitude()
 {
     m_itemAltitude->setPlainText( QString("%1").arg(m_altitude, 5, 'f', 0, QChar(' ')) );
 
@@ -812,7 +814,7 @@ void qfi_PFD::ALT::updateAltitude()
     updateScaleLabels();
 }
 
-void qfi_PFD::ALT::updatePressure()
+void Pfd::ALT::updatePressure()
 {
     if (m_pressureUnit == 0) {
         m_itemPressure->setPlainText( QString( "  STD  " ) );
@@ -823,7 +825,7 @@ void qfi_PFD::ALT::updatePressure()
     }
 }
 
-void qfi_PFD::ALT::updateScale()
+void Pfd::ALT::updateScale()
 {
     m_scale1DeltaY_new = m_scaleY * m_originalPixPerAlt * m_altitude;
     m_scale2DeltaY_new = m_scale1DeltaY_new;
@@ -847,7 +849,7 @@ void qfi_PFD::ALT::updateScale()
     m_itemGround->moveBy( 0.0f, m_groundDeltaY_new - m_groundDeltaY_old );
 }
 
-void qfi_PFD::ALT::updateScaleLabels()
+void Pfd::ALT::updateScaleLabels()
 {
     const int tmp = std::floor( m_altitude + 0.5f );
     const int alt = tmp - ( tmp % 500 );
@@ -894,7 +896,7 @@ void qfi_PFD::ALT::updateScaleLabels()
     }
 }
 
-qfi_PFD::ASI::ASI(QGraphicsScene* scene) : m_scene(scene)
+Pfd::ASI::ASI(QGraphicsScene* scene) : m_scene(scene)
 {
 #   ifdef WIN32
     m_frameTextFont.setFamily( "Courier" );
@@ -921,7 +923,7 @@ qfi_PFD::ASI::ASI(QGraphicsScene* scene) : m_scene(scene)
     reset();
 }
 
-void qfi_PFD::ASI::init(const float scaleX, const float scaleY)
+void Pfd::ASI::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1051,7 +1053,7 @@ void qfi_PFD::ASI::init(const float scaleX, const float scaleY)
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::ASI::update(const float scaleX, const float scaleY)
+void Pfd::ASI::update(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1063,7 +1065,7 @@ void qfi_PFD::ASI::update(const float scaleX, const float scaleY)
     m_labelsDeltaY_old = m_labelsDeltaY_new;
 }
 
-void qfi_PFD::ASI::setAirspeed(const float airspeed)
+void Pfd::ASI::setAirspeed(const float airspeed)
 {
     m_airspeed = airspeed;
 
@@ -1071,7 +1073,7 @@ void qfi_PFD::ASI::setAirspeed(const float airspeed)
     else if ( m_airspeed > 9999.0f ) m_airspeed = 9999.0f;
 }
 
-void qfi_PFD::ASI::setMachNo(const float machNo)
+void Pfd::ASI::setMachNo(const float machNo)
 {
     m_machNo = machNo;
 
@@ -1079,7 +1081,7 @@ void qfi_PFD::ASI::setMachNo(const float machNo)
     else if ( m_machNo > 99.9f ) m_machNo = 99.9f;
 }
 
-void qfi_PFD::ASI::reset()
+void Pfd::ASI::reset()
 {
     m_itemBack     = 0;
     m_itemScale1   = 0;
@@ -1106,7 +1108,7 @@ void qfi_PFD::ASI::reset()
     m_labelsDeltaY_old = 0.0f;
 }
 
-void qfi_PFD::ASI::updateAirspeed()
+void Pfd::ASI::updateAirspeed()
 {
     m_itemAirspeed->setPlainText( QString("%1").arg(m_airspeed, 3, 'f', 0, QChar('0')) );
 
@@ -1125,7 +1127,7 @@ void qfi_PFD::ASI::updateAirspeed()
     updateScaleLabels();
 }
 
-void qfi_PFD::ASI::updateScale()
+void Pfd::ASI::updateScale()
 {
     m_scale1DeltaY_new = m_scaleY * m_originalPixPerSpd * m_airspeed;
     m_scale2DeltaY_new = m_scale1DeltaY_new;
@@ -1145,7 +1147,7 @@ void qfi_PFD::ASI::updateScale()
     m_itemScale2->moveBy( 0.0f, m_scale2DeltaY_new - m_scale2DeltaY_old );
 }
 
-void qfi_PFD::ASI::updateScaleLabels()
+void Pfd::ASI::updateScaleLabels()
 {
     m_labelsDeltaY_new = m_scaleY * m_originalPixPerSpd * m_airspeed;
 
@@ -1232,7 +1234,7 @@ void qfi_PFD::ASI::updateScaleLabels()
     }
 }
 
-qfi_PFD::HSI::HSI(QGraphicsScene* scene) : m_scene(scene)
+Pfd::HSI::HSI(QGraphicsScene* scene) : m_scene(scene)
 {
     m_frameTextFont.setFamily( "Courier" );
     m_frameTextFont.setPointSizeF( 10.0 );
@@ -1242,7 +1244,7 @@ qfi_PFD::HSI::HSI(QGraphicsScene* scene) : m_scene(scene)
     reset();
 }
 
-void qfi_PFD::HSI::init( float scaleX, float scaleY )
+void Pfd::HSI::init( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1285,7 +1287,7 @@ void qfi_PFD::HSI::init( float scaleX, float scaleY )
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::HSI::update( float scaleX, float scaleY )
+void Pfd::HSI::update( float scaleX, float scaleY )
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1293,7 +1295,7 @@ void qfi_PFD::HSI::update( float scaleX, float scaleY )
     updateHeading();
 }
 
-void qfi_PFD::HSI::setHeading( float heading )
+void Pfd::HSI::setHeading( float heading )
 {
     m_heading = heading;
 
@@ -1306,7 +1308,7 @@ void qfi_PFD::HSI::setHeading( float heading )
     }
 }
 
-void qfi_PFD::HSI::reset()
+void Pfd::HSI::reset()
 {
     m_itemBack      = nullptr;
     m_itemFace      = nullptr;
@@ -1316,19 +1318,19 @@ void qfi_PFD::HSI::reset()
     m_heading  = 0.0f;
 }
 
-void qfi_PFD::HSI::updateHeading()
+void Pfd::HSI::updateHeading()
 {
     m_itemFace->setRotation( - m_heading );
     const float fHeading = floor( m_heading + 0.5f );
     m_itemFrameText->setPlainText( QString("%1").arg(fHeading, 3, 'f', 0, QChar('0')) );
 }
 
-qfi_PFD::VSI::VSI(QGraphicsScene* scene) : m_scene(scene)
+Pfd::VSI::VSI(QGraphicsScene* scene) : m_scene(scene)
 {
     reset();
 }
 
-void qfi_PFD::VSI::init(const float scaleX, const float scaleY)
+void Pfd::VSI::init(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1352,7 +1354,7 @@ void qfi_PFD::VSI::init(const float scaleX, const float scaleY)
     update( scaleX, scaleY );
 }
 
-void qfi_PFD::VSI::update(const float scaleX, const float scaleY)
+void Pfd::VSI::update(const float scaleX, const float scaleY)
 {
     m_scaleX = scaleX;
     m_scaleY = scaleY;
@@ -1362,7 +1364,7 @@ void qfi_PFD::VSI::update(const float scaleX, const float scaleY)
     m_arrowDeltaY_old = m_arrowDeltaY_new;
 }
 
-void qfi_PFD::VSI::setClimbRate(const float climbRate)
+void Pfd::VSI::setClimbRate(const float climbRate)
 {
     m_climbRate = climbRate;
 
@@ -1370,7 +1372,7 @@ void qfi_PFD::VSI::setClimbRate(const float climbRate)
     else if ( m_climbRate < -6.3f ) m_climbRate = -6.3f;
 }
 
-void qfi_PFD::VSI::reset()
+void Pfd::VSI::reset()
 {
     m_itemScale = 0;
     m_itemArrow = 0;
@@ -1381,7 +1383,7 @@ void qfi_PFD::VSI::reset()
     m_arrowDeltaY_old = 0.0f;
 }
 
-void qfi_PFD::VSI::updateVSI()
+void Pfd::VSI::updateVSI()
 {
     const float climbRateAbs = fabs( m_climbRate );
     float arrowDeltaY = 0.0;
@@ -1397,4 +1399,6 @@ void qfi_PFD::VSI::updateVSI()
     if ( m_climbRate < 0.0f ) arrowDeltaY *= -1.0f;
     m_arrowDeltaY_new = m_scaleY * arrowDeltaY;
     m_itemArrow->moveBy( 0.0f, m_arrowDeltaY_old - m_arrowDeltaY_new );
+}
+
 }

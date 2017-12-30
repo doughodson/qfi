@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_NAV_H__
-#define __QFI_NAV_H__
+#ifndef __qfi_Navigation_H__
+#define __qfi_Navigation_H__
 
 #include <QGraphicsView>
 
@@ -55,17 +55,19 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_NAV
-// Description: Navigation Display widget
+// Class: Navigation
+// Description: Navigation Display
 //---------------------------------------------------
-class qfi_NAV : public QGraphicsView
+class Navigation : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    explicit qfi_NAV(QWidget* parent = nullptr);
-    virtual ~qfi_NAV();
+    explicit Navigation(QWidget* parent = nullptr);
+    virtual ~Navigation();
 
     // reinitiates widget
     void reinit();
@@ -157,5 +159,7 @@ private:
     const int m_hdgTextZ{130};
     const int m_dmeTextZ{130};
 };
+
+}
 
 #endif

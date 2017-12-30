@@ -32,8 +32,8 @@ HEADERS += \
     Altimeter.hpp \
     Asi.hpp \
     Hsi.hpp \
-    qfi_NAV.hpp \
-    qfi_PFD.hpp \
+    Navigation.hpp \
+    Pfd.hpp \
     qfi_VSI.hpp \
     qfi_TC.hpp
 
@@ -42,8 +42,8 @@ SOURCES += \
     Altimeter.cpp \
     Asi.cpp \
     Hsi.cpp \
-    qfi_NAV.cpp \
-    qfi_PFD.cpp \
+    Navigation.cpp \
+    Pfd.cpp \
     qfi_VSI.cpp \
     qfi_TC.cpp
 

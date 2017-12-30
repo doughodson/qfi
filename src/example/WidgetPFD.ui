@@ -40,7 +40,7 @@
      <number>4</number>
     </property>
     <item row="0" column="0">
-     <widget class="qfi_PFD" name="graphicsPFD">
+     <widget class="qfi::Pfd" name="graphicsPFD">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -72,9 +72,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qfi_PFD</class>
+   <class>qfi::Pfd</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_PFD.hpp</header>
+   <header>Pfd.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

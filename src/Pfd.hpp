@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_PFD_H__
-#define __QFI_PFD_H__
+#ifndef __qfi_Pfd_H__
+#define __qfi_Pfd_H__
 
 #include <QGraphicsView>
 
@@ -55,11 +55,13 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_PFD
+// Class: Pfd
 // Description: Primary Flight Display widget
 //---------------------------------------------------
-class qfi_PFD : public QGraphicsView
+class Pfd : public QGraphicsView
 {
     Q_OBJECT
 
@@ -73,8 +75,8 @@ public:
         IN          ///< inches of mercury
     };
 
-    explicit qfi_PFD(QWidget* parent = nullptr);
-    ~qfi_PFD();
+    explicit Pfd(QWidget* parent = nullptr);
+    ~Pfd();
 
     // reinitiates widget
     void reinit();
@@ -568,5 +570,7 @@ private:
     const int m_backZ{};
     const int m_maskZ{100};
 };
+
+}
 
 #endif

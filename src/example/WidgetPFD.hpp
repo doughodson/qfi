@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <qfi_PFD.hpp>
+#include <Pfd.hpp>
 
 class LayoutSquare;
 
@@ -99,7 +99,7 @@ public:
     }
 
     inline void setPressure(const float pressure) {
-        m_pfd->setPressure( pressure, qfi_PFD::IN );
+        m_pfd->setPressure( pressure, qfi::Pfd::IN );
     }
 
     inline void setAirspeed(const float airspeed) {
@@ -126,7 +126,7 @@ private:
     void setupUi();
 
     Ui::WidgetPFD* m_ui{};
-    qfi_PFD* m_pfd{};
+    qfi::Pfd* m_pfd{};
     LayoutSquare* m_layoutSq{};
 };
 

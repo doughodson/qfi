@@ -51,7 +51,7 @@
 
 WidgetSix::WidgetSix(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetSix)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
 
     m_widgetADI = m_ui->widgetADI;
     m_widgetALT = m_ui->widgetALT;
