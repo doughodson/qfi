@@ -53,7 +53,7 @@
 
 WidgetHSI::WidgetHSI(QWidget *parent) : QWidget(parent), m_ui(new Ui::WidgetHSI)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
     setupUi();
     m_hsi = m_ui->graphicsHSI;
 }

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="qfi_HSI" name="graphicsHSI">
+  <widget class="qfi::Hsi" name="graphicsHSI">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -44,9 +44,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qfi_HSI</class>
+   <class>qfi::Hsi</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_HSI.hpp</header>
+   <header>Hsi.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

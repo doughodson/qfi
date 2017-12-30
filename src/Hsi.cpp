@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file qfi_ASI.cpp
+ * @file qfi_HSI.cpp
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -46,33 +46,33 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "qfi_ASI.hpp"
+#include "Hsi.hpp"
 
 #include <QGraphicsSvgItem>
 
-qfi_ASI::qfi_ASI(QWidget* parent) : QGraphicsView(parent)
+namespace qfi {
+
+Hsi::Hsi(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
-
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
-
     m_scene->clear();
-
     init();
 }
 
-qfi_ASI::~qfi_ASI()
+Hsi::~Hsi()
 {
     if (m_scene) {
         m_scene->clear();
         delete m_scene;
         m_scene = nullptr;
     }
+
     reset();
 }
 
-void qfi_ASI::reinit()
+void Hsi::reinit()
 {
     if (m_scene) {
         m_scene->clear();
@@ -80,46 +80,37 @@ void qfi_ASI::reinit()
     }
 }
 
-void qfi_ASI::update()
+void Hsi::update()
 {
     updateView();
 }
 
-void qfi_ASI::setAirspeed(const float airspeed)
+void Hsi::setHeading(const float heading)
 {
-    m_airspeed = airspeed;
-
-    if ( m_airspeed <   0.0f ) m_airspeed =   0.0f;
-    if ( m_airspeed > 235.0f ) m_airspeed = 235.0f;
+    m_heading = heading;
 }
 
-void qfi_ASI::resizeEvent(QResizeEvent* event)
+void Hsi::resizeEvent( QResizeEvent *event )
 {
     QGraphicsView::resizeEvent( event );
     reinit();
 }
 
-void qfi_ASI::init()
+void Hsi::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
 
     reset();
 
-    m_itemFace = new QGraphicsSvgItem( ":/qfi/images/asi/asi_face.svg" );
+    m_itemFace = new QGraphicsSvgItem( ":/qfi/images/hsi/hsi_face.svg" );
     m_itemFace->setCacheMode( QGraphicsItem::NoCache );
     m_itemFace->setZValue( m_faceZ );
     m_itemFace->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
+    m_itemFace->setTransformOriginPoint( m_originalHsiCtr );
     m_scene->addItem( m_itemFace );
 
-    m_itemHand = new QGraphicsSvgItem( ":/qfi/images/asi/asi_hand.svg" );
-    m_itemHand->setCacheMode( QGraphicsItem::NoCache );
-    m_itemHand->setZValue( m_handZ );
-    m_itemHand->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
-    m_itemHand->setTransformOriginPoint( m_originalAsiCtr );
-    m_scene->addItem( m_itemHand );
-
-    m_itemCase = new QGraphicsSvgItem( ":/qfi/images/asi/asi_case.svg" );
+    m_itemCase = new QGraphicsSvgItem( ":/qfi/images/hsi/hsi_case.svg" );
     m_itemCase->setCacheMode( QGraphicsItem::NoCache );
     m_itemCase->setZValue( m_caseZ );
     m_itemCase->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
@@ -130,32 +121,19 @@ void qfi_ASI::init()
     updateView();
 }
 
-void qfi_ASI::reset()
+void Hsi::reset()
 {
     m_itemFace = 0;
-    m_itemHand = 0;
     m_itemCase = 0;
 
-    m_airspeed = 0.0f;
+    m_heading = 0.0f;
 }
 
-void qfi_ASI::updateView()
+void Hsi::updateView()
 {
-    float angle{};
-
-    if ( m_airspeed < 40.0f ) {
-        angle = 0.9f * m_airspeed;
-    } else if ( m_airspeed < 70.0f ) {
-        angle = 36.0f + 1.8f * ( m_airspeed - 40.0f );
-    } else if ( m_airspeed < 130.0f ) {
-        angle = 90.0f + 2.0f * ( m_airspeed - 70.0f );
-    } else if ( m_airspeed < 160.0f ) {
-        angle = 210.0f + 1.8f * ( m_airspeed - 130.0f );
-    } else {
-        angle = 264.0f + 1.2f * ( m_airspeed - 160.0f );
-    }
-
-    m_itemHand->setRotation(angle);
+    m_itemFace->setRotation( - m_heading );
 
     m_scene->update();
+}
+
 }

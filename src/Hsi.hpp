@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file qfi_HSI.cpp
+ * @file qfi_HSI.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,91 +45,65 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
+#ifndef __qfi_Hsi_H__
+#define __qfi_Hsi_H__
 
-#include "qfi_HSI.hpp"
+#include <QGraphicsView>
 
-#include <QGraphicsSvgItem>
+class QWidget;
+class QResizeEvent;
+class QGraphicsScene;
+class QGraphicsSvgItem;
 
-qfi_HSI::qfi_HSI(QWidget* parent) : QGraphicsView(parent)
+namespace qfi {
+
+//---------------------------------------------------
+// Class: Hsi
+// Description: Horizontal Situation Indicator widget
+//---------------------------------------------------
+class Hsi : public QGraphicsView
 {
-    reset();
-    m_scene = new QGraphicsScene( this );
-    setScene( m_scene );
-    m_scene->clear();
-    init();
+    Q_OBJECT
+
+public:
+    Hsi(QWidget* parent = nullptr);
+    virtual ~Hsi();
+
+    // reinitiates widget
+    void reinit();
+
+    // refreshes (redraws) widget
+    void update();
+
+    void setHeading(const float);
+
+protected:
+    void resizeEvent(QResizeEvent*);
+
+private:
+    void init();
+    void reset();
+    void updateView();
+
+    QGraphicsScene* m_scene{};
+
+    QGraphicsSvgItem* m_itemFace{};
+    QGraphicsSvgItem* m_itemCase{};
+
+    float m_heading{};
+
+    float m_scaleX{1.0f};
+    float m_scaleY{1.0f};
+
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
+
+    QPointF m_originalHsiCtr{120.0f, 120.0f};
+
+    const int m_faceZ{-20};
+    const int m_caseZ{10};
+};
+
 }
 
-qfi_HSI::~qfi_HSI()
-{
-    if (m_scene) {
-        m_scene->clear();
-        delete m_scene;
-        m_scene = nullptr;
-    }
-
-    reset();
-}
-
-void qfi_HSI::reinit()
-{
-    if (m_scene) {
-        m_scene->clear();
-        init();
-    }
-}
-
-void qfi_HSI::update()
-{
-    updateView();
-}
-
-void qfi_HSI::setHeading(const float heading)
-{
-    m_heading = heading;
-}
-
-void qfi_HSI::resizeEvent( QResizeEvent *event )
-{
-    QGraphicsView::resizeEvent( event );
-    reinit();
-}
-
-void qfi_HSI::init()
-{
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
-
-    reset();
-
-    m_itemFace = new QGraphicsSvgItem( ":/qfi/images/hsi/hsi_face.svg" );
-    m_itemFace->setCacheMode( QGraphicsItem::NoCache );
-    m_itemFace->setZValue( m_faceZ );
-    m_itemFace->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
-    m_itemFace->setTransformOriginPoint( m_originalHsiCtr );
-    m_scene->addItem( m_itemFace );
-
-    m_itemCase = new QGraphicsSvgItem( ":/qfi/images/hsi/hsi_case.svg" );
-    m_itemCase->setCacheMode( QGraphicsItem::NoCache );
-    m_itemCase->setZValue( m_caseZ );
-    m_itemCase->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
-    m_scene->addItem( m_itemCase );
-
-    centerOn( width() / 2.0f , height() / 2.0f );
-
-    updateView();
-}
-
-void qfi_HSI::reset()
-{
-    m_itemFace = 0;
-    m_itemCase = 0;
-
-    m_heading = 0.0f;
-}
-
-void qfi_HSI::updateView()
-{
-    m_itemFace->setRotation( - m_heading );
-
-    m_scene->update();
-}
+#endif

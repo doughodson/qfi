@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_ASI_H__
-#define __QFI_ASI_H__
+#ifndef __qfi_Asi_H__
+#define __qfi_Asi_H__
 
 #include <QGraphicsView>
 
@@ -55,17 +55,19 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_ASI
-// Description: Airspeed Indicator widget
+// Class: Asi
+// Description: Airspeed Indicator
 //---------------------------------------------------
-class qfi_ASI : public QGraphicsView
+class Asi : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    qfi_ASI(QWidget* parent = nullptr);
-    virtual ~qfi_ASI();
+    Asi(QWidget* parent = nullptr);
+    virtual ~Asi();
 
     // reinitiates widget
     void reinit();
@@ -103,5 +105,7 @@ private:
     const int m_handZ{-10};
     const int m_caseZ{10};
 };
+
+}
 
 #endif

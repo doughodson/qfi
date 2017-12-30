@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="qfi_ASI" name="graphicsASI">
+  <widget class="qfi::Asi" name="graphicsASI">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -44,9 +44,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qfi_ASI</class>
+   <class>qfi::Asi</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_ASI.hpp</header>
+   <header>Asi.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

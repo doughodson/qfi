@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <qfi_HSI.hpp>
+#include <Hsi.hpp>
 
 class LayoutSquare;
 
@@ -76,7 +76,7 @@ private:
     void setupUi();
 
     Ui::WidgetHSI* m_ui{};
-    qfi_HSI* m_hsi{};
+    qfi::Hsi* m_hsi{};
     LayoutSquare* m_layoutSq{};
 };
 
