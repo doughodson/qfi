@@ -1,5 +1,5 @@
 /***************************************************************************//**
- * @file qfi_VSI.h
+ * @file qfi_TC.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __QFI_VSI_H__
-#define __QFI_VSI_H__
+#ifndef __qfi_Tc_H__
+#define __qfi_Tc_H__
 
 #include <QGraphicsView>
 
@@ -55,17 +55,19 @@ class QResizeEvent;
 class QGraphicsScene;
 class QGraphicsSvgItem;
 
+namespace qfi {
+
 //---------------------------------------------------
-// Class: qfi_VSI
-// Description: Vertical Speed Indicator widget
+// Class: Tc
+// Description: Turn Coordinator
 //---------------------------------------------------
-class qfi_VSI : public QGraphicsView
+class Tc : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    qfi_VSI(QWidget* parent = nullptr);
-    virtual ~qfi_VSI();
+    Tc(QWidget* parent = nullptr);
+    virtual ~Tc();
 
     // reinitiates widget
     void reinit();
@@ -73,8 +75,11 @@ public:
     // refreshes (redraws) widget
     void update();
 
-    // climb rate [ft/min]
-    void setClimbRate(const float);
+    // turn rate [deg/s]
+    void setTurnRate(const float);
+
+    // slip/skid ball angle [deg]
+    void setSlipSkid(const float);
 
 protected:
     void resizeEvent(QResizeEvent*);
@@ -86,11 +91,15 @@ private:
 
     QGraphicsScene* m_scene{};
 
-    QGraphicsSvgItem* m_itemFace{};
-    QGraphicsSvgItem* m_itemHand{};
+    QGraphicsSvgItem* m_itemBack{};
+    QGraphicsSvgItem* m_itemBall{};
+    QGraphicsSvgItem* m_itemFace_1{};
+    QGraphicsSvgItem* m_itemFace_2{};
+    QGraphicsSvgItem* m_itemMark{};
     QGraphicsSvgItem* m_itemCase{};
 
-    float m_climbRate{};
+    float m_turnRate{};
+    float m_slipSkid{};
 
     float m_scaleX{1.0f};
     float m_scaleY{1.0f};
@@ -98,11 +107,17 @@ private:
     const int m_originalHeight{240};
     const int m_originalWidth{240};
 
-    QPointF m_originalVsiCtr{120.0f, 120.0f};
+    QPointF m_originalMarkCtr{120.0f, 120.0f};
+    QPointF m_originalBallCtr{120.0f, -36.0f};
 
-    const int m_faceZ{-20};
-    const int m_handZ{-10};
+    const int m_backZ{-70};
+    const int m_ballZ{-60};
+    const int m_face1Z{-50};
+    const int m_face2Z{-40};
+    const int m_markZ{-30};
     const int m_caseZ{10};
 };
+
+}
 
 #endif

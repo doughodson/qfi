@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="qfi_TC" name="graphicsTC">
+  <widget class="qfi::Tc" name="graphicsTC">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -44,9 +44,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qfi_TC</class>
+   <class>qfi::Tc</class>
    <extends>QGraphicsView</extends>
-   <header>qfi_TC.hpp</header>
+   <header>Tc.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

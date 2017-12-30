@@ -34,8 +34,8 @@ HEADERS += \
     Hsi.hpp \
     Navigation.hpp \
     Pfd.hpp \
-    qfi_VSI.hpp \
-    qfi_TC.hpp
+    Tc.hpp \
+    Vsi.hpp
 
 SOURCES += \
     Adi.cpp \
@@ -44,8 +44,8 @@ SOURCES += \
     Hsi.cpp \
     Navigation.cpp \
     Pfd.cpp \
-    qfi_VSI.cpp \
-    qfi_TC.cpp
+    Tc.cpp \
+    Vsi.cpp
 
 RESOURCES += \
     qfi.qrc

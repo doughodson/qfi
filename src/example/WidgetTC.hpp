@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <qfi_TC.hpp>
+#include <Tc.hpp>
 
 class LayoutSquare;
 
@@ -80,7 +80,7 @@ private:
     void setupUi();
 
     Ui::WidgetTC* m_ui{};
-    qfi_TC* m_tc{};
+    qfi::Tc* m_tc{};
     LayoutSquare* m_layoutSq{};
 };
 
