@@ -50,7 +50,7 @@
 
 #include <QWidget>
 
-#include <Navigation.hpp>
+#include <Nav.hpp>
 
 class LayoutSquare;
 
@@ -96,7 +96,7 @@ private:
     void setupUi();
 
     Ui::WidgetNAV* m_ui{};
-    qfi::Navigation* m_nav{};
+    qfi::Nav* m_nav{};
     LayoutSquare* m_layoutSq{};
 
 };

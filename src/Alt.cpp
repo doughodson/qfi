@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "Altimeter.hpp"
+#include "Alt.hpp"
 
 #include <QGraphicsSvgItem>
 
@@ -54,7 +54,7 @@
 
 namespace qfi {
 
-Altimeter::Altimeter(QWidget* parent) : QGraphicsView(parent)
+Alt::Alt(QWidget* parent) : QGraphicsView(parent)
 {
     reset();
     m_scene = new QGraphicsScene( this );
@@ -63,7 +63,7 @@ Altimeter::Altimeter(QWidget* parent) : QGraphicsView(parent)
     init();
 }
 
-Altimeter::~Altimeter()
+Alt::~Alt()
 {
     if (m_scene) {
         m_scene->clear();
@@ -74,7 +74,7 @@ Altimeter::~Altimeter()
     reset();
 }
 
-void Altimeter::reinit()
+void Alt::reinit()
 {
     if (m_scene) {
         m_scene->clear();
@@ -83,17 +83,17 @@ void Altimeter::reinit()
     }
 }
 
-void Altimeter::update()
+void Alt::update()
 {
     updateView();
 }
 
-void Altimeter::setAltitude(const float altitude)
+void Alt::setAltitude(const float altitude)
 {
     m_altitude = altitude;
 }
 
-void Altimeter::setPressure(const float pressure)
+void Alt::setPressure(const float pressure)
 {
     m_pressure = pressure;
 
@@ -101,13 +101,13 @@ void Altimeter::setPressure(const float pressure)
     if ( m_pressure > 31.5f ) m_pressure = 31.5f;
 }
 
-void Altimeter::resizeEvent( QResizeEvent *event )
+void Alt::resizeEvent( QResizeEvent *event )
 {
     QGraphicsView::resizeEvent( event );
     reinit();
 }
 
-void Altimeter::init()
+void Alt::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -159,7 +159,7 @@ void Altimeter::init()
     updateView();
 }
 
-void Altimeter::reset()
+void Alt::reset()
 {
     m_itemFace_1 = 0;
     m_itemFace_2 = 0;
@@ -172,7 +172,7 @@ void Altimeter::reset()
     m_pressure = 28.0f;
 }
 
-void Altimeter::updateView()
+void Alt::updateView()
 {
     int altitude = std::ceil( m_altitude + 0.5 );
 

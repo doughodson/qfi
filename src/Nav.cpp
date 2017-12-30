@@ -46,7 +46,7 @@
  * IN THE SOFTWARE.
  ******************************************************************************/
 
-#include "Navigation.hpp"
+#include "Nav.hpp"
 
 #include <QGraphicsSvgItem>
 
@@ -55,7 +55,7 @@
 
 namespace qfi {
 
-Navigation::Navigation(QWidget* parent) : QGraphicsView(parent)
+Nav::Nav(QWidget* parent) : QGraphicsView(parent)
 {
 #ifdef WIN32
     m_crsTextFont.setFamily( "Courier" );
@@ -96,7 +96,7 @@ Navigation::Navigation(QWidget* parent) : QGraphicsView(parent)
     init();
 }
 
-Navigation::~Navigation()
+Nav::~Nav()
 {
     if (m_scene) {
         m_scene->clear();
@@ -107,7 +107,7 @@ Navigation::~Navigation()
     reset();
 }
 
-void Navigation::reinit()
+void Nav::reinit()
 {
     if (m_scene) {
         m_scene->clear();
@@ -115,7 +115,7 @@ void Navigation::reinit()
     }
 }
 
-void Navigation::update()
+void Nav::update()
 {
     updateView();
 
@@ -123,7 +123,7 @@ void Navigation::update()
     m_devBarDeltaY_old = m_devBarDeltaY_new;
 }
 
-void Navigation::setHeading(const float heading)
+void Nav::setHeading(const float heading)
 {
     m_heading = heading;
 
@@ -131,7 +131,7 @@ void Navigation::setHeading(const float heading)
     while ( m_heading > 360.0f ) m_heading -= 360.0f;
 }
 
-void Navigation::setHeadingBug(const float headingBug)
+void Nav::setHeadingBug(const float headingBug)
 {
     m_headingBug = headingBug;
 
@@ -139,7 +139,7 @@ void Navigation::setHeadingBug(const float headingBug)
     while ( m_headingBug > 360.0f ) m_headingBug -= 360.0f;
 }
 
-void Navigation::setCourse(const float course)
+void Nav::setCourse(const float course)
 {
     m_course = course;
 
@@ -147,7 +147,7 @@ void Navigation::setCourse(const float course)
     while ( m_course > 360.0f ) m_course -= 360.0f;
 }
 
-void Navigation::setBearing(const float bearing, const bool visible)
+void Nav::setBearing(const float bearing, const bool visible)
 {
     m_bearing        = bearing;
     m_bearingVisible = visible;
@@ -156,7 +156,7 @@ void Navigation::setBearing(const float bearing, const bool visible)
     while ( m_bearing > 360.0f ) m_bearing -= 360.0f;
 }
 
-void Navigation::setDeviation(const float deviation, const bool visible)
+void Nav::setDeviation(const float deviation, const bool visible)
 {
     m_deviation        = deviation;
     m_deviationVisible = visible;
@@ -165,19 +165,19 @@ void Navigation::setDeviation(const float deviation, const bool visible)
     if ( m_deviation >  1.0f ) m_deviation =  1.0f;
 }
 
-void Navigation::setDistance(const float distance, const bool visible)
+void Nav::setDistance(const float distance, const bool visible)
 {
     m_distance        = fabs( distance );
     m_distanceVisible = visible;
 }
 
-void Navigation::resizeEvent( QResizeEvent* event)
+void Nav::resizeEvent( QResizeEvent* event)
 {
     QGraphicsView::resizeEvent( event );
     reinit();
 }
 
-void Navigation::init()
+void Nav::init()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;
@@ -277,7 +277,7 @@ void Navigation::init()
     updateView();
 }
 
-void Navigation::reset()
+void Nav::reset()
 {
     m_itemBrgArrow = 0;
     m_itemCrsArrow = 0;
@@ -307,7 +307,7 @@ void Navigation::reset()
     m_devBarDeltaY_old = 0.0f;
 }
 
-void Navigation::updateView()
+void Nav::updateView()
 {
     m_scaleX = (float)width()  / (float)m_originalWidth;
     m_scaleY = (float)height() / (float)m_originalHeight;

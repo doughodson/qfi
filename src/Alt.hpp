@@ -1,10 +1,10 @@
 /***************************************************************************//**
- * @file qfi_NAV.h
+ * @file qfi_ALT.h
  * @author  Marek M. Cel <marekcel@marekcel.pl>
  *
  * @section LICENSE
  *
- * Copyright (C) 2015 Marek M. Cel
+ * Copyright (C) 2013 Marek M. Cel
  *
  * This file is part of QFlightInstruments. You can redistribute and modify it
  * under the terms of GNU General Public License as published by the Free
@@ -25,7 +25,7 @@
  *
  * ---
  *
- * Copyright (C) 2015 Marek M. Cel
+ * Copyright (C) 2013 Marek M. Cel
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the "Software"),
@@ -45,8 +45,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  ******************************************************************************/
-#ifndef __qfi_Navigation_H__
-#define __qfi_Navigation_H__
+#ifndef __qfi_Alt_H__
+#define __qfi_Alt_H__
 
 #include <QGraphicsView>
 
@@ -58,16 +58,16 @@ class QGraphicsSvgItem;
 namespace qfi {
 
 //---------------------------------------------------
-// Class: Navigation
-// Description: Navigation Display
+// Class: Alt
+// Description: Barometric Altimeter
 //---------------------------------------------------
-class Navigation : public QGraphicsView
+class Alt : public QGraphicsView
 {
     Q_OBJECT
 
 public:
-    explicit Navigation(QWidget* parent = nullptr);
-    virtual ~Navigation();
+    Alt(QWidget* parent = nullptr);
+    virtual ~Alt();
 
     // reinitiates widget
     void reinit();
@@ -75,12 +75,8 @@ public:
     // refreshes (redraws) widget
     void update();
 
-    void setHeading(const float);
-    void setHeadingBug(const float);
-    void setCourse(const float);
-    void setBearing(const float bearing, const bool visible = false);
-    void setDeviation(const float deviation, const bool visible = false);
-    void setDistance(const float distance, const bool visible = false);
+    void setAltitude(const float);
+    void setPressure(const float);
 
 protected:
     void resizeEvent(QResizeEvent*);
@@ -90,74 +86,32 @@ private:
     void reset();
     void updateView();
 
-    QGraphicsScene* m_scene{};            ///< graphics scene
+    QGraphicsScene* m_scene{};
 
-    QGraphicsSvgItem* m_itemBack{};       ///< NAV background
-    QGraphicsSvgItem* m_itemMask{};       ///< NAV mask
-    QGraphicsSvgItem* m_itemMark{};
+    QGraphicsSvgItem* m_itemFace_1{};
+    QGraphicsSvgItem* m_itemFace_2{};
+    QGraphicsSvgItem* m_itemFace_3{};
+    QGraphicsSvgItem* m_itemHand_1{};
+    QGraphicsSvgItem* m_itemHand_2{};
+    QGraphicsSvgItem* m_itemCase{};
 
-    QGraphicsSvgItem* m_itemBrgArrow{};
-    QGraphicsSvgItem* m_itemCrsArrow{};
-    QGraphicsSvgItem* m_itemDevBar{};
-    QGraphicsSvgItem* m_itemDevScale{};
-    QGraphicsSvgItem* m_itemHdgBug{};
-    QGraphicsSvgItem* m_itemHdgScale{};
-
-    QGraphicsTextItem* m_itemCrsText{};
-    QGraphicsTextItem* m_itemHdgText{};
-    QGraphicsTextItem* m_itemDmeText{};
-
-    QColor m_crsTextColor{  0, 255,   0};
-    QColor m_hdgTextColor{255,   0, 255};
-    QColor m_dmeTextColor{255, 255, 255};
-
-    QFont m_crsTextFont;
-    QFont m_hdgTextFont;
-    QFont m_dmeTextFont;
-
-    float m_heading{};                    ///< [deg]
-    float m_headingBug{};                 ///< [deg]
-    float m_course{};
-    float m_bearing{};
-    float m_deviation{};
-    float m_distance{};
-
-    bool m_bearingVisible{true};
-    bool m_deviationVisible{true};
-    bool m_distanceVisible{true};
-
-    float m_devBarDeltaX_new{};
-    float m_devBarDeltaX_old{};
-    float m_devBarDeltaY_new{};
-    float m_devBarDeltaY_old{};
+    float m_altitude{};
+    float m_pressure{28.0f};
 
     float m_scaleX{1.0f};
     float m_scaleY{1.0f};
 
-    float m_originalPixPerDev{52.5f};
+    const int m_originalHeight{240};
+    const int m_originalWidth{240};
 
-    QPointF m_originalNavCtr{150.0f, 150.0f};
+    QPointF m_originalAltCtr{120.0f, 120.0f};
 
-    QPointF m_originalCrsTextCtr{ 50.0f,  25.0f};
-    QPointF m_originalHdgTextCtr{250.0f,  25.0f};
-    QPointF m_originalDmeTextCtr{250.0f, 275.0f};
-
-    const int m_originalHeight{300};         ///< [px]
-    const int m_originalWidth{300};          ///< [px]
-
-    const int m_backZ{};
-    const int m_maskZ{100};
-    const int m_markZ{200};
-
-    const int m_brgArrowZ{60};
-    const int m_crsArrowZ{70};
-    const int m_crsTextZ{130};
-    const int m_devBarZ{50};
-    const int m_devScaleZ{10};
-    const int m_hdgBugZ{120};
-    const int m_hdgScaleZ{110};
-    const int m_hdgTextZ{130};
-    const int m_dmeTextZ{130};
+    const int m_face1Z{-50};
+    const int m_face2Z{-40};
+    const int m_face3Z{-30};
+    const int m_hand1Z{-20};
+    const int m_hand2Z{-10};
+    const int m_caseZ{10};
 };
 
 }

@@ -37,10 +37,10 @@ HEADERS += \
     example/WidgetTC.hpp \
     example/WidgetVSI.hpp \
     Adi.hpp \
-    Altimeter.hpp \
+    Alt.hpp \
     Asi.hpp \
     Hsi.hpp \
-    Navigation.hpp \
+    Nav.hpp \
     Pfd.hpp \
     Tc.hpp \
     Vsi.hpp \
@@ -59,10 +59,10 @@ SOURCES += \
     example/WidgetTC.cpp \
     example/WidgetVSI.cpp \
     Adi.cpp \
-    Altimeter.cpp \
+    Alt.cpp \
     Asi.cpp \
     Hsi.cpp \
-    Navigation.cpp \
+    Nav.cpp \
     Pfd.cpp \
     Tc.cpp \
     Vsi.cpp \

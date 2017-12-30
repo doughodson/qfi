@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="qfi::Altimeter" name="graphicsALT">
+  <widget class="qfi::Alt" name="graphicsALT">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -44,9 +44,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>qfi::Altimeter</class>
+   <class>qfi::Alt</class>
    <extends>QGraphicsView</extends>
-   <header>Altimeter.hpp</header>
+   <header>Alt.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

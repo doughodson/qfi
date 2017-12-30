@@ -29,20 +29,20 @@ INCLUDEPATH += ./
 
 HEADERS += \
     Adi.hpp \
-    Altimeter.hpp \
+    Alt.hpp \
     Asi.hpp \
     Hsi.hpp \
-    Navigation.hpp \
+    Nav.hpp \
     Pfd.hpp \
     Tc.hpp \
     Vsi.hpp
 
 SOURCES += \
     Adi.cpp \
-    Altimeter.cpp \
+    Alt.cpp \
     Asi.cpp \
     Hsi.cpp \
-    Navigation.cpp \
+    Nav.cpp \
     Pfd.cpp \
     Tc.cpp \
     Vsi.cpp
