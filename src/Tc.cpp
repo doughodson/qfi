@@ -54,7 +54,6 @@ namespace qfi {
 
 Tc::Tc(QWidget* parent) : QGraphicsView(parent)
 {
-    reset();
     m_scene = new QGraphicsScene(this);
     setScene( m_scene );
     m_scene->clear();
@@ -109,8 +108,8 @@ void Tc::resizeEvent(QResizeEvent *event)
 
 void Tc::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     reset();
 
@@ -159,7 +158,7 @@ void Tc::init()
 
 void Tc::reset()
 {
-    m_itemCase = 0;
+    m_itemCase = nullptr;
 
     m_turnRate = 0.0f;
     m_slipSkid = 0.0f;
@@ -167,8 +166,8 @@ void Tc::reset()
 
 void Tc::updateView()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     m_itemBall->setRotation( -m_slipSkid );
 

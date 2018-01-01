@@ -113,8 +113,8 @@ void Adi::resizeEvent(QResizeEvent* event)
 
 void Adi::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     reset();
 
@@ -175,8 +175,8 @@ void Adi::updateView()
     m_itemFace->setRotation(-m_roll);
     m_itemRing->setRotation(-m_roll);
 
-    const float roll_rad = M_PI * m_roll / 180.0;
-    const float delta  = m_originalPixPerDeg * m_pitch;
+    const float roll_rad{static_cast<float>(M_PI * m_roll / 180.0)};
+    const float delta{static_cast<float>(m_originalPixPerDeg * m_pitch)};
 
     m_faceDeltaX_new = m_scaleX * delta * std::sin( roll_rad );
     m_faceDeltaY_new = m_scaleY * delta * std::cos( roll_rad );

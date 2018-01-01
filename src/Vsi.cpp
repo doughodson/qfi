@@ -54,7 +54,6 @@ namespace qfi {
 
 Vsi::Vsi(QWidget* parent) : QGraphicsView(parent)
 {
-    reset();
     m_scene = new QGraphicsScene(this);
     setScene(m_scene);
     m_scene->clear();
@@ -101,8 +100,8 @@ void Vsi::resizeEvent(QResizeEvent* event)
 
 void Vsi::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     reset();
 
@@ -132,9 +131,9 @@ void Vsi::init()
 
 void Vsi::reset()
 {
-    m_itemFace = 0;
-    m_itemHand = 0;
-    m_itemCase = 0;
+    m_itemFace = nullptr;
+    m_itemHand = nullptr;
+    m_itemCase = nullptr;
 
     m_climbRate = 0.0f;
 }

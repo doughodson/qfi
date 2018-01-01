@@ -178,8 +178,8 @@ void Nav::resizeEvent( QResizeEvent* event)
 
 void Nav::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     m_itemBack = new QGraphicsSvgItem( ":/qfi/images/nav/nav_back.svg" );
     m_itemBack->setCacheMode( QGraphicsItem::NoCache );
@@ -308,8 +308,8 @@ void Nav::reset()
 
 void Nav::updateView()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     m_itemCrsArrow->setRotation( -m_heading + m_course );
     m_itemHdgBug->setRotation( -m_heading + m_headingBug );
@@ -328,17 +328,17 @@ void Nav::updateView()
 
         float angle_deg = -m_heading + m_course;
 #ifndef M_PI
-        const float angle_rad = 3.14159265358979323846 * angle_deg / 180.0f;
+        const float angle_rad{static_cast<float>(3.14159265358979323846 * angle_deg / 180.0f)};
 #else
-        const float angle_rad = M_PI * angle_deg / 180.0f;
+        const float angle_rad{static_cast<float>(M_PI * angle_deg / 180.0f)};
 #endif
-        const float sinAngle = std::sin( angle_rad );
-        const float cosAngle = std::cos( angle_rad );
+        const float sinAngle{static_cast<float>(std::sin(angle_rad))};
+        const float cosAngle{static_cast<float>(std::cos(angle_rad))};
 
         m_itemDevBar->setRotation( angle_deg );
         m_itemDevScale->setRotation( angle_deg );
 
-        const float delta  = m_originalPixPerDev * m_deviation;
+        const float delta{static_cast<float>(m_originalPixPerDev * m_deviation)};
 
         m_devBarDeltaX_new = m_scaleX * delta * cosAngle;
         m_devBarDeltaY_new = m_scaleY * delta * sinAngle;

@@ -60,7 +60,6 @@ namespace qfi {
 
 Pfd::Pfd(QWidget* parent) : QGraphicsView(parent)
 {
-    reset();
     m_scene = new QGraphicsScene(this);
     setScene(m_scene);
     m_scene->clear();
@@ -112,8 +111,8 @@ void Pfd::resizeEvent(QResizeEvent* event)
 
 void Pfd::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     m_adi->init( m_scaleX, m_scaleY );
     m_alt->init( m_scaleX, m_scaleY );
@@ -140,14 +139,14 @@ void Pfd::init()
 
 void Pfd::reset()
 {
-    m_itemBack = 0;
-    m_itemMask = 0;
+    m_itemBack = nullptr;
+    m_itemMask = nullptr;
 }
 
 void Pfd::updateView()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     m_adi->update( m_scaleX, m_scaleY );
     m_alt->update( m_scaleX, m_scaleY );
@@ -279,12 +278,12 @@ void Pfd::ADI::update(const float scaleX, const float scaleY)
     m_scaleX = scaleX;
     m_scaleY = scaleY;
 
-    const float delta  = m_originalPixPerDeg * m_pitch;
+    const float delta{static_cast<float>(m_originalPixPerDeg * m_pitch)};
 
-    const float roll_rad = M_PI * m_roll / 180.0f;
+    const float roll_rad{static_cast<float>(M_PI * m_roll / 180.0f)};
 
-    const float sinRoll = std::sin( roll_rad );
-    const float cosRoll = std::cos( roll_rad );
+    const float sinRoll{static_cast<float>(std::sin(roll_rad))};
+    const float cosRoll{static_cast<float>(std::cos(roll_rad))};
 
     updateLadd( delta, sinRoll, cosRoll );
     updateLaddBack( delta, sinRoll, cosRoll );
@@ -854,9 +853,9 @@ void Pfd::ALT::updateScaleLabels()
     const int tmp = std::floor( m_altitude + 0.5f );
     const int alt = tmp - ( tmp % 500 );
 
-    float alt1 = (float)alt + 500.0f;
-    float alt2 = (float)alt;
-    float alt3 = (float)alt - 500.0f;
+    float alt1{static_cast<float>(alt + 500.0f)};
+    float alt2{static_cast<float>(alt)};
+    float alt3{static_cast<float>(alt - 500.0f)};
 
     m_labelsDeltaY_new = m_scaleY * m_originalPixPerAlt * m_altitude;
 
@@ -1154,13 +1153,13 @@ void Pfd::ASI::updateScaleLabels()
     const int tmp = std::floor( m_airspeed + 0.5f );
     const int spd = tmp - ( tmp % 20 );
 
-    float spd1 = (float)spd + 60.0f;
-    float spd2 = (float)spd + 40.0f;
-    float spd3 = (float)spd + 20.0f;
-    float spd4 = (float)spd;
-    float spd5 = (float)spd - 20.0f;
-    float spd6 = (float)spd - 40.0f;
-    float spd7 = (float)spd - 60.0f;
+    float spd1{static_cast<float>(spd + 60.0f)};
+    float spd2{static_cast<float>(spd + 40.0f)};
+    float spd3{static_cast<float>(spd + 20.0f)};
+    float spd4{static_cast<float>(spd)};
+    float spd5{static_cast<float>(spd - 20.0f)};
+    float spd6{static_cast<float>(spd - 40.0f)};
+    float spd7{static_cast<float>(spd - 60.0f)};
 
     while ( m_labelsDeltaY_new > m_scaleY * 15.0f ) {
         m_labelsDeltaY_new = m_labelsDeltaY_new - m_scaleY * 30.0f;
@@ -1321,7 +1320,7 @@ void Pfd::HSI::reset()
 void Pfd::HSI::updateHeading()
 {
     m_itemFace->setRotation( - m_heading );
-    const float fHeading = floor( m_heading + 0.5f );
+    const float fHeading{static_cast<float>(floor(m_heading + 0.5f))};
     m_itemFrameText->setPlainText( QString("%1").arg(fHeading, 3, 'f', 0, QChar('0')) );
 }
 
@@ -1385,8 +1384,8 @@ void Pfd::VSI::reset()
 
 void Pfd::VSI::updateVSI()
 {
-    const float climbRateAbs = fabs( m_climbRate );
-    float arrowDeltaY = 0.0;
+    const float climbRateAbs{static_cast<float>(fabs(m_climbRate))};
+    float arrowDeltaY{};
 
     if ( climbRateAbs <= 1.0f ) {
         arrowDeltaY = m_originalPixPerSpd1 * climbRateAbs;
