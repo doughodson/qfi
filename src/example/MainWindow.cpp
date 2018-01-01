@@ -61,7 +61,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::Main
 
 MainWindow::~MainWindow()
 {
-    std::cout << "Average time step: " << ( (double)m_realTime ) / ( (double)m_steps ) << " s" << std::endl;
+    std::cout << "Average time step: " << static_cast<double>(m_realTime / m_steps) << " s" << std::endl;
 
     if ( m_timerId ) killTimer( m_timerId );
 
