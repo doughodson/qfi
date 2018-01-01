@@ -89,7 +89,6 @@ Nav::Nav(QWidget* parent) : QGraphicsView(parent)
     m_dmeTextFont.setWeight( QFont::Bold );
 #endif
 
-    reset();
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
     m_scene->clear();
@@ -279,16 +278,16 @@ void Nav::init()
 
 void Nav::reset()
 {
-    m_itemBrgArrow = 0;
-    m_itemCrsArrow = 0;
-    m_itemDevBar   = 0;
-    m_itemDevScale = 0;
-    m_itemHdgBug   = 0;
-    m_itemHdgScale = 0;
+    m_itemBrgArrow = nullptr;
+    m_itemCrsArrow = nullptr;
+    m_itemDevBar   = nullptr;
+    m_itemDevScale = nullptr;
+    m_itemHdgBug   = nullptr;
+    m_itemHdgScale = nullptr;
 
-    m_itemCrsText = 0;
-    m_itemHdgText = 0;
-    m_itemDmeText = 0;
+    m_itemCrsText = nullptr;
+    m_itemHdgText = nullptr;
+    m_itemDmeText = nullptr;
 
     m_heading    = 0.0f;
     m_headingBug = 0.0f;

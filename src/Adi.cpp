@@ -56,7 +56,6 @@ namespace qfi {
 
 Adi::Adi(QWidget* parent) : QGraphicsView (parent)
 {
-    reset();
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
     m_scene->clear();
@@ -153,10 +152,10 @@ void Adi::init()
 
 void Adi::reset()
 {
-    m_itemBack = 0;
-    m_itemFace = 0;
-    m_itemRing = 0;
-    m_itemCase = 0;
+    m_itemBack = nullptr;
+    m_itemFace = nullptr;
+    m_itemRing = nullptr;
+    m_itemCase = nullptr;
 
     m_roll  = 0.0f;
     m_pitch = 0.0f;
@@ -169,12 +168,12 @@ void Adi::reset()
 
 void Adi::updateView()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
-    m_itemBack->setRotation( - m_roll );
-    m_itemFace->setRotation( - m_roll );
-    m_itemRing->setRotation( - m_roll );
+    m_itemBack->setRotation(-m_roll);
+    m_itemFace->setRotation(-m_roll);
+    m_itemRing->setRotation(-m_roll);
 
     const float roll_rad = M_PI * m_roll / 180.0;
     const float delta  = m_originalPixPerDeg * m_pitch;

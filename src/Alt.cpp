@@ -56,7 +56,6 @@ namespace qfi {
 
 Alt::Alt(QWidget* parent) : QGraphicsView(parent)
 {
-    reset();
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
     m_scene->clear();
@@ -109,8 +108,8 @@ void Alt::resizeEvent( QResizeEvent *event )
 
 void Alt::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     reset();
 
@@ -161,12 +160,12 @@ void Alt::init()
 
 void Alt::reset()
 {
-    m_itemFace_1 = 0;
-    m_itemFace_2 = 0;
-    m_itemFace_3 = 0;
-    m_itemHand_1 = 0;
-    m_itemHand_2 = 0;
-    m_itemCase   = 0;
+    m_itemFace_1 = nullptr;
+    m_itemFace_2 = nullptr;
+    m_itemFace_3 = nullptr;
+    m_itemHand_1 = nullptr;
+    m_itemHand_2 = nullptr;
+    m_itemCase   = nullptr;
 
     m_altitude =  0.0f;
     m_pressure = 28.0f;

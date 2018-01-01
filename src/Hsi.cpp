@@ -54,7 +54,6 @@ namespace qfi {
 
 Hsi::Hsi(QWidget* parent) : QGraphicsView(parent)
 {
-    reset();
     m_scene = new QGraphicsScene( this );
     setScene( m_scene );
     m_scene->clear();
@@ -68,8 +67,6 @@ Hsi::~Hsi()
         delete m_scene;
         m_scene = nullptr;
     }
-
-    reset();
 }
 
 void Hsi::reinit()
@@ -98,8 +95,8 @@ void Hsi::resizeEvent( QResizeEvent *event )
 
 void Hsi::init()
 {
-    m_scaleX = (float)width()  / (float)m_originalWidth;
-    m_scaleY = (float)height() / (float)m_originalHeight;
+    m_scaleX = static_cast<float>(width())  / static_cast<float>(m_originalWidth);
+    m_scaleY = static_cast<float>(height()) / static_cast<float>(m_originalHeight);
 
     reset();
 
@@ -116,23 +113,22 @@ void Hsi::init()
     m_itemCase->setTransform( QTransform::fromScale( m_scaleX, m_scaleY ), true );
     m_scene->addItem( m_itemCase );
 
-    centerOn( width() / 2.0f , height() / 2.0f );
+    centerOn(width() / 2.0f , height() / 2.0f);
 
     updateView();
 }
 
 void Hsi::reset()
 {
-    m_itemFace = 0;
-    m_itemCase = 0;
+    m_itemFace = nullptr;
+    m_itemCase = nullptr;
 
     m_heading = 0.0f;
 }
 
 void Hsi::updateView()
 {
-    m_itemFace->setRotation( - m_heading );
-
+    m_itemFace->setRotation(-m_heading);
     m_scene->update();
 }
 
