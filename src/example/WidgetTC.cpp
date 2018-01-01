@@ -53,7 +53,7 @@
 
 WidgetTC::WidgetTC(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetTC)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
     setupUi();
     m_tc = m_ui->graphicsTC;
 }
@@ -66,10 +66,10 @@ WidgetTC::~WidgetTC()
 
 void WidgetTC::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->graphicsTC );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->graphicsTC);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }

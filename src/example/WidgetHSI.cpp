@@ -66,10 +66,10 @@ WidgetHSI::~WidgetHSI()
 
 void WidgetHSI::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->graphicsHSI );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->graphicsHSI);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }

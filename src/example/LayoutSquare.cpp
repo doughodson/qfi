@@ -89,7 +89,7 @@ Qt::Orientations LayoutSquare::expandingDirections() const
 
 QRect LayoutSquare::geometry()
 {
-    return (QRect)(*m_geometry);
+    return static_cast<QRect>(*m_geometry);
 }
 
 bool LayoutSquare::hasHeightForWidth() const
@@ -99,7 +99,7 @@ bool LayoutSquare::hasHeightForWidth() const
 
 bool LayoutSquare::hasItem() const
 {
-    return ( m_item != 0 );
+    return ( m_item != nullptr );
 }
 
 QLayoutItem* LayoutSquare::itemAt(int index) const
@@ -220,8 +220,8 @@ void LayoutSquare::init(const int spacing)
 {
     m_item = 0;
 
-    m_rectLast = new QRect( 0, 0, 0, 0 );
-    m_geometry = new QRect( 0, 0, 0, 0 );
+    m_rectLast = new QRect(0, 0, 0, 0);
+    m_geometry = new QRect(0, 0, 0, 0);
 
     setSpacing( spacing );
 }
@@ -230,7 +230,7 @@ void LayoutSquare::setRectLast(const QRect& rect)
 {
     QRect* tempRect{m_rectLast};
 
-    m_rectLast = new QRect( rect.topLeft(), rect.size() );
+    m_rectLast = new QRect(rect.topLeft(), rect.size());
 
     delete tempRect;
 }

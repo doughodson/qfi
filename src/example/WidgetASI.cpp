@@ -66,10 +66,10 @@ WidgetASI::~WidgetASI()
 
 void WidgetASI::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->graphicsASI );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->graphicsASI);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }

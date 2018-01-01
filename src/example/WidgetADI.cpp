@@ -70,7 +70,7 @@ void WidgetADI::setupUi()
 {
     m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
     m_layoutSq->addWidget(m_ui->graphicsADI);
 
     setLayout(m_layoutSq);

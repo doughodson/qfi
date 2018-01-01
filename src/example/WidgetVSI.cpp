@@ -54,7 +54,7 @@
 
 WidgetVSI::WidgetVSI(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetVSI)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
     setupUi();
     m_vsi = m_ui->graphicsVSI;
 }
@@ -67,10 +67,10 @@ WidgetVSI::~WidgetVSI()
 
 void WidgetVSI::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->graphicsVSI );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->graphicsVSI);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }

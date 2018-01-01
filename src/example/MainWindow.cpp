@@ -72,26 +72,26 @@ void MainWindow::timerEvent(QTimerEvent* event)
 {
     QMainWindow::timerEvent( event );
 
-    const float timeStep = m_time.restart();
+    const float timeStep{static_cast<float>(m_time.restart())};
 
     m_realTime = m_realTime + timeStep / 1000.0f;
 
-    float alpha     =  0.0f;
-    float beta      =  0.0f;
-    float roll      =  0.0f;
-    float pitch     =  0.0f;
-    float heading   =  0.0f;
-    float slipSkid  =  0.0f;
-    float turnRate  =  0.0f;
-    float devH      =  0.0f;
-    float devV      =  0.0f;
-    float airspeed  =  0.0f;
-    float altitude  =  0.0f;
-    float pressure  = 28.0f;
-    float climbRate =  0.0f;
-    float machNo    =  0.0f;
-    float adf       =  0.0f;
-    float dme       =  0.0f;
+    float alpha{};
+    float beta{};
+    float roll{};
+    float pitch{};
+    float heading{};
+    float slipSkid{};
+    float turnRate{};
+    float devH{};
+    float devV{};
+    float airspeed{};
+    float altitude{};
+    float pressure{28.0f};
+    float climbRate{};
+    float machNo{};
+    float adf{};
+    float dme{};
 
     if ( m_ui->pushButtonAuto->isChecked() ) {
         alpha     =   20.0f * std::sin( m_realTime /  10.0f );
@@ -111,22 +111,22 @@ void MainWindow::timerEvent(QTimerEvent* event)
         adf       = -360.0f * std::sin( m_realTime /  50.0f );
         dme       =   99.0f * std::sin( m_realTime / 100.0f );
 
-        m_ui->spinBoxAlpha ->setValue( alpha     );
-        m_ui->spinBoxBeta  ->setValue( beta      );
-        m_ui->spinBoxRoll  ->setValue( roll      );
-        m_ui->spinBoxPitch ->setValue( pitch     );
-        m_ui->spinBoxSlip  ->setValue( slipSkid  );
-        m_ui->spinBoxTurn  ->setValue( turnRate  );
-        m_ui->spinBoxDevH  ->setValue( devH      );
-        m_ui->spinBoxDevV  ->setValue( devV      );
-        m_ui->spinBoxHead  ->setValue( heading   );
-        m_ui->spinBoxSpeed ->setValue( airspeed  );
-        m_ui->spinBoxMach  ->setValue( machNo    );
-        m_ui->spinBoxAlt   ->setValue( altitude  );
-        m_ui->spinBoxPress ->setValue( pressure  );
-        m_ui->spinBoxClimb ->setValue( climbRate );
-        m_ui->spinBoxADF   ->setValue( adf       );
-        m_ui->spinBoxDME   ->setValue( dme       );
+        m_ui->spinBoxAlpha->setValue(alpha);
+        m_ui->spinBoxBeta->setValue(beta);
+        m_ui->spinBoxRoll->setValue(roll);
+        m_ui->spinBoxPitch->setValue(pitch);
+        m_ui->spinBoxSlip->setValue(slipSkid);
+        m_ui->spinBoxTurn->setValue(turnRate);
+        m_ui->spinBoxDevH->setValue(devH);
+        m_ui->spinBoxDevV->setValue(devV);
+        m_ui->spinBoxHead->setValue(heading);
+        m_ui->spinBoxSpeed->setValue(airspeed);
+        m_ui->spinBoxMach->setValue(machNo);
+        m_ui->spinBoxAlt->setValue(altitude);
+        m_ui->spinBoxPress->setValue(pressure);
+        m_ui->spinBoxClimb->setValue(climbRate);
+        m_ui->spinBoxADF->setValue(adf);
+        m_ui->spinBoxDME->setValue(dme);
     } else {
         alpha     = static_cast<float>(m_ui->spinBoxAlpha->value());
         beta      = static_cast<float>(m_ui->spinBoxBeta->value());
@@ -146,36 +146,36 @@ void MainWindow::timerEvent(QTimerEvent* event)
         dme       = static_cast<float>(m_ui->spinBoxDME->value());
     }
 
-    m_ui->widgetPFD->setFlightPathMarker ( alpha, beta );
-    m_ui->widgetPFD->setRoll          ( roll     );
-    m_ui->widgetPFD->setPitch         ( pitch     );
-    m_ui->widgetPFD->setSlipSkid      ( slipSkid  );
-    m_ui->widgetPFD->setTurnRate      ( turnRate / 6.0f );
-    m_ui->widgetPFD->setDevH          ( devH      );
-    m_ui->widgetPFD->setDevV          ( devV      );
-    m_ui->widgetPFD->setHeading       ( heading   );
-    m_ui->widgetPFD->setAirspeed      ( airspeed  );
-    m_ui->widgetPFD->setMachNo        ( machNo    );
-    m_ui->widgetPFD->setAltitude      ( altitude  );
-    m_ui->widgetPFD->setPressure      ( pressure  );
-    m_ui->widgetPFD->setClimbRate     ( climbRate / 100.0f );
+    m_ui->widgetPFD->setFlightPathMarker(alpha, beta);
+    m_ui->widgetPFD->setRoll(roll);
+    m_ui->widgetPFD->setPitch(pitch);
+    m_ui->widgetPFD->setSlipSkid(slipSkid);
+    m_ui->widgetPFD->setTurnRate(turnRate / 6.0f);
+    m_ui->widgetPFD->setDevH(devH);
+    m_ui->widgetPFD->setDevV(devV);
+    m_ui->widgetPFD->setHeading(heading);
+    m_ui->widgetPFD->setAirspeed(airspeed);
+    m_ui->widgetPFD->setMachNo(machNo);
+    m_ui->widgetPFD->setAltitude(altitude);
+    m_ui->widgetPFD->setPressure(pressure);
+    m_ui->widgetPFD->setClimbRate(climbRate / 100.0f);
 
-    m_ui->widgetNAV->setHeading    ( heading   );
-    m_ui->widgetNAV->setHeadingBug ( 0.0f );
-    m_ui->widgetNAV->setCourse     ( 0.0f );
-    m_ui->widgetNAV->setBearing    ( adf  , true );
-    m_ui->widgetNAV->setDeviation  ( devH , true );
-    m_ui->widgetNAV->setDistance   ( dme  , true );
+    m_ui->widgetNAV->setHeading(heading);
+    m_ui->widgetNAV->setHeadingBug(0.0f);
+    m_ui->widgetNAV->setCourse(0.0f);
+    m_ui->widgetNAV->setBearing(adf, true);
+    m_ui->widgetNAV->setDeviation(devH, true);
+    m_ui->widgetNAV->setDistance(dme, true);
 
-    m_ui->widgetSix->setRoll      ( roll      );
-    m_ui->widgetSix->setPitch     ( pitch     );
-    m_ui->widgetSix->setAltitude  ( altitude  );
-    m_ui->widgetSix->setPressure  ( pressure  );
-    m_ui->widgetSix->setAirspeed  ( airspeed  );
-    m_ui->widgetSix->setHeading   ( heading   );
-    m_ui->widgetSix->setSlipSkid  ( slipSkid * 15.0f );
-    m_ui->widgetSix->setTurnRate  ( turnRate  );
-    m_ui->widgetSix->setClimbRate ( climbRate );
+    m_ui->widgetSix->setRoll(roll);
+    m_ui->widgetSix->setPitch(pitch);
+    m_ui->widgetSix->setAltitude(altitude);
+    m_ui->widgetSix->setPressure(pressure);
+    m_ui->widgetSix->setAirspeed(airspeed);
+    m_ui->widgetSix->setHeading(heading);
+    m_ui->widgetSix->setSlipSkid(slipSkid * 15.0f);
+    m_ui->widgetSix->setTurnRate(turnRate);
+    m_ui->widgetSix->setClimbRate(climbRate);
 
     m_ui->widgetPFD->update();
     m_ui->widgetNAV->update();

@@ -53,7 +53,7 @@
 
 WidgetALT::WidgetALT(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetALT)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
     setupUi();
     m_alt = m_ui->graphicsALT;
 }
@@ -66,10 +66,10 @@ WidgetALT::~WidgetALT()
 
 void WidgetALT::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->graphicsALT );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->graphicsALT);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }

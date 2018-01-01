@@ -53,7 +53,7 @@
 
 WidgetNAV::WidgetNAV(QWidget* parent) : QWidget(parent), m_ui(new Ui::WidgetNAV)
 {
-    m_ui->setupUi( this );
+    m_ui->setupUi(this);
     setupUi();
     m_nav = m_ui->graphicsNAV;
 }
@@ -66,10 +66,10 @@ WidgetNAV::~WidgetNAV()
 
 void WidgetNAV::setupUi()
 {
-    m_layoutSq = new LayoutSquare( this );
+    m_layoutSq = new LayoutSquare(this);
 
-    m_layoutSq->setContentsMargins( 0, 0, 0, 0 );
-    m_layoutSq->addWidget( m_ui->frameNAV );
+    m_layoutSq->setContentsMargins(0, 0, 0, 0);
+    m_layoutSq->addWidget(m_ui->frameNAV);
 
-    setLayout( m_layoutSq );
+    setLayout(m_layoutSq);
 }
